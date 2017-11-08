@@ -54,6 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         width: 100%;
        }
   </style>
+  
 </head>
 <?php
 /* End of file header.php */

@@ -21,6 +21,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                <i class="fa fa-home"></i> <span>Home</span>
             </a>
         </li>
+
+        <li class="<?php echo active_link_controller('#'); ?>">
+            <a href="<?php  echo site_url('#') ?>">
+               <i class="fa fa-user"></i> <span>Calon Penerima RTLH</span>
+            </a>
+        </li>
+
+        <li class="<?php echo active_link_controller('#'); ?>">
+            <a href="<?php  echo site_url('#') ?>">
+               <i class="fa fa-users"></i> <span>Penduduk</span>
+            </a>
+        </li>
+
+        <li class="<?php echo active_link_controller('#'); ?>">
+            <a href="<?php  echo site_url('#') ?>">
+               <i class="fa fa-database"></i> <span>Master Data</span>
+            </a>
+        </li>
        
         <li class="<?php echo active_link_controller('account'); ?>">
             <a href="<?php  echo site_url('account') ?>">

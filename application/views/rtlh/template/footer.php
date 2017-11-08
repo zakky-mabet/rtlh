@@ -63,7 +63,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               name: "Rumah Rizal",
               location: [-2.10645, 106.0912808],
               icon:'blue-dot.png'
-            }
+            },
+            {
+              name: "Rumah Bachtiyar",
+              location: [-1.916340, 105.930475],
+              icon:'blue-dot.png'
+            },
+            {
+              name: "Rumah Cupat",
+              location: [-1.638400, 105.589066],
+              icon:'blue-dot.png'
+            },
+            {
+              name: "Rumah Dendang",
+              location: [-2.924944, 107.899795],
+              icon:'blue-dot.png'
+            },
+            {
+              name: "Rumah Lialang",
+              location: [-3.124886, 108.067492],
+              icon:'yellow-dot.png'
+            },
+            {
+              name: "Rumah Lepar Pongok",
+              location: [-2.960273, 106.824529],
+              icon:'green-dot.png'
+            },
+            {
+              name: "Rumah Berang",
+              location: [-1.987686, 105.454641],
+              icon:'green-dot.png'
+            },
+            {
+              name: "Rumah Kapur",
+              location: [-2.237226, 105.879680],
+              icon:'green-dot.png'
+            },
+
           ];
           return markers;
         }
@@ -79,20 +115,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           // Load JSON Data
           const RtlhMarker = getJSONMarkers();
 
+          var contentString = 
+          '<div id="content">Rumah Adisuputra</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
           // Initialize Google Markers
           for(rtlh of RtlhMarker) {
             let marker = new google.maps.Marker({
               map: map,
               position: new google.maps.LatLng(rtlh.location[0], rtlh.location[1]),
               title: rtlh.name, icon: 'http://maps.google.com/mapfiles/ms/icons/'+rtlh.icon
-            })
+            });
+
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+
+            });
           }
         }
+
+
       </script>
 
       <script src = "https://maps.googleapis.com/maps/api/js"></script>
       <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqynIgDbVFyncgjL90JOJqCiUr2v13SX0&callback=loadMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2bG9GMVdY6droTYBhjR9TD2XgV2cZQd8&callback=loadMap">
       </script>
 
 
