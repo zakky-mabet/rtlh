@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <b>Versi</b> 1.0.0 (Pre Release)
     </div>
    <div class="container text-center">
-      <small>Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Sekretariat Daerah Bangka Tengah Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a><small>
+      <small>Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Dinas Perumahan Rakyat dan Kawasan Pemukiman Provinsi Kepuluan Bangka Belitung Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a><small>
    </div>
 </footer>
 
@@ -43,6 +43,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       endforeach; 
     endif; 
   ?>
+
+    <script>
+
+        // fake JSON call
+        function getJSONMarkers() {
+          const markers = [
+            {
+              name:  "Rumah Adisuputra",
+              location: [-2.106503, 106.0915548],
+              icon:'green-dot.png'
+            },
+            {
+              name: "Rumah Muhamad Zakky",
+              location: [-2.106247,106.0915118],
+              icon:'red-dot.png'
+            },
+            {
+              name: "Rumah Rizal",
+              location: [-2.10645, 106.0912808],
+              icon:'blue-dot.png'
+            }
+          ];
+          return markers;
+        }
+
+        function loadMap() {
+          // Initialize Google Maps
+          const mapOptions = {
+            center:new google.maps.LatLng(-2.309189,106.7858913),
+            zoom: 8
+          }
+          const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+          // Load JSON Data
+          const RtlhMarker = getJSONMarkers();
+
+          // Initialize Google Markers
+          for(rtlh of RtlhMarker) {
+            let marker = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(rtlh.location[0], rtlh.location[1]),
+              title: rtlh.name, icon: 'http://maps.google.com/mapfiles/ms/icons/'+rtlh.icon
+            })
+          }
+        }
+      </script>
+
+      <script src = "https://maps.googleapis.com/maps/api/js"></script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqynIgDbVFyncgjL90JOJqCiUr2v13SX0&callback=loadMap">
+      </script>
+
+
    
 </body>
 </html>

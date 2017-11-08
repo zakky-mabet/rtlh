@@ -16,8 +16,13 @@ class Rtlh_model extends MY_Model
 	{
 		parent::__construct();
 
-		$this->ADMIN = $this->session->userdata('ADMIN')->ID;
+		$this->ADMIN = $this->session->userdata('ADMIN')->id_user;
 
+	}
+
+	public function get_akun($id = 0)
+	{
+		return $this->db->get_where('users', array('id_user' => $id))->row();
 	}
 
 	

@@ -1,13 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/**
- * The template for login the header
- *
- * Displays all of the head element and everything up until the "site-content" div.
- *
- * @package Codeigniter
- * @subpackage Admin Template
- */
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php echo $title; ?></title>
+	 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	 <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/public/image/favicon-title.png') ?>"/>
 	<link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/public/bootstrap/css/bootstrap.min.css"); ?>">
@@ -36,12 +30,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			font-weight: normal;
 		}
 		div.border{
-			border: 3pt solid #EEB715;
+			border-left: 3pt solid #EEB715;
+			border-right: 3pt solid #EEB715;
 		}
 	</style>
 </head>
 <body class="">
-	<div class="container border">
+	<div class="container ">
 		<div class="col-md-4 col-md-offset-4 box-login ">
 			<div class="box-logo" style="margin-top: -30px;">
 	      		<img src="<?php echo base_url("assets/images/logo.png"); ?>" alt="">
@@ -58,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      		<?php echo $this->session->flashdata('alert'); ?>
 	      	</div>
 	      	
-	      	<div  style="padding-bottom: 29px" class="box-body animated <?php if($this->session->flashdata('alert')) echo "shake"; ?>">
+	      	<div  style="padding-bottom: 29px" class="box-body border animated <?php if($this->session->flashdata('alert')) echo "shake"; ?>">
 	      	<h4 class="text-center arial" style="padding-bottom: 10px">Silahkan Login</h4>
 	      		<form action="<?php echo current_url(); ?>" method="POST" role="form">
 					<?php echo form_hidden('from_url', $this->input->get('from_url')); ?>
@@ -87,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      	<div class="box-alert">
 	      		<?php if($this->session->flashdata('alert') == FALSE) : ?>
 	      		<div class="alert alert-info">
-	      			Silahkan masukkan namaalamat email Anda. Anda akan menerima sebuah tautan untuk membuat password baru melalui email.
+	      			Silahkan masukkan alamat email Anda. Anda akan menerima sebuah tautan untuk membuat password baru melalui email.
 	      		</div>
 	      		<?php else : 
 	      			echo $this->session->flashdata('alert');
@@ -116,5 +111,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </body>
 </html>
 <?php  
-/* End of file login.php */
-/* Location: ./application/views/administrator/login.php */

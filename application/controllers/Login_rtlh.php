@@ -16,7 +16,7 @@ class Login_rtlh extends CI_Controller
 
 	public function index()
 	{
-		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('username', 'Username / Email', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE)
@@ -29,9 +29,9 @@ class Login_rtlh extends CI_Controller
 				{
 			        $user_session = array(
 			        	'rtlh_login' => TRUE,
-			        	'ID' => $user->ID,
+			        	'ID' => $user->id_user,
 			        	'ADMIN' => (Object) array(
-			        		'id_user' => $user->ID,
+			        		'id_user' => $user->id_user,
 			        		'nama' => $user->nama,
 			        		'telepon' => $user->no_telp,
 			        		'email' => $user->email,

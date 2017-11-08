@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed'); 
 ?>
-<body class="hold-transition skin-sakip sidebar-mini fixed">
+<body onload = "loadMap()" class="hold-transition skin-sakip sidebar-mini fixed">
    <div id="load"></div>
    <div class="wrapper">
       <header class="main-header">

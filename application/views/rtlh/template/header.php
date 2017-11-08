@@ -9,14 +9,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <title><?php  echo (isset($title)) ? $title : "Sistem Informasi Rumah Tidak Layak Huni Dinas Perumahan Rakyat dan Kawasan Permukiman Provinsi Bangka Belitung"; ?> :: <?php echo $this->session->userdata('ADMIN')->nama ?></title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
-  <link rel="stylesheet" href="<?php echo base_url("assets/skpd/css/z-style.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/z-style.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/bootstrap/css/bootstrap.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/font-awesome/css/font-awesome.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/ionicons/css/ionicons.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/select2/select2.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/dist/css/AdminLTE.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/dist/css/skins/skin-sakip.css"); ?>">
-  <link rel="stylesheet" href="<?php echo base_url("assets/skpd/css/style-admin.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/style-admin.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/dist/css/animate.css"); ?>">  
   <link  rel="stylesheet" href="<?php echo base_url("assets/public/dist/css/hover-min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css"); ?>">
@@ -48,6 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       var base_path  = '<?php echo base_url('assets/public'); ?>';
       var current_url = '<?php echo current_url(); ?>';
   </script>
+  <style>
+    #map {
+        height: 460px;
+        width: 100%;
+       }
+  </style>
 </head>
 <?php
 /* End of file header.php */

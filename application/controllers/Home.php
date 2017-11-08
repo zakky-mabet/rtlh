@@ -7,14 +7,16 @@ class Home extends Rtlh {
 	{
 		parent::__construct();
 
+		//$this->load->js("https://maps.googleapis.com/maps/api/js?key=AIzaSyC35FYc77aLoM6omJQg0Rm268NtGKojGjs&callback=initMap");
+
 	}
 
 	public function index() 
 	{
-		$this->page_title->push('Dashboard', 'Selamat datang di Administrator');
+		$this->page_title->push('Home', 'Selamat datang di Administrator');
 
 		$this->data = array(
-			'title' => "Main Dashboard", 
+			'title' => "Home - Rumah Tidak Layak Huni", 
 			'breadcrumbs' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show()
 		);

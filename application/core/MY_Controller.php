@@ -28,7 +28,7 @@ class Rtlh extends MY_Controller
 
 		$this->load->library( array('session', 'form_validation', 'session','template','pagination', 'page_title', 'breadcrumbs','pdf'));
 
-		$this->load->helper(array('url','menus'));
+		$this->load->helper(array('url','menus'));		
 		
 		$this->breadcrumbs->unshift(0, 'Home', "home");
 
@@ -38,8 +38,6 @@ class Rtlh extends MY_Controller
 		}
 
 		$this->ADMIN = $this->session->userdata('ADMIN')->id_user;
-
-
 
 
 	}

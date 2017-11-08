@@ -3,17 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
   <aside class="main-sidebar">
       <section class="sidebar">
+
       <div class="user-panel">
-         <div class="pull-left">
-            <p><strong>ADMIN :</strong> <br> <?php echo strtoupper($this->session->userdata('ADMIN')->nama) ?></p>
-            <small><strong>E-Mail :</strong> <?php echo $this->session->userdata('ADMIN')->email ?></small>
-         </div>
+        <div class="pull-left image">
+          <img src="<?php echo base_url('assets/public/image/avatar.jpg') ?>" class="img-circle" alt=" ">
+        </div>
+        <div class="pull-left info">
+          <p><?php echo strtoupper($this->session->userdata('ADMIN')->nama) ?></p>
+          <a href="#">muhamadzakky45@gmail.com</a>
+        </div>
          <div style="margin-bottom: 40px;"></div>
       </div>
+
       <ul class="sidebar-menu">
         <li class="<?php echo active_link_method('index','home'); ?>">
             <a href="<?php  echo site_url('home') ?>">
-               <i class="fa fa-dashboard"></i> <span>Home</span>
+               <i class="fa fa-home"></i> <span>Home</span>
             </a>
         </li>
        
