@@ -35,10 +35,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			font-family: arial;
 			font-weight: normal;
 		}
+		div.border{
+			border: 3pt solid #EEB715;
+		}
 	</style>
 </head>
 <body class="">
-	<div class="container ">
+	<div class="container border">
 		<div class="col-md-4 col-md-offset-4 box-login ">
 			<div class="box-logo" style="margin-top: -30px;">
 	      		<img src="<?php echo base_url("assets/images/logo.png"); ?>" alt="">

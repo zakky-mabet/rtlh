@@ -4,7 +4,7 @@
             <span class="info-box-icon"><i class="fa fa-users"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Jumlah Data Calon RTLH</span>
-                <span class="info-box-number"></span>
+                <span class="info-box-number">9000</span>
                 <div class="progress">
                     <div class="progress-bar" style="width: 100%"></div>
                 </div>
@@ -13,10 +13,10 @@
     </div>
     <div class="col-md-3">
         <div class="info-box bg-blue">
-            <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
+            <span class="info-box-icon"><i class="fa fa-child"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Jumlah Penerima RTLH</span>
-                <span class="info-box-number"></span>
+                <span class="info-box-number">3000</span>
                 <div class="progress">
                     <div class="progress-bar" style="width: 100%"></div>
                 </div>
@@ -25,10 +25,10 @@
     </div>
     <div class="col-md-3">
         <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
+            <span class="info-box-icon"><i class="fa fa-dollar"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">Total Nilai Anggaran RTLH</span>
-                <span class="info-box-number">9000000000</span>
+                <span class="info-box-text">Total Anggaran RTLH</span>
+                <span class="info-box-number">Rp. 900.000.000</span>
                 <div class="progress">
                     <div class="progress-bar" style="width: 100%"></div>
                 </div>
@@ -37,10 +37,10 @@
     </div>
     <div class="col-md-3">
         <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
+            <span class="info-box-icon"><i class="fa fa-hourglass-end"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">Indikator</span>
-                <span class="info-box-number">2</span>
+                <span class="info-box-text">Jumlah Realisasi RTLH</span>
+                <span class="info-box-number">3000</span>
                 <div class="progress">
                     <div class="progress-bar" style="width: 100%"></div>
                 </div>
