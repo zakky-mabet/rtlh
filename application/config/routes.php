@@ -6,7 +6,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /* SKPD */
-$route['login'] = 'login_skpd';
-$route['login/signout'] = 'login_skpd/signout';
+$route['login'] = 'login_rtlh';
+$route['login/signout'] = 'login_rtlh/signout';
 
 /* ADMIN */

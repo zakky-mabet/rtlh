@@ -14,16 +14,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?php echo $title; ?> Kabupaten Bangka Tengah</title>
+	<title><?php echo $title; ?></title>
 	 <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/public/image/favicon-title.png') ?>"/>
 	<link rel="shortcut icon" href="<?php echo base_url("public/image/site/favicon.png"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/public/bootstrap/css/bootstrap.min.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/public/font-awesome/css/font-awesome.min.css"); ?>">
-	<link rel="stylesheet" href="<?php echo base_url("assets/skpd/css/style-login.css"); ?>">
+	<link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/style-login.css"); ?>">
 	<link rel="stylesheet" href="<?php echo base_url("assets/public/dist/css/animate.css"); ?>">
 	<style type="text/css" media="screen">
-		
-
 		body {
 			 background-image: url('<?php echo base_url('assets/images/BG.jpg') ?>') ;
 		    background-attachment: fixed;
@@ -109,33 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      	<?php endif; ?>
 		</div>
 	</div>
-	<script>
-
-var countDownDate = new Date("10 17, 2017 00:00:00").getTime();
-
-
-var x = setInterval(function() {
-
-  var now = new Date().getTime();
-
-  var distance = countDownDate - now;
-
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("demo").innerHTML = days + " hari "+ hours + " jam "
-  + minutes + " menit " + seconds + " detik ";
-
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "";
-  }
-}, 0);
-
-
-</script>
+	
 	<script src="<?php echo base_url("assets/public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/public/bootstrap/js/bootstrap.min.js"); ?>"></script>
 </body>

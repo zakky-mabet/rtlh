@@ -17,14 +17,14 @@ class Template
         {
             return NULL;
         }  else  {
-            $this->template['header']          = $this->ci->load->view('skpd/template/header', $data, TRUE);
-            $this->template['navbar']     = $this->ci->load->view('skpd/template/navbar', $data, TRUE);
-            $this->template['left_sidebar']     = $this->ci->load->view('skpd/template/left_sidebar', $data, TRUE);
+            $this->template['header']          = $this->ci->load->view('rtlh/template/header', $data, TRUE);
+            $this->template['navbar']     = $this->ci->load->view('rtlh/template/navbar', $data, TRUE);
+            $this->template['left_sidebar']     = $this->ci->load->view('rtlh/template/left_sidebar', $data, TRUE);
             $this->template['content']         = $this->ci->load->view($content, $data, TRUE);
-            $this->template['right_sidebar']     = $this->ci->load->view('skpd/template/right_sidebar', $data, TRUE);
-            $this->template['footer']          = $this->ci->load->view('skpd/template/footer', $data, TRUE);
+            $this->template['right_sidebar']     = $this->ci->load->view('rtlh/template/right_sidebar', $data, TRUE);
+            $this->template['footer']          = $this->ci->load->view('rtlh/template/footer', $data, TRUE);
 
-            return $this->ci->load->view('skpd/template/template', $this->template);
+            return $this->ci->load->view('rtlh/template/template', $this->template);
         }
     }
 
@@ -39,7 +39,7 @@ class Template
             $this->template['content']         = $this->ci->load->view($content, $data, TRUE);
             $this->template['footer']          = $this->ci->load->view('admin/template/footer', $data, TRUE);
 
-            return $this->ci->load->view('skpd/template/template', $this->template);
+            return $this->ci->load->view('rtlh/template/template', $this->template);
         }
     }
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login_skpd extends CI_Controller 
+class Login_rtlh extends CI_Controller 
 {
 	public function __construct()
 	{
@@ -9,7 +9,7 @@ class Login_skpd extends CI_Controller
 		
 		$this->load->library( array('session', 'form_validation', 'session','template'));
 
-		$this->load->model('users_skpd', 'user');
+		$this->load->model('users_rtlh', 'user');
 
 		$this->load->helper(array('url'));
 	}
@@ -28,18 +28,16 @@ class Login_skpd extends CI_Controller
 				if ( password_verify($this->input->post('password'), $user->password) ) 
 				{
 			        $user_session = array(
-			        	'skpd_login' => TRUE,
+			        	'rtlh_login' => TRUE,
 			        	'ID' => $user->ID,
-			        	'SKPD' => (Object) array(
-			        		'ID' => $user->ID,
+			        	'ADMIN' => (Object) array(
+			        		'id_user' => $user->ID,
 			        		'nama' => $user->nama,
 			        		'telepon' => $user->no_telp,
 			        		'email' => $user->email,
 			        		'alamat' => $user->alamat,
 			        		'username' => $user->username,
-			        		'kepala' => $user->id_kepala,
-			        		'periode_awal' => $user->periode_awal,
-			        		'periode_akhir' => $user->periode_akhir
+
 			        	)
 			        );	
 
@@ -49,7 +47,7 @@ class Login_skpd extends CI_Controller
 					{
 						redirect($this->input->post('from_url'));
 					} else {
-						redirect(base_url('skpd/home'));
+						redirect(base_url('home'));
 					}
 				} else {
 					$this->template->alert(
@@ -66,10 +64,10 @@ class Login_skpd extends CI_Controller
 		}
 
 		$this->data = array(
-			'title' => "Login E-SAKIP", 
+			'title' => "Login Administrator RTLH", 
 		);
 
-		$this->load->view('skpd/login', $this->data);
+		$this->load->view('rtlh/login', $this->data);
 	}
 
 	public function signout()
@@ -124,7 +122,7 @@ class Login_skpd extends CI_Controller
 
             $this->template->alert(
                // 'Permintaan Reset Password telah dikirim ke E-Mail anda. segera reset password anda sebelum 1X24 jam dari sekarang', 
-            	anchor(site_url() . '/login_skpd/reset_password/token/' . $qstring, 'DISINI'),
+            	anchor(site_url() . '/Login_rtlh/reset_password/token/' . $qstring, 'DISINI'),
                 array('type' => 'success','icon' => 'check')
             );
 
@@ -164,7 +162,7 @@ class Login_skpd extends CI_Controller
          
        	if ($this->form_validation->run() == FALSE) 
        	{    
-         	$this->load->view('skpd/v_reset_password', $data);  
+         	$this->load->view('rtlh/v_reset_password', $data);  
        	} else {  
                            
          	$post = $this->input->post(NULL, TRUE);          
@@ -207,5 +205,3 @@ class Login_skpd extends CI_Controller
    	} 
 }
 
-/* End of file Login_skpd.php */
-/* Location: ./application/controllers/Login_skpd.php */

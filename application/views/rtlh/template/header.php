@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php  echo (isset($title)) ? $title : "Sistem Akuntabilitas Kinerja Instansi Pemerintah"; ?> :: <?php echo $this->session->userdata('SKPD')->nama ?></title>
+  <title><?php  echo (isset($title)) ? $title : "Sistem Informasi Rumah Tidak Layak Huni Dinas Perumahan Rakyat dan Kawasan Permukiman Provinsi Bangka Belitung"; ?> :: <?php echo $this->session->userdata('ADMIN')->nama ?></title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
   <link rel="stylesheet" href="<?php echo base_url("assets/skpd/css/z-style.css"); ?>">
@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/data.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/drilldown.js"); ?>"></script>
   <script type="text/javascript"> 
-      var base_url   = '<?php echo site_url("skpd"); ?>';
+      var base_url   = '<?php echo site_url("rtlh"); ?>';
       var base_path  = '<?php echo base_url('assets/public'); ?>';
       var current_url = '<?php echo current_url(); ?>';
   </script>

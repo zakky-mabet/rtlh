@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users_skpd extends CI_Model 
+class Users_rtlh extends CI_Model 
 {
 	public function get_admin_login()
 	{
@@ -12,17 +12,15 @@ class Users_skpd extends CI_Model
 			$this->db->where('username', $this->input->post('username'));
 		}
 
-		$this->db->join('skpd', 'kepala_skpd.id_kepala = skpd.ID', 'left');
-
-		return $this->db->get('kepala_skpd')->row();
+		return $this->db->get('users')->row();
 	}
 
    	public function getUserInfo($id)  
    	{  
-  		$this->db->join('skpd', 'kepala_skpd.id_kepala = skpd.ID', 'left');
-  		$this->db->where('ID', $id);
 
-  		$q = $this->db->get('kepala_skpd'); 
+  		$this->db->where('id_user', $id);
+
+  		$q = $this->db->get('users'); 
 
      	if($this->db->affected_rows() > 0)
      	{  
@@ -36,10 +34,10 @@ class Users_skpd extends CI_Model
 
   	public function getUserLoginByEmail($email)
   	{  
-  		$this->db->join('skpd', 'kepala_skpd.id_kepala = skpd.ID', 'left');
+
   		$this->db->where('email', $email);
 
-     	$q = $this->db->get('kepala_skpd');  
+     	$q = $this->db->get('users');  
 
      	if($this->db->affected_rows() > 0)
      	{  
@@ -74,7 +72,7 @@ class Users_skpd extends CI_Model
        
      	$q = $this->db->get_where('passwordtokens', array(  
        'passwordtokens.token' => $tkn,  
-       'role' => 'OPD' 
+       'role' => 'ADMIN' 
        ), 1);               
            
      	if($this->db->affected_rows() > 0)
@@ -101,8 +99,8 @@ class Users_skpd extends CI_Model
    
    	public function updatePassword($post)  
    	{    
-     	$this->db->where('ID', $post['user_id']);  
-     	$this->db->update('skpd', array('password' => $post['password']));      
+     	$this->db->where('id_user', $post['user_id']);  
+     	$this->db->update('users', array('password' => $post['password']));      
      	return true;  
    	} 
 }
