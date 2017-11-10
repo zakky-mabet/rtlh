@@ -59,8 +59,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     // Creating the JSON data
     var json = [
-        {"id": 1, "lat": -2.106503, "lng": 106.0915548, "icon":"green-dot.png", "description": "Rumah Adisuputra" },
-        {"id": 2, "lat": -2.713925, "lng": 105.964067, "icon":"red-dot.png", "description": "Rumah Afrizal Liem" },
+        {"id": 1, "lat": -2.106503, "lng": 106.0915548, "icon":"green-home.png", "description": '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+'link</a>  Rumah Adi'  },
+        {"id": 2, "lat": -2.713925, "lng": 105.964067, "icon":"red-home.png", "description": "Rumah Afrizal Liem" },
         
     ]
 
@@ -77,7 +77,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         position: latLng,
         map: map,
         id: data.id,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/'+data.icon
+        animation: google.maps.Animation.DROP,
+        icon: '<?php echo base_url('assets/rtlh/img/') ?>'+data.icon
       });
 
       // Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
@@ -87,6 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         google.maps.event.addListener(marker, "click", function(e) {
           infoWindow.setContent(data.description);
           infoWindow.open(map, marker);
+
         });
 
 
