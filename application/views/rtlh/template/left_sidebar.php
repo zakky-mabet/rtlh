@@ -22,8 +22,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
         </li>
 
-        <li class="<?php echo active_link_controller('#'); ?>">
-            <a href="<?php  echo site_url('#') ?>">
+        <li class="<?php echo active_link_controller('candidate'); ?>">
+            <a href="<?php  echo site_url('candidate') ?>">
                <i class="fa fa-user"></i> <span>Calon Penerima RTLH</span>
             </a>
         </li>

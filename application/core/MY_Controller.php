@@ -42,6 +42,47 @@ class Rtlh extends MY_Controller
 
 	}
 
+	public function penduduk($param = 0)
+	{
+		ini_set('memory_limit', '256M');
+		$this->db->get('penduduk');
+		if($param == FALSE) 
+		{
+			foreach($this->db->get('penduduk')->result() as $row)
+			{
+				$this->data[] = array(
+					'id' => $row->ID,
+					'nik' => $row->nik,
+					'nama' => $row->nama_lengkap,
+					'jns_kelamin' => ucfirst($row->jns_kelamin),
+					'alamat' => $row->alamat
+				); 
+			} 
+		}
+		else {
+			$get = $this->db->get_where('penduduk', array('ID' => $param))->row();
+
+			$date = new DateTime($get->tgl_lahir);
+
+			$this->data = array(
+				'id' => $get->ID,
+				'nik' => $get->nik,
+				'nama' => $get->nama_lengkap,
+				'tgl_lahir' => $get->tmp_lahir.", ".$date->format('d M Y'),
+				'jns_kelamin' => ucfirst($get->jns_kelamin),
+				'alamat' => $get->alamat,
+				'agama' => ucfirst($get->agama),
+				'status_kawin' => strtoupper($get->status_kawin),
+				'kewarganegaraan' => strtoupper($get->kewarganegaraan)
+			);
+
+
+			$this->data['status'] = true;
+
+		} 
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
+	}
+	
 }
 
 
