@@ -28,21 +28,6 @@ class Template
         }
     }
 
-    public function admin($content, $data = NULL)
-    {
-        if ( ! $content)
-        {
-            return NULL;
-        }  else  {
-            $this->template['header']          = $this->ci->load->view('admin/template/header', $data, TRUE);
-            $this->template['navbar']     = $this->ci->load->view('admin/template/navbar', $data, TRUE);
-            $this->template['content']         = $this->ci->load->view($content, $data, TRUE);
-            $this->template['footer']          = $this->ci->load->view('admin/template/footer', $data, TRUE);
-
-            return $this->ci->load->view('rtlh/template/template', $this->template);
-        }
-    }
-
     public function alert($message, $config)
     {
         $animated = 'fadeIn';

@@ -18,6 +18,7 @@ class Main extends CI_Controller
 		$this->load->view('Portal', $this->data);
 	}
 
+
 }
 
 /* End of file Main.php */

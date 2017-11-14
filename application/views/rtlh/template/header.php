@@ -43,11 +43,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/exporting.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/data.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/drilldown.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/public/plugins/select2/select2.full.min.js"); ?>"></script>
   <script type="text/javascript"> 
-      var base_url   = '<?php echo site_url("rtlh"); ?>';
+      var base_url   = '<?php echo site_url(); ?>';
       var base_path  = '<?php echo base_url('assets/public'); ?>';
       var current_url = '<?php echo current_url(); ?>';
   </script>
+  <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    
+  })
+</script>
   <style>
     #map {
         height: 460px;

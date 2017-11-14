@@ -2,11 +2,9 @@
 /**
  * Active Menu Helper
  *
- * @package Codeigniter - Template Sipaten
+ * @package Codeigniter 
  * @subpackage Helper
- * @see https://github.com/nitinegoro/sipaten/tree/master/application/helpers
- * @since 2017 (V1.0.1)
- * @author Vicky Nitinegoro <pkpvicky@gmail.com>
+ * @author Teitra Mega <office@teitramega.co.id>
  *
  *
  *
@@ -87,30 +85,4 @@ if(!function_exists('active_link_uri'))
         return ( $uri == $ci->uri->segment(3) ) ? 'active' : NULL;
     }
 } 
-
-/**
- * Untuk Menu Surat Perizinan & Non Perizinan dalam satu Controller
- *
- * @param Array
- * @return string (Active Menu)
- **/
-if(!function_exists('is_surat'))
-{
-    function is_surat($jenis, $param)
-    {
-        $ci    =& get_instance();
-
-        if($param != FALSE)
-        {
-            require_once( BASEPATH .'database/DB'. EXT );
-
-            $db =& DB();
-
-            $category = $db->get_where('kategori_surat', array('id_surat' => $param))->row();
-            if($category)
-                if($category->jenis == $jenis AND $ci->router->fetch_class() == 'create_surat')
-                    return 'active';
-        }
-    }
-}
 

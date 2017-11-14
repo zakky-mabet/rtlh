@@ -28,16 +28,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
         </li>
 
-        <li class="<?php echo active_link_controller('#'); ?>">
-            <a href="<?php  echo site_url('#') ?>">
-               <i class="fa fa-users"></i> <span>Penduduk</span>
+        <li class="treeview <?php echo active_link_multiple(array('population','provinsi', 'kabupaten','kecamatan','desa')); ?>">
+            <a href="#">
+               <i class="fa fa-database"></i> <span> Master Data</span>
+               <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+               </span>
             </a>
-        </li>
+          <ul class="treeview-menu">
 
-        <li class="<?php echo active_link_controller('#'); ?>">
-            <a href="<?php  echo site_url('#') ?>">
-               <i class="fa fa-database"></i> <span>Master Data</span>
-            </a>
+            <li class="<?php echo active_link_controller('population') ?>">
+              <a href="<?php echo site_url('population') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
+            </li>
+            <!-- <li class="<?php echo active_link_controller('provinsi') ?>">
+              <a href="<?php echo site_url('provinsi') ?>"><i class="fa fa-angle-double-right"></i> Data Provinsi</a>
+            </li>
+
+            <li class="<?php echo active_link_controller('kabupaten') ?>">
+              <a href="<?php echo site_url('kabupaten') ?>"><i class="fa fa-angle-double-right"></i> Data Kabupaten</a>
+            </li>
+
+            <li class="<?php echo active_link_controller('kecamatan') ?>">
+              <a href="<?php echo site_url('kecamatan') ?>"><i class="fa fa-angle-double-right"></i> Data Kecamatan</a>
+            </li>
+
+             <li class="<?php echo active_link_controller('desa') ?>">
+              <a href="<?php echo site_url('desa') ?>"><i class="fa fa-angle-double-right"></i> Data Desa</a>
+            </li> -->
+
+          </ul>
         </li>
        
         <li class="<?php echo active_link_controller('account'); ?>">
@@ -64,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          *
          * @var string
          **/
-          echo $breadcrumbs; 
+          //echo $breadcrumbs; 
         ?>
       </section>
       <section class="content">

@@ -65,4 +65,53 @@
 </div>
 
    
+<script>        
+
+    (function() {
+     window.onload = function() {
+          var map = new google.maps.Map(document.getElementById("map"), {
+                center: new google.maps.LatLng(-2.309189,106.7858913),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              });
+
+          var json = [
+              {"id": 1, "lat": -2.106503, "lng": 106.0915548, "icon":"green-home.png", "description": '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+'link</a>  Rumah Adi'  },
+              {"id": 2, "lat": -2.713925, "lng": 105.964067, "icon":"red-home.png", "description": "Rumah Afrizal Liem" },
+              
+          ]
+
+          var infoWindow = new google.maps.InfoWindow();
+
+          for (var i = 0, length = json.length; i < length; i++) {
+            var data = json[i],
+              latLng = new google.maps.LatLng(data.lat, data.lng);
+
+            var marker = new google.maps.Marker({
+              position: latLng,
+              map: map,
+              id: data.id,
+              animation: google.maps.Animation.DROP,
+              icon: '<?php echo base_url('assets/rtlh/img/') ?>'+data.icon
+            });
+
+            (function(marker, data) {
+
+              google.maps.event.addListener(marker, "click", function(e) {
+                infoWindow.setContent(data.description);
+                infoWindow.open(map, marker);
+              });
+
+            })(marker, data);
+          }
+        }
+      })();
+
+
+      </script>
+
+      <script src = "https://maps.googleapis.com/maps/api/js"></script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2bG9GMVdY6droTYBhjR9TD2XgV2cZQd8">
+      </script>
    

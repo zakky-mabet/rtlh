@@ -1,9 +1,7 @@
 /*! 
- Theme Name: E-SAKIP 1.0
- Description: Modiefied Template
+ 
  *
- * @author Vicky Nitinegoro [http://vicky.work]
- * @since 1.0 2017
+ * @author Teitra Mega - office@teitramega.co.id
  */
 a {
 	cursor: pointer;
@@ -12,7 +10,7 @@ a {
 table.mini-font { 
   vertical-align:center;
   display: table-cell;
-   font-size: 8pt;
+   font-size: 9pt;
 }
 table.mini-font thead th,
 table.mini-font tbody td,
@@ -20,7 +18,7 @@ table.mini-font tbody th,
 table.mini-font tbody td span,
 table.mini-font tbody td strong,
 table.mini-font tfoot td {  
-   font-size: 8pt;
+   font-size: 9pt;
    vertical-align: middle;
 }
 

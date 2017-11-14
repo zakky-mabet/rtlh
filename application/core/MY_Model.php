@@ -25,6 +25,16 @@ class Rtlh_model extends MY_Model
 		return $this->db->get_where('users', array('id_user' => $id))->row();
 	}
 
+	// public function get_desa($param = 0)
+	// {
+	// 	if($param == FALSE)
+	// 	{
+	// 		return $this->db->get('villages')->result();
+	// 	} else {
+	// 		return $this->db->get_where('villages', array('id' => $param))->row();
+	// 	}
+	// }
+
 	
 }
 
