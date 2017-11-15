@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php  echo (isset($title)) ? $title : "Sistem Informasi Rumah Tidak Layak Huni Dinas Perumahan Rakyat dan Kawasan Permukiman Provinsi Bangka Belitung"; ?> :: <?php echo $this->session->userdata('ADMIN')->nama ?></title>
+  
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
   <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/z-style.css"); ?>">

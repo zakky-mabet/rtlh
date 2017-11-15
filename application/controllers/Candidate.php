@@ -33,6 +33,11 @@ class Candidate extends RTlh
 		$this->template->view('rtlh/candidate/create-candidate', $this->data);
 	}
 
+	public function entri($param = 0)
+	{
+		
+	}
+
 
 }
 

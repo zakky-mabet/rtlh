@@ -54,10 +54,15 @@ function select_penduduk(param)
         $('td#data-agama').html(data.agama);
         $('td#data-status-kawin').html(data.status_kawin);
         $('td#data-kewarganegaraan').html(data.kewarganegaraan);
+        $('td#data-status-rtlh').html(data.status_rtlh);
 
         if(data.status === true)
         {
-            $('div#dialog-lanjutkan').modal('show');
+            $('#data-entri').attr('href',base_url+'/candidate/penduduk/'+param);
+
+            $('#data-button').attr('type','input');
+
+
         } 
 
     });

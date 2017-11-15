@@ -44,6 +44,7 @@ class Rtlh extends MY_Controller
 
 	public function penduduk($param = 0)
 	{
+	
 		ini_set('memory_limit', '256M');
 		$this->db->get('penduduk');
 		if($param == FALSE) 
@@ -73,9 +74,9 @@ class Rtlh extends MY_Controller
 				'alamat' => $get->alamat,
 				'agama' => ucfirst($get->agama),
 				'status_kawin' => strtoupper($get->status_kawin),
-				'kewarganegaraan' => strtoupper($get->kewarganegaraan)
+				'kewarganegaraan' => strtoupper($get->kewarganegaraan),
+				'status_rtlh' => $get->status_rtlh,
 			);
-
 
 			$this->data['status'] = true;
 

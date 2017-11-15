@@ -11,7 +11,7 @@
  *
  * @var string
  **/
-echo form_open(site_url("candidate/entri"), array('class' => 'form-horizontal', 'id' => 'form-insert-requirement'));
+echo form_open(site_url("#"), array('class' => 'form-horizontal', 'id' => 'form-insert-requirement'));
 
 ?>
 			<div class="box-body" style="margin-top: 10px;">
@@ -20,12 +20,16 @@ echo form_open(site_url("candidate/entri"), array('class' => 'form-horizontal', 
 						<label for="nik" class="control-label col-md-3 col-xs-12">NIK / Nama : <strong class="text-red">*</strong></label>
 						<div class="col-md-6">
 							<input type="text" id="cari-nik" class="form-control" value=""> 
-
-							
+	
+	
 						</div>
 						<div class="col-md-2">
 							<button type="reset" class="btn btn-sm btn-warning btn-flat"><i class="fa fa-times"></i> Reset</button>
 						</div>
+					</div>
+
+					<div class="form-group text-center" style="padding-top: 90px; ">
+						<a id="data-entri" href=""><input id="data-button" type="hidden" value="Lanjutkan Proses Entri" class="btn btn-lg btn-warning btn-flat animated bounce"></input></a>
 					</div>
 
 				</div>
@@ -34,36 +38,40 @@ echo form_open(site_url("candidate/entri"), array('class' => 'form-horizontal', 
 					<table class="table table-bordered" id="table-pemohon">
 						<tbody>
 							<tr>
-								<th width="160" class="bg-primary text-right">NIK :</th>
+								<th width="160" class="bg-blue text-right">NIK :</th>
 								<td id="data-nik"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Nama :</th>
+								<th class="bg-blue text-right">Nama :</th>
 								<td id="data-nama"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Tempat, Tanggal Lahir :</th>
+								<th class="bg-blue text-right">Tempat, Tanggal Lahir :</th>
 								<td id="data-tgl-lahir"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Jenis Kelamin :</th>
+								<th class="bg-blue text-right">Jenis Kelamin :</th>
 								<td id="data-jns-kelamin"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Alamat :</th>
+								<th class="bg-blue text-right">Alamat :</th>
 								<td id="data-alamat"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Agama :</th>
+								<th class="bg-blue text-right">Agama :</th>
 								<td id="data-agama"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Status Perkawinan :</th>
+								<th class="bg-blue text-right">Status Perkawinan :</th>
 								<td id="data-status-kawin"></td>
 							</tr>
 							<tr>
-								<th class="bg-primary text-right">Kewarganegaraan :</th>
+								<th class="bg-blue text-right">Kewarganegaraan :</th>
 								<td id="data-kewarganegaraan"></td>
+							</tr>
+							<tr>
+								<th class="bg-blue text-right t">Status RTLH :</th>
+								<td id="data-status-rtlh" class="text-red"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -74,17 +82,17 @@ echo form_open(site_url("candidate/entri"), array('class' => 'form-horizontal', 
 
 	
 			<!-- Modal Dialog Jadikan Histori -->
-	        <div class="modal animated fadeIn modal-danger" id="dialog-delete-history" tabindex="-1" data-backdrop="static" data-keyboard="false">
+	        <div class="modal animated fadeIn modal-danger" id="dialog-calon" tabindex="-1" data-backdrop="static" data-keyboard="false">
 	          	<div class="modal-dialog modal-sm">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Reset Form?</h4>
-			                <span>Hapus Rekaman Data ini menjadi dari histori pengajuan Surat</span>
+			                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Informasi?</h4>
+			                <span>Maaf. Nik ini sebelumnya telah menjadi calon penerima bantuan/ penerima bantuan !</span>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
-							<a id="button-delete-history" class="btn btn-outline pull-right">Oke</a>
+							<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Oke</button>
+							
 						</div>
 					</div>
 				</div>
