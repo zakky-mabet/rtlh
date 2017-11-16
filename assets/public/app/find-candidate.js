@@ -58,11 +58,9 @@ function select_penduduk(param)
 
         if(data.status === true)
         {
-            $('#data-entri').attr('href',base_url+'/candidate/penduduk/'+param);
+            $('#data-entri').attr('href',base_url+'/candidate/entri/'+data.nik);
 
             $('#data-button').attr('type','input');
-
-
         } 
 
     });

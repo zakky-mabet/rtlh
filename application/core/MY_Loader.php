@@ -54,6 +54,32 @@ class MY_Loader extends MX_Loader
 		return;
 	}
 
+	public function css()
+	{
+		$script_files = func_get_args();
+
+		foreach($script_files as $script_file){
+			$script_file = substr($script_file,0,1) == '/' ? substr($script_file,1) : $script_file;
+
+			$is_external = false;
+			if(is_bool($script_file))
+				continue;
+
+			$is_external = preg_match("/^https?:\/\//", trim($script_file)) > 0 ? true : false;
+
+			if(!$is_external)
+				if(!file_exists($script_file))
+					show_error("Cannot locate javascript file: {$script_file}");
+
+			$script_file = $is_external == FALSE ?  base_url() . $script_file : $script_file;
+
+			if(!in_array($script_file, $this->javascripts))
+				$this->javascripts[] = $script_file;
+		}
+
+		return;
+	}
+
 	public function start_inline_scripting()
 	{
 		ob_start();

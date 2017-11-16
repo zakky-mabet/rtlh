@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2 col-xs-12"><?php echo $this->session->flashdata('alert'); ?></div>
-	<dov class="col-md-12 col-xs-12">
+	<div class="col-md-12 col-xs-12">
 		<div class="box box-primary">
             <div class="box-header with-border">
               	<h3 class="box-title">Pencarian <?php echo $title; ?> </h3>
@@ -119,5 +119,5 @@ echo form_open(site_url("#"), array('class' => 'form-horizontal', 'id' => 'form-
 echo form_close();
 ?>
 		</div>
-	</dov>
+	</div>
 </div>

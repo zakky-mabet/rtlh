@@ -23,10 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/datepicker/datepicker3.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/summernote/summernote.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/form-wizard.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/autocomplete/tautocomplete.css?v=".md5(date('YmdHis'))); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/public/image/favicon-title.png') ?>"/>
 
-  <script src="<?php echo base_url("assets/public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/public/plugins/jQuery/jquery-2.2.3.min.js"); ?>"></script> 
   <script src="<?php echo base_url("assets/public/bootstrap/js/bootstrap.min.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/slimScroll/jquery.slimscroll.min.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/fastclick/fastclick.js"); ?>"></script>
@@ -47,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/drilldown.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/autocomplete/tautocomplete.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/select2/select2.full.min.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/public/app/form-wizard.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url(); ?>';
       var base_path  = '<?php echo base_url('assets/public'); ?>';
