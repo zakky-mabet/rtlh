@@ -81,39 +81,7 @@ echo form_open(site_url("#"), array('class' => 'form-horizontal', 'id' => 'form-
 			</div>
 
 	
-			<!-- Modal Dialog Jadikan Histori -->
-	        <div class="modal animated fadeIn modal-danger" id="dialog-calon" tabindex="-1" data-backdrop="static" data-keyboard="false">
-	          	<div class="modal-dialog modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Informasi?</h4>
-			                <span>Maaf. Nik ini sebelumnya telah menjadi calon penerima bantuan/ penerima bantuan !</span>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Oke</button>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Modal Dialog Lanjutkan Proses -->
-	        <div class="modal animated fadeIn modal-info" id="dialog-lanjutkan" tabindex="-1" data-backdrop="static" data-keyboard="false">
-	          	<div class="modal-dialog modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Lanjutkan proses ?</h4>
-			                <span>Jika data syarat-syarat lanjutkan ke tahap pengisian dokumen.</span>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
-							<a id="button-lanjutkan" class="btn btn-outline pull-right">Oke</a>
-						</div>
-					</div>
-				</div>
-			</div>
+		
 <?php  
 // End Form
 echo form_close();

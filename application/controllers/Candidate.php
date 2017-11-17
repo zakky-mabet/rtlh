@@ -37,6 +37,12 @@ class Candidate extends RTlh
 			show_404();
 		}
 
+		if (count($this->candidate->get($param)) == 0) {
+			show_404();
+		}
+
+		$this->load->js(base_url('assets/public/app/arithmetic.js'));
+
 		$this->page_title->push('Calon Penerima RTLH', 'Entri Data');
 
 		$this->breadcrumbs->unshift(2, 'Calon Penerima RTLH', "index/entri");
@@ -52,6 +58,22 @@ class Candidate extends RTlh
 		$this->template->view('rtlh/candidate/insert-candidate', $this->data);
 	}
 
+	
+	public function create()
+	{
+		$this->form_validation->set_rules('nik', 'NIK', 'trim|required');
+
+		if($this->form_validation->run() == TRUE)
+		{
+			$this->candidate->create();
+
+			redirect(base_url('population'));
+
+			echo 'string';
+
+		}
+		echo 'string1';
+	}
 
 }
 

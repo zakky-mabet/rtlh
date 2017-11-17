@@ -56,7 +56,8 @@ class Rtlh extends MY_Controller
 					'nik' => $row->nik,
 					'nama' => $row->nama_lengkap,
 					'jns_kelamin' => ucfirst($row->jns_kelamin),
-					'alamat' => $row->alamat
+					'alamat' => $row->alamat,
+					'status_rtlh' => $row->status_rtlh,
 				); 
 			} 
 		}
@@ -83,6 +84,8 @@ class Rtlh extends MY_Controller
 		} 
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
 	}
+
+	
 	
 }
 

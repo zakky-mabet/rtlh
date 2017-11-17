@@ -55,7 +55,7 @@
 							 *
 							 * @var string
 							 **/
-							echo form_open(site_url("#"), array('class' => 'form-horizontal'));
+							echo form_open(site_url('candidate/create'), array('class' => 'form-horizontal'));
 
 							?>
 				                <div class="tab-content">
@@ -68,7 +68,7 @@
 				                        	<div class="form-group">
 												<label for="nik" class="control-label col-md-3 col-xs-12">NIK : <strong class="text-red">*</strong></label>
 												<div class="col-md-4">
-													<input type="number"  class="form-control" value="<?php echo $penduduk->nik; ?>" disabled>
+													<input type="number" name="nik"  class="form-control" value="<?php echo $penduduk->nik; ?>" >
 												</div>
 											</div>
 											<div class="form-group">
@@ -273,24 +273,68 @@
 
 
 				                    <div class="tab-pane" role="tabpanel" id="step2">
-				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-user"></i> Data Tanah <small>(Penduduk)</small></h3>
+				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-map-marker"></i> Data Tanah</h3>
 				                        <hr>
 
 				                         <div class="box-body with-border">
 				                        	<div class="form-group">
-												<label for="no_sertifikat" class="control-label col-md-3 col-xs-12">No Sertifikat : <strong class="text-red">*</strong></label>
+												<label for="no_sertifikat" class="control-label col-md-3 col-xs-12">No Sertifikat : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
 													<input type="text" name="no_sertifikat"  class="form-control" value="<?php echo set_value('no_sertifikat'); ?>">
 													<p class="help-block"><?php echo form_error('no_sertifikat', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="no_sertifikat" class="control-label col-md-3 col-xs-12">No Sertifikat : <strong class="text-red">*</strong></label>
-												<div class="col-md-4">
-													<input type="text" name="no_sertifikat"  class="form-control" value="<?php echo set_value('no_sertifikat'); ?>">
-													<p class="help-block"><?php echo form_error('no_sertifikat', '<small class="text-blue">', '</small>'); ?></p>
+												<label for="panjang" class="control-label col-md-3 col-xs-12">Panjang : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<div class="input-group">
+													<input type="number" name="panjang" id="panjang" class="form-control" value="<?php echo set_value('panjang'); ?>" onchange="total()"> <span class="input-group-addon">M<sup>2</sup></span> </div>
+													<p class="help-block"><?php echo form_error('panjang', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
+											<div class="form-group">
+												<label for="lebar" class="control-label col-md-3 col-xs-12">Lebar : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<div class="input-group">
+													<input type="number" name="lebar" id="lebar" class="form-control" value="<?php echo set_value('lebar'); ?>" onchange="total()"> <span class="input-group-addon">M<sup>2</sup></span> </div>
+													<p class="help-block"><?php echo form_error('lebar', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="luas" class="control-label col-md-3 col-xs-12">Luas : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<div class="input-group">
+													<input type="number" name="luas" disabled id="luas" onchange="total()"  class="form-control" value=""> <span class="input-group-addon">M<sup>2</sup></span> </div>
+													<p class="help-block"><?php echo form_error('luas', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="status_kepemilikan_tanah" class="control-label col-md-3 col-xs-12">Status Kepemilikan : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="status_kepemilikan_tanah"  class="form-control" value="<?php echo set_value('status_kepemilikan_tanah'); ?>">
+													<p class="help-block"><?php echo form_error('status_kepemilikan_tanah', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="latitude" class="control-label col-md-3 col-xs-12">	Latitude : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<div class="input-group">
+													<input type="text" name="latitude" class="form-control" value=""> <span class="input-group-addon"><i class="fa fa-map-pin"></i></span> </div>
+													<p class="help-block"><?php echo form_error('latitude', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+
+											<div class="form-group">
+												<label for="longitude" class="control-label col-md-3 col-xs-12">Longitude : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<div class="input-group">
+													<input type="text" name="longitude"   class="form-control" value=""> <span class="input-group-addon"><i class="fa fa-map-pin"></i></span> </div>
+													<p class="help-block"><?php echo form_error('longitude', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+
+
 										</div>
 
 										<div class="box-footer with-border">
@@ -315,60 +359,145 @@
 
 
 				                    <div class="tab-pane" role="tabpanel" id="step3">
-				                        <h3>ASSIGN CLASSES</h3>
-				                        
-				                            				<table class="table table-striped table-bordered">
-										<thead>
-											<tr>
-												<th>Class</th>
-												<th>Assign to Exam</th>
-				                                </tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1 A</td>
-												<td><input type="checkbox" name="email" value=""></td>
-											</tr>
-				    						<tr>
-												<td>1 B</td>
-												<td><input type="checkbox" name="email" value=""></td>
-											</tr>
-				                                						<tr>
-												<td>1 C</td>
-												<td><input type="checkbox" name="email" value=""></td>
-											</tr>
-				                                						<tr>
-												<td>1 D</td>
-												<td><input type="checkbox" name="email" value=""></td>
-											</tr>
+				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-home"></i> Data Rumah</h3>
+				                        <hr>
 
-
-										</tbody>
-										</table>
-				                        <ul class="list-inline pull-right">
-				                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-				                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-				                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-				                        </ul>
-				                    </div>
-
-				                    <div class="tab-pane" role="tabpanel" id="complete">
-				                        <h3>PUBLISH SCHEDULE</h3>
-				                        <div class="form-horizontal">
-											<fieldset>
-
-
-											<div class="form-group">
-											  <label class="col-md-4 control-label" for="singlebutton"></label>
-											  <div class="col-md-4">
-											    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Publish</button>
-											  </div>
+				                         <div class="box-body with-border">
+				                         	<div class="form-group">
+												<label for="luas_m2" class="control-label col-md-3 col-xs-12">Luas : <strong class="text-blue">*</strong></label>
+												<div class="col-md-4">
+													<div class="input-group">
+													<input type="number" name="luas_m2"  class="form-control" value=""> <span class="input-group-addon">M<sup>2</sup></span> </div>
+													<p class="help-block"><?php echo form_error('luas_m2', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+				                        	<div class="form-group">
+												<label for="status_kepemilikan_rumah" class="control-label col-md-3 col-xs-12">Status Kepemilikan : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="status_kepemilikan_rumah"  class="form-control" value="<?php echo set_value('status_kepemilikan_rumah'); ?>">
+													<p class="help-block"><?php echo form_error('status_kepemilikan_rumah', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
 											</div>
 
-											</fieldset>
+											<div class="form-group">
+												<label for="jml_penghuni" class="control-label col-md-3 col-xs-12">Jumlah Penguhuni : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="number" name="jml_penghuni"  class="form-control" value="<?php echo set_value('jml_penghuni'); ?>">
+													<p class="help-block"><?php echo form_error('jml_penghuni', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="pondasi" class="control-label col-md-3 col-xs-12">Pondasi : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="pondasi"  class="form-control" value="<?php echo set_value('pondasi'); ?>">
+													<p class="help-block"><?php echo form_error('pondasi', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="kolom_balok" class="control-label col-md-3 col-xs-12">Kolom Balok : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="kolom_balok"  class="form-control" value="<?php echo set_value('kolom_balok'); ?>">
+													<p class="help-block"><?php echo form_error('kolom_balok', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="kondisi_atap" class="control-label col-md-3 col-xs-12">Kondisi Atap : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="kondisi_atap"  class="form-control" value="<?php echo set_value('kondisi_atap'); ?>">
+													<p class="help-block"><?php echo form_error('kondisi_atap', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+
+
+										</div>
+
+										<div class="box-footer with-border">
+											<div class="col-md-4 col-xs-5">
+												<button type="button" class="btn btn-app pull-right prev-step">
+													<i class="fa fa-arrow-left"></i> Sebelumnya
+												</button>
+											</div>
+											<div class="col-md-6 col-xs-6">
+												<button type="button" class="btn btn-app pull-right next-step">
+													<i class="fa fa-arrow-right"></i> Selanjutnya
+												</button>
+											</div>
+										</div>
+										<div class="box-footer with-border">
+												<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
+												<small><strong class="text-blue">*</strong>	Field Optional</small>
 										</div>
 				                    </div>
 
+				                    <div class="tab-pane" role="tabpanel" id="complete">
+				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-th"></i> Data Fasilitas Rumah</h3>
+				                        <hr>
+
+				                         <div class="box-body with-border">
+				                         	<div class="form-group">
+												<label for="jendela_lubang_cahaya" class="control-label col-md-3 col-xs-12">Jendela Lubang Cahaya : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="jendela_lubang_cahaya"  class="form-control" value="<?php echo set_value('jendela_lubang_cahaya'); ?>"> 
+													<p class="help-block"><?php echo form_error('jendela_lubang_cahaya', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="fentilasi" class="control-label col-md-3 col-xs-12">Fentilasi : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="fentilasi"  class="form-control" value="<?php echo set_value('fentilasi'); ?>"> 
+													<p class="help-block"><?php echo form_error('fentilasi', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="kamar_mandi" class="control-label col-md-3 col-xs-12">Kamar Mandi : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="kamar_mandi"  class="form-control" value="<?php echo set_value('kamar_mandi'); ?>"> 
+													<p class="help-block"><?php echo form_error('kamar_mandi', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="sumber_air_minum" class="control-label col-md-3 col-xs-12">Sumber Air Minum : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="sumber_air_minum"  class="form-control" value="<?php echo set_value('sumber_air_minum'); ?>"> 
+													<p class="help-block"><?php echo form_error('sumber_air_minum', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="jarak_sumber_air_ke_wc" class="control-label col-md-3 col-xs-12">Jarak Sumber Air Ke WC : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="jarak_sumber_air_ke_wc"  class="form-control" value="<?php echo set_value('jarak_sumber_air_ke_wc'); ?>"> 
+													<p class="help-block"><?php echo form_error('jarak_sumber_air_ke_wc', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="sumber_utama_penerangan" class="control-label col-md-3 col-xs-12">Sumber Utama Penerangan : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="text" name="sumber_utama_penerangan"  class="form-control" value="<?php echo set_value('sumber_utama_penerangan'); ?>"> 
+													<p class="help-block"><?php echo form_error('sumber_utama_penerangan', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+				                        	
+
+
+										</div>
+
+										<div class="box-footer with-border">
+											<div class="col-md-4 col-xs-5">
+												<button type="button" class="btn btn-app pull-right prev-step">
+													<i class="fa fa-arrow-left"></i> Sebelumnya
+												</button>
+											</div>
+											<div class="col-md-6 col-xs-6">
+												<button type="submit" class="btn btn-app bg-green pull-right">
+													<i class="fa fa-save"></i> Simpan
+												</button>
+											</div>
+										</div>
+										<div class="box-footer with-border">
+												<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
+												<small><strong class="text-blue">*</strong>	Field Optional</small>
+										</div>
+				                    </div>
 
 				                    <div class="clearfix"></div>
 				                </div>
@@ -378,7 +507,6 @@
 							?>
 				        </div>
 				    </section>
-
 				   </div>
 			</div>
 

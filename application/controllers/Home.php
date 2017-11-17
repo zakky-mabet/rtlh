@@ -8,6 +8,7 @@ class Home extends Rtlh {
 		parent::__construct();
 
 		//$this->load->js("https://maps.googleapis.com/maps/api/js?key=AIzaSyC35FYc77aLoM6omJQg0Rm268NtGKojGjs&callback=initMap");
+		$this->load->model('mjson_location');
 
 	}
 
@@ -18,7 +19,8 @@ class Home extends Rtlh {
 		$this->data = array(
 			'title' => "Home - Rumah Tidak Layak Huni", 
 			'breadcrumbs' => $this->breadcrumbs->show(),
-			'page_title' => $this->page_title->show()
+			'page_title' => $this->page_title->show(),
+			'home' =>$this->mjson_location->json_all_location()
 		);
 
 		$this->template->view('rtlh/v_home', $this->data);

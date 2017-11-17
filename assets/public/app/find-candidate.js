@@ -6,7 +6,7 @@
 $(document).ready(function () {
     var input_cari_nik = $("#cari-nik").tautocomplete({
         width: "700px",
-        columns: ['NIK', 'NAMA', 'JNS KELAMIN','ALAMAT'],
+        columns: ['NIK', 'NAMA', 'JNS KELAMIN','ALAMAT','STATUS RTLH'],
         norecord: "NIK atau Nama tidak ditemukan!",
         placeholder: "Cari NIK / Nama penduduk ..",
         ajax: {
