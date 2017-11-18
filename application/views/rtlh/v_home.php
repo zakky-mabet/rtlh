@@ -47,28 +47,7 @@
             </div>
         </div>
     </div>
-
-     <div class="col-md-4">
-          <!-- Widget: user widget style 1 -->
-          <div class="box box-widget widget-user-2">
-            <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-red">
-              <div class="widget-user-image">
-                <img class="" width="" src="<?php echo base_url('assets/rtlh/img/rumah-tak-layak-huni.jpg') ?>" alt="User Avatar">
-              </div>
-              <!-- /.widget-user-image -->
-              <h3 class="widget-user-username">Nadia Carmichael</h3>
-              <h5 class="widget-user-desc">Lead Developer</h5>
-            </div>
-            <div class="box-footer no-padding">
-              <ul class="nav nav-stacked">
-                <li><a href="#">Projects <span class="pull-right badge bg-red">31</span></a></li>
-
-              </ul>
-            </div>
-          </div>
-      </div>
-    
+     
     <div class="col-md-12">
 
           <div class="box box-primary">
@@ -84,7 +63,6 @@
     </div>
 
 </div>
-
    
 <script>        
 
@@ -96,12 +74,9 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
               });
 
-          var json = [
-        
-              {"id": 2, "lat": -2.713925, "lng": 105.964067, "icon":"red-home.png", "description": ' <img src="<?php echo base_url('assets/rtlh/img/rumah-tak-layak-huni.jpg') ?>" alt="" width="110">  RTLH' },
-              
-          ]
-
+       
+              var json = <?php echo json_encode($home) ?>
+ 
           var infoWindow = new google.maps.InfoWindow();
 
           for (var i = 0, length = json.length; i < length; i++) {

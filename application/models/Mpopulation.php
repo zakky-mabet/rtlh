@@ -72,7 +72,7 @@ class Mpopulation extends Rtlh_model
 			'kd_pos' => $this->input->post('kd_pos'),
 			'jml_keluarga' => $this->input->post('jml_keluarga'),
 			'penghasilan' => $this->input->post('penghasilan'),
-
+			'status_rtlh' => 'Tidak diketahui',
 		);
 
 		$this->db->insert('penduduk', $population);

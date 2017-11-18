@@ -64,11 +64,14 @@ class Mcandidate extends Rtlh_model
 				'luas' =>  $this->input->post('panjang')*$this->input->post('lebar'),
 				'latitude' =>  $this->input->post('latitude'),
 				'longitude' =>  $this->input->post('longitude'),
+				'icon' => 'red-home.png'
 			);
 
 			$this->db->insert('tanah', $tanah);
 
 		}
+
+
 		//CREATE RUMAH
 		$check_nik_on_rumah = $this->db->get_where(
 			'rumah', 
@@ -77,6 +80,22 @@ class Mcandidate extends Rtlh_model
 
 		if($check_nik_on_rumah == FALSE)
 		{
+			if (isset($_FILES['foto'])) 
+	   		{
+				$create_tgl = date('Y-m-d H:i:s'); 
+			    $this->load->library('upload');
+			    $nmfile = date('YmdHis'); 
+			    $config['upload_path'] = './assets/rtlh/img/';
+			    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; 
+			    $config['max_size'] = '40480';
+			    $config['file_name'] = $nmfile; 
+		     	$this->upload->initialize($config);
+		     	if ($this->upload->do_upload('foto'))
+				{ 
+			       	$foto = $this->upload->data();
+		     	}
+	    	}
+
 			$rumah = array(
 				'nik' =>  $this->input->post('nik'),
 				'status_kepemilikan_rumah' =>  $this->input->post('status_kepemilikan_rumah'),
@@ -85,10 +104,15 @@ class Mcandidate extends Rtlh_model
 				'pondasi' =>  $this->input->post('pondasi'),
 				'kolom_balok' =>  $this->input->post('kolom_balok'),
 				'kondisi_atap' =>  $this->input->post('kondisi_atap'),
+				'foto' => $foto['file_name'],
+				'deskripsi' => '<img src="'.base_url('assets/rtlh/img/'.$foto['file_name']).'" alt="'.$this->input->post('nama_lengkap').'" width="110" style="float:left;"><div style="float:left; margin-left:10px;" ><p><b>Rumah '.$this->input->post('nama_lengkap').'</b></p><p> Status Calon Penerima</p><p><a href="'.base_url('#').'">Detail..</a></p></div>'
+
 			);
 
 			$this->db->insert('rumah', $rumah);
 		}
+
+
 
 		// FASILITAS RUMAH
 		$check_nik_on_fasilitas_rumah = $this->db->get_where(

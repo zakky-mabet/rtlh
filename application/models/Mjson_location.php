@@ -19,7 +19,7 @@ class Mjson_location extends Rtlh_model
 	}
 
 
-	public function json_all_location()
+	public function all_location()
 	{
 		$this->db->select('*');
 
@@ -27,22 +27,20 @@ class Mjson_location extends Rtlh_model
 
 		$this->db->join('tanah', 'tanah.nik = penduduk.nik');
 
-		return $this->db->get()->result();
+		$this->db->join('rumah', 'rumah.nik = tanah.nik');
 
-		// foreach ($collection as $key => $value) {
-		// 	$this->data = array(
-		// 		'id'  => $value->nik,
-		// 		'lat' => $value->latitude,
-		// 		'lng' => $value->longitude,
-		// 		'icon' => 'green-home.png',
-		// 		'description' => 'Rumah '.$value->nama_lengkap,
-
-		// 	);
-		// }
-
-		
-
-		$this->output->set_content_type('application/json')->set_output(json_encode($query));
+		foreach($this->db->get()->result() as $get)
+		{
+				$data[] = array(
+				'id' => md5($get->nik),
+				'lat' => $get->latitude,
+				'lng' => $get->longitude,
+				'icon' => $get->icon,
+				'description'=>$get->deskripsi,
+				
+			);
+		} 
+		return $data;
 	}
 
 

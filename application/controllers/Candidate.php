@@ -69,10 +69,8 @@ class Candidate extends RTlh
 
 			redirect(base_url('population'));
 
-			echo 'string';
-
 		}
-		echo 'string1';
+		echo 'Kesalahan Anda Hayooo';
 	}
 
 }

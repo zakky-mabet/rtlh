@@ -55,7 +55,7 @@
 							 *
 							 * @var string
 							 **/
-							echo form_open(site_url('candidate/create'), array('class' => 'form-horizontal'));
+							echo form_open(site_url('candidate/create'), array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data'));
 
 							?>
 				                <div class="tab-content">
@@ -68,7 +68,8 @@
 				                        	<div class="form-group">
 												<label for="nik" class="control-label col-md-3 col-xs-12">NIK : <strong class="text-red">*</strong></label>
 												<div class="col-md-4">
-													<input type="number" name="nik"  class="form-control" value="<?php echo $penduduk->nik; ?>" >
+													<input type="number" disabled  class="form-control" value="<?php echo $penduduk->nik; ?>" >
+													<input type="hidden" name="nik"  class="form-control" value="<?php echo $penduduk->nik; ?>" >
 												</div>
 											</div>
 											<div class="form-group">
@@ -80,7 +81,8 @@
 											<div class="form-group">
 												<label for="name" class="control-label col-md-3 col-xs-12">Nama : <strong class="text-red">*</strong></label>
 												<div class="col-md-8">
-													<input id="inputError" type="text" class="form-control" value="<?php echo $penduduk->nama_lengkap; ?>" disabled>
+													<input id="inputError"type="text" class="form-control" value="<?php echo $penduduk->nama_lengkap; ?>" disabled>
+													<input id="inputError" name="nama_lengkap" type="hidden" class="form-control" value="<?php echo $penduduk->nama_lengkap; ?>" >
 												</div>
 											</div>
 											<div class="form-group">
@@ -405,6 +407,13 @@
 												<div class="col-md-6">
 													<input type="text" name="kondisi_atap"  class="form-control" value="<?php echo set_value('kondisi_atap'); ?>">
 													<p class="help-block"><?php echo form_error('kondisi_atap', '<small class="text-blue">', '</small>'); ?></p>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="foto" class="control-label col-md-3 col-xs-12">Foto Rumah : <strong class="text-blue">*</strong></label>
+												<div class="col-md-6">
+													<input type="file" name="foto" class="form-control" >
+												
 												</div>
 											</div>
 

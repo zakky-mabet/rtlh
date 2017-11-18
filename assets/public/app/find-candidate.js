@@ -2,7 +2,6 @@
 * @author Teitra Mega [office@teitramega.co.id]
 * @package Jquery, Bootstraps JS, Tautocomplete, Bootstrap Notify
 */
-
 $(document).ready(function () {
     var input_cari_nik = $("#cari-nik").tautocomplete({
         width: "700px",
