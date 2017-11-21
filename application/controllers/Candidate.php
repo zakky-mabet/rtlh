@@ -17,7 +17,7 @@ class Candidate extends RTlh
 	{
 		$this->load->js(base_url('assets/public/app/find-candidate.js'));
 		
-		$this->page_title->push('Calon Penerima RTLH', '');
+		$this->page_title->push('Calon Penerima RTLH', 'Cari Calon');
 
 		$this->breadcrumbs->unshift(2, 'Calon Penerima RTLH', "candidate");
 
@@ -67,10 +67,10 @@ class Candidate extends RTlh
 		{
 			$this->candidate->create();
 
-			redirect(base_url('population'));
+			redirect(base_url('candidate'));
 
 		}
-		echo 'Kesalahan Anda Hayooo';
+		echo 'Hayooo Mau ngapain, wkwkwk';
 	}
 
 }

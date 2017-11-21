@@ -108,7 +108,6 @@ class Mcandidate extends Rtlh_model
 				'deskripsi' => '<img src="'.base_url('assets/rtlh/img/'.$foto['file_name']).'" alt="'.$this->input->post('nama_lengkap').'" width="110" style="float:left;"><div style="float:left; margin-left:10px;" ><p><b>Rumah '.$this->input->post('nama_lengkap').'</b></p><p> Status Calon Penerima</p><p><a href="'.base_url('#').'">Detail..</a></p></div>'
 
 			);
-
 			$this->db->insert('rumah', $rumah);
 		}
 

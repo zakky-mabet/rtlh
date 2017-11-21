@@ -19,7 +19,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="control-label col-md-3 col-xs-12">No. KK : <strong class="text-red">*</strong></label>
+					<label for="email" class="control-label col-md-3 col-xs-12">No. KK : <strong class="text-blue">*</strong></label>
 					<div class="col-md-4">
 						<input type="number" name="kk" class="form-control" value="<?php echo set_value('kk'); ?>">
 						<p class="help-block"><?php echo form_error('kk', '<small class="text-red">', '</small>'); ?></p>

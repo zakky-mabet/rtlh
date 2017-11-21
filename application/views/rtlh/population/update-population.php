@@ -16,7 +16,7 @@ echo form_hidden('ID', $population->ID);
 				<div class="form-group">
 					<label for="email" class="control-label col-md-3 col-xs-12">NIK : <strong class="text-red">*</strong></label>
 					<div class="col-md-4">
-						<input type="number" name="nik" class="form-control" value="<?php echo $population->nik; ?>">
+						<input type="number" disabled class="form-control" value="<?php echo $population->nik; ?>">
 						<p class="help-block"><?php echo form_error('nik', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>

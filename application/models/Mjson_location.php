@@ -32,7 +32,7 @@ class Mjson_location extends Rtlh_model
 		foreach($this->db->get()->result() as $get)
 		{
 				$data[] = array(
-				'id' => md5($get->nik),
+				'id' => md5(sha1($get->nik)),
 				'lat' => $get->latitude,
 				'lng' => $get->longitude,
 				'icon' => $get->icon,

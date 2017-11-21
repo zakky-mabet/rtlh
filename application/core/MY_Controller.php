@@ -47,6 +47,8 @@ class Rtlh extends MY_Controller
 	
 		ini_set('memory_limit', '256M');
 		$this->db->get('penduduk');
+		$this->db->where('status_rtlh !=', 'Calon Penerima');
+		
 		if($param == FALSE) 
 		{
 			foreach($this->db->get('penduduk')->result() as $row)

@@ -22,10 +22,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
         </li>
 
-        <li class="<?php echo active_link_controller('candidate'); ?>">
-            <a href="<?php  echo site_url('candidate') ?>">
-               <i class="fa fa-user"></i> <span>Calon Penerima RTLH</span>
+        <li class="treeview <?php echo active_link_multiple(array('candidate','data_candidate')); ?>">
+            <a href="#">
+               <i class="fa fa-user"></i> <span> Calon Penerima RTLH</span>
+               <span class="pull-right-container">
+                  <i class="fa fa-angle-left spull-right"></i>
+               </span>
             </a>
+          <ul class="treeview-menu">
+
+            <li class="<?php echo active_link_controller('candidate') ?>">
+              <a href="<?php echo site_url('candidate') ?>"><i class="fa fa-angle-double-right"></i> Entri Calon</a>
+            </li>
+            <li class="<?php echo active_link_controller('data_candidate') ?>">
+              <a href="<?php echo site_url('data_candidate') ?>"><i class="fa fa-angle-double-right"></i> Data Calon Penerima</a>
+            </li>
+
+          </ul>
         </li>
 
         <li class="treeview <?php echo active_link_multiple(array('population','provinsi', 'kabupaten','kecamatan','desa')); ?>">

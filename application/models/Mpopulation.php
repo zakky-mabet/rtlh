@@ -94,7 +94,7 @@ class Mpopulation extends Rtlh_model
 	public function update($param = 0)
 	{
 		$population = array(
-			'nik' => $this->input->post('nik'),
+			
 			'no_kk' => $this->input->post('kk'),
 			'status_kk' => $this->input->post('status_kk'),
 			'nama_lengkap' => $this->input->post('name'),

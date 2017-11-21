@@ -67,6 +67,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         height: 460px;
         width: 100%;
        }
+    .margin-top-23 {
+      margin-top: 23px;
+    }
   </style>
   
 </head>
