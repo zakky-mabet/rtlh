@@ -20,12 +20,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </section>
      </div>
  
-     <footer class="main-footer "> <!-- navbar navbar-fixed-bottom -->
+     <footer class="main-footer ">
     <div class="pull-right hidden-xs">
-      <b>Versi</b> 1.0.0 (Pre Release)
+      <small> Page rendered in <strong>{elapsed_time}</strong> seconds. <b>Version</b> 1.0.0 (BETA)</small>
     </div>
-   <div class="container text-center">
-      <small>Hak Cipta &copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Dinas Perumahan Rakyat dan Kawasan Pemukiman Provinsi Kepuluan Bangka Belitung Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a><small>
+   <div class="container">
+      <small>&copy; 2017 <?php if(date('Y')!=2017) echo "- ".date('Y'); ?> Dinas Perumahan Rakyat dan Kawasan Pemukiman Provinsi Kepuluan Bangka Belitung Develop By <a href="http://teitramega.co.id" target="_blank">Teitra Mega</a><small>
    </div>
 </footer>
 
@@ -39,15 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       foreach($this->load->get_js_files() as $file) :  
     ?>
          <script src="<?php echo $file; ?>?v=<?php echo date('YmdHis'); ?>"></script>
+         <script>
+          $('.get-delete-foto').click( function() {
+        $('#modal-delete-foto').modal('show');
+        $('a#btn-delete').attr('href', base_url + '/data_candidate/delete_foto/' + $(this).data('id')+'/?nik='+ $(this).data('nik') );
+    });
+         </script>
    <?php 
       endforeach; 
     endif; 
-  ?>
-
-    
-
-
-   
+  ?>   
 </body>
 </html>
 <?php

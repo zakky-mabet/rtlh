@@ -36,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body class="">
+	<?php echo  error_reporting(0); ?>
 	<div class="container ">
 		<div class="col-md-4 col-md-offset-4 box-login ">
 			<div class="box-logo" style="margin-top: -30px;">

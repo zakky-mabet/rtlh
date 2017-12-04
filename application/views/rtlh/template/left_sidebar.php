@@ -6,11 +6,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url('assets/public/image/avatar.jpg') ?>" class="img-circle" alt=" ">
+          <?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->photo == NULL): ?>
+            <img src="<?php echo base_url('assets/public/image/avatar.jpg') ?>" class="img-circle" alt="<?php echo strtoupper($this->muniversal->get_account_by_login($this->session->userdata('ID'))->nama) ?>">
+          <?php else: ?>
+            <img src="<?php echo base_url('assets/public/image/'.$this->muniversal->get_account_by_login($this->session->userdata('ID'))->photo) ?>" class="img-circle" alt="<?php echo strtoupper($this->muniversal->get_account_by_login($this->session->userdata('ID'))->nama) ?>">
+          <?php endif ?>
+          
         </div>
         <div class="pull-left info">
-          <p><?php echo strtoupper($this->session->userdata('ADMIN')->nama) ?></p>
-          <a href="#">muhamadzakky45@gmail.com</a>
+          <p><?php echo strtoupper($this->muniversal->get_account_by_login($this->session->userdata('ID'))->nama) ?></p>
+          <a href="#"><?php echo $this->muniversal->get_account_by_login($this->session->userdata('ID'))->level; ?> </a>
         </div>
          <div style="margin-bottom: 40px;"></div>
       </div>
@@ -41,6 +46,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
         </li>
 
+        <li class="treeview <?php echo active_link_multiple(array('penerima','data_penerima')); ?>">
+            <a href="#">
+               <i class="fa fa-child"></i> <span> Penerima Bantuan RTLH</span>
+               <span class="pull-right-container">
+                  <i class="fa fa-angle-left spull-right"></i>
+               </span>
+            </a>
+          <ul class="treeview-menu">
+
+            <li class="<?php echo active_link_controller('penerima') ?>">
+              <a href="<?php echo site_url('penerima') ?>"><i class="fa fa-angle-double-right"></i> Entri Penerima</a>
+            </li>
+            <li class="<?php echo active_link_controller('data_penerima') ?>">
+              <a href="<?php echo site_url('data_penerima') ?>"><i class="fa fa-angle-double-right"></i> Data Penerima Bantuan</a>
+            </li>
+
+          </ul>
+        </li>
+
+         <li class="treeview <?php echo active_link_multiple(array('rkba')); ?>">
+            <a href="#">
+               <i class="fa fa-institution"></i> <span> <strike>RKBA</strike></span>
+               <span class="pull-right-container">
+                  <i class="fa fa-angle-left spull-right"></i>
+               </span>
+            </a>
+          <ul class="treeview-menu">
+
+            <li class="<?php echo active_link_controller('rkba') ?>">
+              <a href="<?php echo site_url('#') ?>"><i class="fa fa-angle-double-right"></i> <strike>Entri</strike> </a>
+            </li>
+            <li class="<?php echo active_link_controller('data_rkba') ?>">
+              <a href="<?php echo site_url('#') ?>"><i class="fa fa-angle-double-right"></i> <strike>Data RKBA</strike></a>
+            </li>
+
+          </ul>
+        </li>
+
         <li class="treeview <?php echo active_link_multiple(array('population','provinsi', 'kabupaten','kecamatan','desa')); ?>">
             <a href="#">
                <i class="fa fa-database"></i> <span> Master Data</span>
@@ -53,30 +96,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="<?php echo active_link_controller('population') ?>">
               <a href="<?php echo site_url('population') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
             </li>
-            <!-- <li class="<?php echo active_link_controller('provinsi') ?>">
-              <a href="<?php echo site_url('provinsi') ?>"><i class="fa fa-angle-double-right"></i> Data Provinsi</a>
-            </li>
-
-            <li class="<?php echo active_link_controller('kabupaten') ?>">
-              <a href="<?php echo site_url('kabupaten') ?>"><i class="fa fa-angle-double-right"></i> Data Kabupaten</a>
-            </li>
-
-            <li class="<?php echo active_link_controller('kecamatan') ?>">
-              <a href="<?php echo site_url('kecamatan') ?>"><i class="fa fa-angle-double-right"></i> Data Kecamatan</a>
-            </li>
-
-             <li class="<?php echo active_link_controller('desa') ?>">
-              <a href="<?php echo site_url('desa') ?>"><i class="fa fa-angle-double-right"></i> Data Desa</a>
-            </li> -->
-
           </ul>
         </li>
-       
-        <li class="<?php echo active_link_controller('account'); ?>">
-            <a href="<?php  echo site_url('account') ?>">
-               <i class="fa fa-wrench"></i> <span>Pengaturan Akun</span>
+
+        <li class="treeview <?php echo active_link_multiple(array('account','pengguna')); ?>">
+            <a href="#">
+               <i class="fa fa-wrench"></i> <span> Pengaturan</span>
+               <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+               </span>
             </a>
+          <ul class="treeview-menu">
+            <li class="<?php echo active_link_controller('pengguna') ?>">
+              <a href="<?php echo site_url('pengguna') ?>"><i class="fa fa-angle-double-right"></i> Pengguna Sistem</a>
+            </li>
+            <li class="<?php echo active_link_controller('account') ?>">
+              <a href="<?php echo site_url('account') ?>"><i class="fa fa-angle-double-right"></i> Akun</a>
+            </li>
+          </ul>
         </li>
+
 
         </ul>
       </section>
@@ -96,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          *
          * @var string
          **/
-          //echo $breadcrumbs; 
+
         ?>
       </section>
       <section class="content">

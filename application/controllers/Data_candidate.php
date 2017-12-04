@@ -82,8 +82,19 @@ class Data_candidate extends Rtlh
 			'num_data_candidate' => $this->data_candidate->get_all(null, null, 'num')
 		);
 
-		$this->load->view('rtlh/data_candidate/print-data_candidate', $this->data);
-	}	
+		$this->load->view('rtlh/data_candidate/print', $this->data);
+	}
+
+	public function print_out_landscape()
+	{
+		$this->data = array(
+			'title' => "Data Calon Penerima", 
+			'data_candidate' => $this->data_candidate->get_all($this->per_page, $this->page),
+			'num_data_candidate' => $this->data_candidate->get_all(null, null, 'num')
+		);
+
+		$this->load->view('rtlh/data_candidate/print-landscape', $this->data);
+	}		
 
 	public function update($param = 0)
 
@@ -151,6 +162,13 @@ class Data_candidate extends Rtlh
 		$this->data_candidate->delete($param);
 
 		redirect('data_candidate');
+	}
+
+	public function delete_foto($param = 0)
+	{
+		$this->data_candidate->delete_foto($param);
+
+		redirect('data_candidate/foto/'.$this->input->get('nik'));
 	}
 
 	public function bulk_action()

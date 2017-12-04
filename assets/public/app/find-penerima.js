@@ -3,14 +3,13 @@
 * @package Jquery, Bootstraps JS, Tautocomplete, Bootstrap Notify
 */
 $(document).ready(function () {
-
     var input_cari_nik = $("#cari-nik").tautocomplete({
         width: "700px",
         columns: ['NIK', 'NAMA', 'JNS KELAMIN','ALAMAT','STATUS RTLH'],
         norecord: "NIK atau Nama tidak ditemukan!",
         placeholder: "Cari NIK / Nama penduduk ..",
         ajax: {
-            url: base_url + "/candidate/penduduk",
+            url: base_url + "/penerima/insert_penerima",
             type: "GET",
             data: function () {
                 return [{ test: input_cari_nik.searchdata() }];
@@ -43,7 +42,7 @@ $(document).ready(function () {
 function select_penduduk(param) 
 {
 
-    $.get( base_url + "/candidate/penduduk/" + param , function( data ) 
+    $.get( base_url + "/penerima/insert_penerima/" + param , function( data ) 
     {
         $('td#data-nik').html(data.nik);
         $('td#data-nama').html(data.nama);
@@ -58,13 +57,12 @@ function select_penduduk(param)
 
         if(data.status === true)
         {
-            $('#data-entri').attr('href',base_url+'/candidate/entri/'+data.nik);
+            $('#data-entri').attr('href',base_url+'/penerima/entri/'+data.nik);
 
             $('#data-button').attr('type','input');
         } 
 
     });
-
 
 }
 

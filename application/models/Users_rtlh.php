@@ -102,7 +102,8 @@ class Users_rtlh extends CI_Model
      	$this->db->where('id_user', $post['user_id']);  
      	$this->db->update('users', array('password' => $post['password']));      
      	return true;  
-   	} 
+   	}
+
 }
 
 /* End of file Users_skpd.php */

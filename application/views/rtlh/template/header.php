@@ -1,15 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php  echo (isset($title)) ? $title : "Sistem Informasi Rumah Tidak Layak Huni Dinas Perumahan Rakyat dan Kawasan Permukiman Provinsi Bangka Belitung"; ?> :: <?php echo $this->session->userdata('ADMIN')->nama ?></title>
-  
+  <meta name="description" content="Sistem Informasi Rumah Tidak Layak Huni" />
+  <meta property="og:url" content="<?php echo base_url() ?>" />
+  <meta property="og:site_name" content="RTLH" />
+  <meta property="og:title" content="Sistem Informasi Rumah Tidak Layak Huni" />
+  <meta property="og:description" content="Sistem Informasi Rumah Tidak Layak Huni Kepulauan Bangka Belitung" />
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
- 
   <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/z-style.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/bootstrap/css/bootstrap.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/font-awesome/css/font-awesome.min.css"); ?>">
@@ -56,11 +59,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </script>
   <script>
   $(function () {
-    //Initialize Select2 Elements
     $('.select2').select2()
 
-    
-  })
+    $('#datepicker1').datepicker({
+      autoclose: true,
+      format: 'yyyy-mm-dd',
+    })
+
+
+  });
+
+
 </script>
   <style>
     #map {

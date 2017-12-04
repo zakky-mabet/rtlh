@@ -86,7 +86,7 @@
 										<img class="img-responsive" src="<?php echo base_url('assets/rtlh/img/rumah/'.$value->foto) ?>" alt="Tampak Depan">
 									</td>
 									<td style="vertical-align: middle;"><?php echo $value->nama ?></td>
-									<td class="text-center" style="vertical-align: middle;"><a href=""><i class="fa text-red fa-trash-o"></i></a></td>
+									<td class="text-center " style="vertical-align: middle;"><a class="icon-button text-red get-delete-foto" data-id="<?php echo $value->id_foto_rumah; ?>" data-nik="<?php echo $value->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a></td>
 								</tr>
 							<?php endforeach ?>
 						<?php endif ?>
@@ -131,7 +131,7 @@
 										<img class="img-responsive" src="<?php echo base_url('assets/rtlh/img/rumah/'.$value->foto) ?>" alt="Tampak Depan">
 									</td>
 									<td style="vertical-align: middle;"><?php echo $value->nama ?></td>
-									<td class="text-center" style="vertical-align: middle;"><a href=""><i class="fa text-red fa-trash-o"></i></a></td>
+									<td class="text-center " style="vertical-align: middle;"><a class="icon-button text-red get-delete-foto" data-id="<?php echo $value->id_foto_rumah; ?>" data-nik="<?php echo $value->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a></td>
 								</tr>
 							<?php endforeach ?>
 						<?php endif ?>
@@ -144,20 +144,18 @@
 
 </div>
 
-<script>
-var room = 1;
-function multi_foto() {
- 
-    room++;
-    var objTo = document.getElementById('multi_foto')
-    var divfoto = document.createElement("div");
-	divfoto.setAttribute("class", "form-group animated pulse removeclass"+room);
-	var rdiv = 'removeclass'+room;
-    divfoto.innerHTML = '<div class="col-sm-4 "><label>Nama Foto :</label>									<div class="form-group">										<input type="text" class="form-control"  name="nama[]" value="" placeholder="Nama Foto">									</div></div>								<div class="col-sm-4 ">									<label>Kategori :</label>								  <div class="form-group">								      <select class="form-control"  name="kategori[]">								        <option value="">-- PILIH --</option>								        <option value="sebelum">Sebelum Rehabilitasi</option>								        <option value="setelah">Setelah Rehabilitasi</option>							      </select>								  </div>								</div>								<div class="col-sm-4 ">									<label>Foto :</label>								  <div class="form-group">								    <div class="input-group">								      <input type="file" class="form-control"  name="foto[]" value="" >								      <div class="input-group-btn">								        <button class="btn btn-danger" type="button"  onclick="remove('+ room +');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button>								      </div>								    </div>								  </div>								</div>';
-    
-    objTo.appendChild(divfoto)
-}
-   function remove(rid) {
-	   $('.removeclass'+rid).remove();
-   }
-</script>
+<div class="modal animated fadeIn modal-danger" id="modal-delete-foto" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+           	<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Hapus!</h4>
+                <span>Hapus foto ini?</span>
+           	</div>
+           	<div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
+                <a href="#" id="btn-delete" class="btn btn-outline"> Hapus </a>
+           	</div>
+        </div>
+    </div>
+</div>

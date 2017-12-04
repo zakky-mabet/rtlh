@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
            
-               <li class="dropdown user user-menu" data-toggle="tooltip" data-placement="bottom" title="Pengaturan Login">
+               <li class="dropdown user user-menu" data-toggle="tooltip" data-placement="bottom" title="Pengaturan Akun">
                   <a href="<?php echo site_url('account'); ?>" style="font-size: 20px;">
                      <i class="glyphicon glyphicon-user" style="font-size: 16px;"></i>
                   </a>

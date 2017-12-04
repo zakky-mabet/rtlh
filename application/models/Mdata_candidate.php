@@ -21,8 +21,6 @@ class Mdata_candidate extends Rtlh_model
 
 	public function get_all($limit = 20, $offset = 0, $type = 'result')
 	{
-		if($this->input->get('village') != '')
-			$this->db->where('village', $this->input->get('village'));
 
 		if($this->input->get('gender') != '')
 			$this->db->where('jns_kelamin', $this->input->get('gender'));
@@ -31,11 +29,23 @@ class Mdata_candidate extends Rtlh_model
 			$this->db->like('nik', $this->input->get('query'))
 					 ->or_like('nama_lengkap', $this->input->get('query'));
 
+		
+
 		$this->db->where('status_rtlh', 'Calon Penerima');
+
 
 		if($type == 'result')
 		{
-			return $this->db->get('penduduk', $limit, $offset)->result();
+			$this->db->from('penduduk');
+
+  			$this->db->join('rumah', 'rumah.nik = penduduk.nik');
+
+  			$this->db->join('tanah', 'tanah.nik = rumah.nik');
+
+  			$this->db->limit($limit, $offset);
+
+  			return $this->db->get()->result();
+
 		} else {
 			return $this->db->get('penduduk')->num_rows();
 		}
@@ -90,7 +100,7 @@ class Mdata_candidate extends Rtlh_model
 				'kolom_balok' =>  $this->input->post('kolom_balok'),
 				'kondisi_atap' =>  $this->input->post('kondisi_atap'),
 				'foto' => $foto['file_name'],
-				'deskripsi' => '<img src="'.base_url('assets/rtlh/img/'.$foto['file_name']).'" alt="'.$this->input->post('nama_lengkap').'" width="110" style="float:left;"><div style="float:left; margin-left:10px;" ><p><b>Rumah '.$this->input->post('nama_lengkap').'</b></p><p> Status Calon Penerima</p><p><a href="'.base_url('#').'">Detail..</a></p></div>'
+				'deskripsi' => '<img src="'.base_url('assets/rtlh/img/'.$foto['file_name']).'" alt="'.$this->input->post('nama_lengkap').'" width="110" style="float:left;"><div style="float:left; margin-left:10px;" ><p><b>Rumah '.$this->input->post('nama_lengkap').'</b></p><p> Status Calon Penerima</p><p><a href="'.base_url('data_candidate/update/'.$param).'">Detail..</a></p></div>'
 
 			);
 
@@ -139,6 +149,25 @@ class Mdata_candidate extends Rtlh_model
 		{
 			$this->template->alert(
 				' Data berhasil dihapus Sebagai Calon Penerima.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal menghapus data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+	public function delete_foto($param = 0)
+	{
+		@unlink('assets/rtlh/img/rumah/'.$this->get_rumah($param)->foto);
+		$this->db->delete('foto_rumah', array('id_foto_rumah' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Data berhasil dihapus', 
 				array('type' => 'success','icon' => 'check')
 			);
 		} else {
@@ -261,6 +290,10 @@ class Mdata_candidate extends Rtlh_model
 	public function get_rumah($param = 0)
 	{
 		return $this->db->get_where('rumah', array('nik' => $param))->row();
+	}
+	public function get_foto($param = 0)
+	{
+		return $this->db->get_where('foto_rumah', array('id_foto_rumah' => $param))->row();
 	}
 	public function get_fasilitas_rumah($param = 0)
 	{

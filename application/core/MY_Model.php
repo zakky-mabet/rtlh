@@ -6,17 +6,12 @@ class MY_Model extends CI_Model
 
 }
 
-
 class Rtlh_model extends MY_Model
 {
-
-	public $ADMIN;
 
 	public function __construct()
 	{
 		parent::__construct();
-
-		$this->ADMIN = $this->session->userdata('ADMIN')->id_user;
 
 	}
 
