@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <i class="fa fa-child"></i> <span> Penerima Bantuan RTLH</span>
         </a>
       </li>
-      <li class="treeview <?php echo active_link_multiple(array('rkba')); ?>">
+      <li class="treeview <?php echo active_link_multiple(array('daftar_bencana')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> RKBA</span>
           <span class="pull-right-container">
@@ -59,8 +59,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="<?php echo active_link_controller('data_rkba') ?>">
             <a href="<?php echo site_url('#') ?>"><i class="fa fa-angle-double-right"></i> Data RKBA</a>
           </li>
-          <li class="<?php echo active_link_controller('daftar_bencana') ?>">
+          <li class="<?php echo active_link_controller('index','daftar_bencana') ?>">
             <a href="<?php echo site_url('daftar_bencana') ?>"><i class="fa fa-angle-double-right"></i> Daftar Bencana</a>
+          </li>
+          <li class="<?php echo active_link_method('jenis_bencana'); ?>">
+            <a href="<?php echo site_url('daftar_bencana/jenis_bencana') ?>"><i class="fa fa-angle-double-right"></i> Jenis Bencana</a>
           </li>
         </ul>
       </li>

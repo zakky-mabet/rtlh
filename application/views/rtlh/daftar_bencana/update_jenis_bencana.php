@@ -13,29 +13,26 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 			<div class="box-body" style="margin-top: 10px;">
 			
 				<div class="form-group">
-					<label for="nama" class="control-label col-md-3 col-xs-12">Nama  Bencana : <strong class="text-red">*</strong></label>
+					<label for="nama" class="control-label col-md-3 col-xs-12">Nama Jenis Bencana : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="text" name="nama" class="form-control" value="<?php echo set_value('nama'); ?>">
+						<input type="text" name="nama" class="form-control" value="<?php echo $get->nama ?>">
 						<p class="help-block"><?php echo form_error('nama', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
-					<label for="level" class="control-label col-md-3 col-xs-12">Jenis Bencana : <strong class="text-red">*</strong></label>
+					<label for="keterangan" class="control-label col-md-3 col-xs-12">Keterangan : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<select name="level" class="form-control">
-							<option value="">-- PILIH --</option>
-							<option value="Admin" <?php if($this->input->get('level')=='Admin') echo 'selected'; ?>>Admin</option>
-				        	<option value="Operator" <?php if($this->input->get('level')=='Operator') echo 'selected'; ?>>Operator</option>
-						</select>
-						<p class="help-block"><?php echo form_error('level', '<small class="text-red">', '</small>'); ?></p>
+						<textarea name="keterangan" cols="30" class="form-control"  rows="10"><?php echo $get->keterangan ?></textarea>
+						<p class="help-block"><?php echo form_error('keterangan', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
+				
 			</div>
 
 			<div class="box-footer with-border">
 				<div class="col-md-4 col-xs-5">
-					<a href="<?php echo site_url('daftar_bencana') ?>" class="btn btn-app pull-right">
+					<a href="<?php echo site_url('daftar_bencana/jenis_bencana') ?>" class="btn btn-app pull-right">
 						<i class="ion ion-reply"></i> Kembali
 					</a>
 				</div>
