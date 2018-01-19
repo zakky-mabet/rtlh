@@ -8,7 +8,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php  echo (isset($title)) ? $title : "Sistem Informasi Rumah Tidak Layak Huni Dinas Perumahan Rakyat dan Kawasan Permukiman Provinsi Bangka Belitung"; ?> :: <?php echo $this->session->userdata('ADMIN')->nama ?></title>
   <meta name="description" content="Sistem Informasi Rumah Tidak Layak Huni" />
-  <meta property="og:url" content="<?php echo base_url() ?>" />
+   <meta name="keywords" content="Sistem Informasi Rumah Tidak Layak Huni,Sistem Perumahan Rakyat, Provinsi Bangka Belitung,Dinas Perumahan Rakyat dan Kawasan Pemukiman Provinsi Kepuluan Bangka Belitung ">
+  <meta name="author" content="www.teitramega.co.id">
+  <meta property="og:url" content="<?php echo current_url() ?>" />
   <meta property="og:site_name" content="RTLH" />
   <meta property="og:title" content="Sistem Informasi Rumah Tidak Layak Huni" />
   <meta property="og:description" content="Sistem Informasi Rumah Tidak Layak Huni Kepulauan Bangka Belitung" />
@@ -68,8 +70,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
   });
-
-
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
   <style>
     #map {
@@ -78,6 +81,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        }
     .margin-top-23 {
       margin-top: 23px;
+    }
+    .valign-middle {
+      vertical-align: middle;
     }
   </style>
   

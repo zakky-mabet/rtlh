@@ -25,6 +25,31 @@ jQuery(function($) {
 		$('a#btn-delete').attr('href', base_url + '/data_penerima/delete/' + $(this).data('id'));
 	});
 
+	$('.get-delete-sub-kriteria').click( function() {
+		$('#modal-delete-sub-kriteria').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/sub_kriteria/delete/' + $(this).data('id'));
+	});
+
+	$('.get-delete-sub-kriteria-multiple').click( function() {
+		if( $('input[type=checkbox]').is(':checked') != '' ) 
+		{
+			$('#modal-delete-sub-kriteria-multiple').modal('show');
+		} else {
+			$.notify({
+				icon: 'fa fa-warning',
+				message: "Tidak ada data yang dipilih."
+			},{
+				type: 'warning',
+				allow_dismiss: false,
+				delay:2000,
+					placement: {
+				from: "top",
+					align: "center"
+				},
+			});	
+		}
+	});
+
 	$('.get-delete-population-multiple').click( function() {
 		if( $('input[type=checkbox]').is(':checked') != '' ) 
 		{

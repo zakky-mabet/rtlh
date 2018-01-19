@@ -22,16 +22,18 @@ class Mpopulation extends Rtlh_model
 
 	public function get_all($limit = 20, $offset = 0, $type = 'result')
 	{
-		if($this->input->get('village') != '')
-			$this->db->where('village', $this->input->get('village'));
-
-		if($this->input->get('gender') != '')
-			$this->db->where('jns_kelamin', $this->input->get('gender'));
-
 		if($this->input->get('query') != '')
 			$this->db->like('nik', $this->input->get('query'))
 					 ->or_like('nama_lengkap', $this->input->get('query'));
-		
+
+		if($this->input->get('kabupaten') != '')
+			$this->db->where('regency', $this->input->get('kabupaten'));
+
+		if($this->input->get('kecamatan') != '')
+			$this->db->where('district', $this->input->get('kecamatan'));
+
+		if($this->input->get('kelurahan') != '')
+			$this->db->where('village', $this->input->get('kelurahan'));		
 
 		if($type == 'result')
 		{
@@ -64,15 +66,14 @@ class Mpopulation extends Rtlh_model
 			'district' => $this->input->post('kecamatan'),
 			'village' => $this->input->post('kelurahan'),
 			'agama' => $this->input->post('agama'),
-			'pekerjaan' => $this->input->post('pekerjaan'),
 			'kewarganegaraan' => $this->input->post('kewarganegaraan'),
 			'status_kawin' => $this->input->post('status_kawin'),
 			'gol_darah' => $this->input->post('gol_darah'),
 			'telepon' => $this->input->post('telepon'),
 			'kd_pos' => $this->input->post('kd_pos'),
-			'jml_keluarga' => $this->input->post('jml_keluarga'),
-			'penghasilan' => $this->input->post('penghasilan'),
 			'status_rtlh' => 'Tidak diketahui',
+			'status_data' => 1,
+			'user' => $this->session->userdata('ID'),
 		);
 
 		$this->db->insert('penduduk', $population);
@@ -94,7 +95,6 @@ class Mpopulation extends Rtlh_model
 	public function update($param = 0)
 	{
 		$population = array(
-			
 			'no_kk' => $this->input->post('kk'),
 			'status_kk' => $this->input->post('status_kk'),
 			'nama_lengkap' => $this->input->post('name'),
@@ -109,14 +109,13 @@ class Mpopulation extends Rtlh_model
 			'district' => $this->input->post('kecamatan'),
 			'village' => $this->input->post('kelurahan'),
 			'agama' => $this->input->post('agama'),
-			'pekerjaan' => $this->input->post('pekerjaan'),
 			'kewarganegaraan' => $this->input->post('kewarganegaraan'),
 			'status_kawin' => $this->input->post('status_kawin'),
 			'gol_darah' => $this->input->post('gol_darah'),
 			'telepon' => $this->input->post('telepon'),
 			'kd_pos' => $this->input->post('kd_pos'),
-			'jml_keluarga' => $this->input->post('jml_keluarga'),
-			'penghasilan' => $this->input->post('penghasilan'),
+			'user' => $this->session->userdata('ID'),
+			'status_data' => 1,
 		);
 
 		$this->db->update('penduduk', $population, array('ID' => $param));
@@ -196,7 +195,7 @@ class Mpopulation extends Rtlh_model
  
     function kabupaten($provId){
 
-	$kabupaten="<option value='0'>-- PILIH --</option>";
+	$kabupaten="<option value=''>-- PILIH --</option>";
 
 	$this->db->order_by('name','ASC');
 	$kab= $this->db->get_where('regencies',array('province_id'=>$provId));
@@ -210,7 +209,7 @@ class Mpopulation extends Rtlh_model
 	}
 
 	function kecamatan($kabId){
-	$kecamatan="<option value='0'>-- PILIH --</option>";
+	$kecamatan="<option value=''>-- PILIH --</option>";
 
 	$this->db->order_by('name','ASC');
 	$kec= $this->db->get_where('districts',array('regency_id'=>$kabId));
@@ -223,7 +222,7 @@ class Mpopulation extends Rtlh_model
 	}
 
 	function kelurahan($kecId){
-	$kelurahan="<option value='0'>-- PILIH --</option>";
+	$kelurahan="<option value=''>-- PILIH --</option>";
 
 	$this->db->order_by('name','ASC');
 	$kel= $this->db->get_where('villages',array('district_id'=>$kecId));
@@ -248,6 +247,42 @@ class Mpopulation extends Rtlh_model
 	public function get_nama_kecamatan($id = 0)
 	{
 		return $this->db->get_where('districts', array('id' => $id) )->row();
+	}
+
+	function pengguna($param = 0)
+	{
+		return $this->db->get_where('users', array('id_user' => $param))->row();
+
+	}
+
+	public function statusverifikasi($param = 0)
+	{
+		$query =  $this->db->get_where('penduduk', array('ID' => $param))->row();
+
+		if ($query->status_data == 1) {
+
+			$statusverifikasi = array('status_data' => 2, 'user' => $this->session->userdata('ID'));
+
+			$this->db->update('penduduk', $statusverifikasi, array('ID' => $param));
+		}
+		else{
+
+			$statusverifikasi = array('status_data' => 1, 'user' => $this->session->userdata('ID'));
+
+			$this->db->update('penduduk', $statusverifikasi, array('ID' => $param));
+		}
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Status Verifikasi berhasil diubah.', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' Gagal Mengubah data.', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
 	}
 
 }

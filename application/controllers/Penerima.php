@@ -13,22 +13,10 @@ class Penerima extends RTlh
 	}
 
 	public function index()
-
 	{
-		$this->load->js(base_url('assets/public/app/find-penerima.js'));
 		
-		$this->page_title->push('Penerima Bantuan RTLH', 'Cari ');
 
-		$this->breadcrumbs->unshift(2, ' Penerima RTLH', "penerima");
-
-		$this->data = array(
-			'title' => "Penerima Bantuan RTLH", 
-			'breadcrumb' => $this->breadcrumbs->show(),
-			'page_title' => $this->page_title->show(),
-			
-		);
-
-		$this->template->view('rtlh/penerima/create-penerima', $this->data);
+		redirect('data_penerima');
 	}
 
 	public function entri($param = 0)

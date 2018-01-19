@@ -128,13 +128,7 @@ echo form_hidden('ID', $population->ID);
 				       	<p class="help-block"><?php echo form_error('kewarganegaraan', '<small class="text-blue">', '</small>'); ?></p>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="pekerjaan" class="control-label col-md-3 col-xs-12">Pekerjaan : <strong class="text-blue">*</strong></label>
-					<div class="col-md-8">
-						<input type="text" name="pekerjaan" class="form-control" value="<?php echo $population->pekerjaan; ?>">
-						<p class="help-block"><?php echo form_error('pekerjaan', '<small class="text-blue">', '</small>'); ?></p>
-					</div>
-				</div>
+				
 				<div class="form-group">
 					<label for="gol_darah" class="control-label col-md-3 col-xs-12">Golongan Darah : <strong class="text-blue">*</strong></label>
 					<div class="col-md-3">
@@ -234,20 +228,7 @@ echo form_hidden('ID', $population->ID);
 						<p class="help-block"><?php echo form_error('kd_pos', '<small class="text-blue">', '</small>'); ?></p>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="jml_keluarga" class="control-label col-md-3 col-xs-12">Jumlah KK dlm Keluarga : <strong class="text-blue">*</strong></label>
-					<div class="col-md-6">
-						<input type="number" name="jml_keluarga" class="form-control" value="<?php echo $population->jml_keluarga; ?>">
-						<p class="help-block"><?php echo form_error('jml_keluarga', '<small class="text-blue">', '</small>'); ?></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="penghasilan" class="control-label col-md-3 col-xs-12">Penghasilan : <strong class="text-blue">*</strong></label>
-					<div class="col-md-6">
-						<input type="text" name="penghasilan" class="form-control" value="<?php echo $population->penghasilan; ?>">
-						<p class="help-block"><?php echo form_error('penghasilan', '<small class="text-blue">', '</small>'); ?></p>
-					</div>
-				</div>
+
 			</div>
 
 			<div class="box-footer with-border">

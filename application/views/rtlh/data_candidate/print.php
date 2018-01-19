@@ -62,7 +62,7 @@ $this->load->view('rtlh/print/header');
                           <td></td>
                           <td></td>
                           <td></td>
-                          <td width="300" class="text-center" rowspan="12"><img src="<?php echo base_url("assets/rtlh/img/".$value->foto); ?>" width="60%" alt="<?php echo $value->nama_lengkap; ?>"></td>
+                          <td width="300" class="text-center" rowspan="12"><img src="<?php echo base_url("assets/rtlh/img/".$value->foto); ?>" width="60%" alt="Gambat Belum di entri"></td>
                       </tr>    
                       <tr>
                           <td width="150">NIK</td>
@@ -82,7 +82,7 @@ $this->load->view('rtlh/print/header');
                       <tr>
                           <td width="150">Pekerjaan</td>
                           <td width="10">:</td>
-                          <td><?php echo $value->pekerjaan; ?></td>
+                          <td> <?php if ($value->pekerjaan == NULL) {echo 'Belum di entri';} else {echo $this->data_candidate->get_value_sub_kriteria($value->pekerjaan)->nama; } ?></td>
                       </tr>
                       <tr>
                           <td width="150">Alamat</td>
@@ -115,7 +115,7 @@ $this->load->view('rtlh/print/header');
                       <tr>
                           <td width="150">Kondisi Atap</td>
                           <td width="10">:</td>
-                          <td><?php if ($value->kondisi_atap == NULL) {echo 'Belum di entri';} else {echo $value->kondisi_atap; } ?></td>
+                          <td><?php if ($value->kondisi_atap == NULL) {echo 'Belum di entri';} else {echo $this->data_candidate->get_value_sub_kriteria($value->kondisi_atap)->nama;} ?></td>
                       </tr>
                       <tr>
                           <td width="150">Koordinat</td>

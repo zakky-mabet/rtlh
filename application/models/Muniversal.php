@@ -19,14 +19,20 @@ class Muniversal extends Rtlh_model
       return $this->db->get_where('users', array('id_user' => $param))->row();
     }
 
- 	public function count_calon_penerima($id = 0)
+ 	
+ 	public function count_penerima($id = 0, $status = '')
  	{
- 		return $this->db->get_where('penduduk', array('regency' => $id, 'status_rtlh' => 'Calon Penerima'))->num_rows();
- 	}
+ 			$this->db->from('penduduk');
 
- 	public function coun_penerima_bantuan($id = 0)
- 	{
- 		return $this->db->get_where('penduduk', array('regency' => $id, 'status_rtlh' => 'Penerima Bantuan'))->num_rows();
+  			$this->db->join('dana_bantuan', 'dana_bantuan.nik = penduduk.nik');
+
+  			$this->db->where('regency', $id);
+
+  			$this->db->where('status_realisasi', $status);
+
+  			$this->db->where('tahun_anggaran', date('Y')-1 );
+
+  			return $this->db->get()->num_rows();
  	}
 
  	public function dana()
@@ -45,6 +51,8 @@ class Muniversal extends Rtlh_model
 		$this->db->from('dana_bantuan');
 
 		$this->db->where('sumber_anggaran', $param);
+
+		$this->db->where('tahun_anggaran', date('Y')-1 );
 
 		return $this->db->get()->row()->total;
  	}

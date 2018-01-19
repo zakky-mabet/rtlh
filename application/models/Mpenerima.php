@@ -118,7 +118,9 @@ class Mpenerima extends Rtlh_model
 		////////////END
 
 		$status = array(
-				'status_rtlh' => 'Penerima Bantuan' 
+				'status_rtlh' => 'Penerima Bantuan',
+				'status_realisasi' => 'Belum Terealisasi' 
+
 		);
 		$this->db->update('penduduk', $status, array('nik' => $this->input->post('nik')));
 

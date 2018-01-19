@@ -44,7 +44,7 @@ class Data_candidate extends Rtlh
 
 		$this->query = $this->input->get('query');
 
-		$this->load->js(base_url('assets/public/app/data_candidate.js'));
+		$this->load->js(base_url('assets/public/app/population.js'));
 
 	}
 
@@ -115,6 +115,7 @@ class Data_candidate extends Rtlh
 			'tanah' => $this->data_candidate->get_tanah($param),
 			'rumah' => $this->data_candidate->get_rumah($param),
 			'fasilitas_rumah' => $this->data_candidate->get_fasilitas_rumah($param),
+			'nilai_kriteria' => $this->data_candidate->get_nilai_kriteria($param),
 			'param' => $param,
 		);
 

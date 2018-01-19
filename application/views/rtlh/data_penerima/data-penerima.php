@@ -108,9 +108,8 @@ echo form_open(site_url('data_penerima/bulk_action'));
 							<th class="text-center">Tempat, Tanggal Lahir</th>
 							<th class="text-center">Desa / Kelurahan</th>
 							<th width="200" class="text-center">Alamat</th>
-							<th class="text-center">Pekerjaan</th>
-							<th class="text-center" width="100">Status RTLH</th>
-							<th width="100"></th>
+							<th class="text-center" width="100">Status Realisasi</th>
+							<th width="130"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -134,10 +133,13 @@ echo form_open(site_url('data_penerima/bulk_action'));
 							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
 							<td class="text-center"><?php echo $this->data_penerima->get_nama_desa($row->village)->name;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
-							<td><?php echo $row->pekerjaan; ?></td>
-							<td class="text-center"><?php echo ucfirst($row->status_rtlh); ?></td>
+							<td class="text-center"><?php echo ucfirst($row->status_realisasi); ?></td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 							
+								<a href="#" class="icon-button text-red get-status" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title="Sunting Status Realisasi"><i class="fa fa-eye"></i></a>
+
+								<a href="#" class="icon-button text-yellow get-dibatal" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title=" <?php if($row->ket_status_realisasi == NULL){ echo "Dibatalkan Realisasi ini "; } else { echo $row->ket_status_realisasi; } ?>"><i class="fa fa-eye-slash"></i></a>
+
 								<a href="<?php echo site_url("data_penerima/update/{$row->nik}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 
 								<a href="<?php echo site_url("data_candidate/foto/{$row->nik}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
@@ -205,3 +207,67 @@ echo form_close();
         </div>
     </div>
 </div>
+
+<div class="modal animated fadeIn modal-default" id="modal-status" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+           	<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Sunting Status Realisasi !</h4>
+               
+           	</div>
+           	<form id="form-update" action="" method="post">
+           	<div class="modal-body">
+           		
+	           		<select name="status" class="form-control" required="required">
+	           			<option value="">-- PILIH --</option>
+	           			<option value="Belum Terealisasi">Belum Terealisasi</option>
+	           			<option value="Terealisasi">Terealisasi</option>
+	           			<option value="Sedang dilaksanakan">Sedang dilaksanakan</option>
+	           		</select>
+           		
+           	</div>		
+           	<div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Tidak</button>
+                <button type="submit"  class="btn btn-success"> Simpan </button>
+           	</div>
+           	</form>
+        </div>
+    </div>
+</div>
+
+<div class="modal animated fadeIn modal-default" id="modal-dibatal" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+           	<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Status Realisasi Dibatalkan !</h4>
+               
+           	</div>
+           	<form id="form-update-dibatal" action="" method="post">
+           	<div class="modal-body">
+           		<div class="form-horizontal">
+					<label for="email" class="control-label">Keterangan :</label>
+					<textarea name="keterangan" class="form-control" cols="7" rows="5"></textarea>						
+				</div>	       
+           	</div>		
+           	<div class="modal-footer">
+                <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Tidak</button>
+                <button type="submit" class="btn btn-success"> Simpan </button>
+           	</div>
+           	</form>
+        </div>
+    </div>
+</div>
+
+ 	<script>
+        $('.get-status').click( function() {
+        $('form#form-update').attr('action',base_url+'/data_penerima/update_status/' + $(this).data('id'));
+        $('#modal-status').modal('show');
+    	});
+
+    	 $('.get-dibatal').click( function() {
+        $('form#form-update-dibatal').attr('action',base_url+'/data_penerima/update_batal/' + $(this).data('id'));
+        $('#modal-dibatal').modal('show');
+    	});
+    </script>

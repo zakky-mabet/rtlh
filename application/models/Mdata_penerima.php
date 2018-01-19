@@ -45,7 +45,6 @@ class Mdata_penerima extends Rtlh_model
 
 	public function update($param = 0)
 	{
-
 			// UPDATE DANA BANTUAN
 			$dana_bantuan = array(
 				'jenis' =>  $this->input->post('jenis'),
@@ -91,9 +90,9 @@ class Mdata_penerima extends Rtlh_model
 				array('type' => 'success','icon' => 'check')
 			);
 		} else {
-			$this->template->alert(
-				'Tidak ada Data yang diumah', 
-				array('type' => 'warning','icon' => 'times')
+						$this->template->alert(
+				' Data berhasil diubah.', 
+				array('type' => 'success','icon' => 'check')
 			);
 		}
 	}
@@ -261,6 +260,50 @@ class Mdata_penerima extends Rtlh_model
 	public function get_penduduk($param = 0)
 	{
 		return $this->db->get_where('penduduk', array('nik' => $param))->row();
+	}
+
+	public function update_status($param = 0)
+	{
+		$update = array(
+			'status_realisasi' => $this->input->post('status'),
+			'ket_status_realisasi' => NULL
+		);
+		$this->db->update('penduduk', $update, array('nik' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Status berhasil diubah', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' tidak ada data diubah', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
+	}
+
+	public function update_batal($param = 0)
+	{
+		$update = array(
+			'ket_status_realisasi' => $this->input->post('keterangan'),
+			'status_realisasi' => 'Dibatalkan'
+		);
+		$this->db->update('penduduk', $update, array('nik' => $param));
+
+		if($this->db->affected_rows())
+		{
+			$this->template->alert(
+				' Status berhasil diubah', 
+				array('type' => 'success','icon' => 'check')
+			);
+		} else {
+			$this->template->alert(
+				' tidak ada data diubah', 
+				array('type' => 'warning','icon' => 'warning')
+			);
+		}
 	}
 }
 

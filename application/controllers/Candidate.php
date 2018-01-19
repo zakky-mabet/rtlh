@@ -70,8 +70,7 @@ class Candidate extends RTlh
 			redirect(base_url('candidate'));
 
 		}
-		echo 'Hayooo Mau ngapain, wkwkwk';
 	}
-
+	
 }
 

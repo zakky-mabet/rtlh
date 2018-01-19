@@ -204,4 +204,18 @@ class Data_penerima extends Rtlh
 		}
 	}
 
+	public function update_status($param = 0)
+	{
+		$this->data_penerima->update_status($param);
+
+		redirect('data_penerima');
+	}
+
+	public function update_batal($param = 0)
+	{
+		$this->data_penerima->update_batal($param);
+
+		redirect('data_penerima');
+	}
+
  }

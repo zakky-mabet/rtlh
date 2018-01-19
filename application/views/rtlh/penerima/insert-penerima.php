@@ -167,13 +167,7 @@
 											       
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="pekerjaan" class="control-label col-md-3 col-xs-12">Pekerjaan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-8">
-													<input type="text" name="pekerjaan" class="form-control" value="<?php echo $penduduk->pekerjaan ?>" disabled>
-													
-												</div>
-											</div>
+										
 											<div class="form-group">
 												<label for="gol_darah" class="control-label col-md-3 col-xs-12">Golongan Darah : <strong class="text-blue">*</strong></label>
 												<div class="col-md-3">
@@ -236,22 +230,7 @@
 													
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="jml_keluarga" class="control-label col-md-3 col-xs-12">Jumlah KK dlm Keluarga : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="number" name="jml_keluarga" class="form-control" value="<?php echo $penduduk->jml_keluarga; ?>" disabled>
-													
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="penghasilan" class="control-label col-md-3 col-xs-12">Penghasilan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="penghasilan" class="form-control" value="<?php echo $penduduk->penghasilan; ?>" disabled>
-													
-												</div>
-											</div>
-
-					                        
+																                        
 				                    	</div>
 
 				                        
@@ -269,7 +248,6 @@
 										<div class="box-footer with-border">
 												<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
 												<small><strong class="text-blue">*</strong>	Field Optional</small> <br>
-
 										</div>
 				                    </div>
 
@@ -277,7 +255,6 @@
 				                    <div class="tab-pane" role="tabpanel" id="step2">
 				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-usd"></i> Dana Bantuan</h3>
 				                        <hr>
-
 				                         <div class="box-body with-border">
 				                        	<div class="form-group">
 												<label for="jenis" class="control-label col-md-3 col-xs-12">Jenis : <strong class="text-red">*</strong></label>
@@ -306,11 +283,14 @@
 											<div class="form-group">
 												<label for="sumber_anggaran" class="control-label col-md-3 col-xs-12">Sumber Anggaran : <strong class="text-red">*</strong></label>
 												<div class="col-md-6">
-													<select name="sumber_anggaran" class="form-control select2">
+													<select name="sumber_anggaran" class="form-control select2" style="width: 100%">
 														<option value="">-- PILIH --</option>
-														<option value="APBD">APBD
+														<option value="APBN">APBN
+														<option value="DAK">DAK
 														<option value="APBD1">APBD 1
+														<option value="APBD2">APBD 2
 														<option value="CSR">CSR
+														<option value="DABA">DABA
 														<option value="Lainnya">Lainnya
 													</select>
 													<p class="help-block"><?php echo form_error('sumber_anggaran', '<small class="text-red">', '</small>'); ?></p>
@@ -346,12 +326,18 @@
 				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-home"></i> Aspek Bantuan</h3>
 				                        <hr>
 
-				                         <div class="box-body with-border">
-				                         	
+				                         <div class="box-body with-border" >
+				                         	<div class="col-md-10 col-md-offset-3">	
 				                        	<div class="form-group">
 												<label for="rehab_atap" class="control-label col-md-3 col-xs-12">Rehab Atap : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_atap"  class="form-control" value="<?php echo set_value('rehab_atap'); ?>">
+													
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_atap" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_atap" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_atap', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
@@ -359,7 +345,13 @@
 											<div class="form-group">
 												<label for="rehab_pondasi" class="control-label col-md-3 col-xs-12">Rehab Pondasi : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_pondasi"  class="form-control" value="<?php echo set_value('rehab_pondasi'); ?>">
+													
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_pondasi" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_pondasi" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_pondasi', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
@@ -367,7 +359,13 @@
 											<div class="form-group">
 												<label for="rehab_dinding" class="control-label col-md-3 col-xs-12">Rehab Dinding : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_dinding"  class="form-control" value="<?php echo set_value('rehab_dinding'); ?>">
+													
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_dinding" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_dinding" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_dinding', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
@@ -375,7 +373,12 @@
 											<div class="form-group">
 												<label for="rehab_lantai" class="control-label col-md-3 col-xs-12">Rehab Lantai : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_lantai"  class="form-control" value="<?php echo set_value('rehab_lantai'); ?>">
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_lantai" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_lantai" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_lantai', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
@@ -383,53 +386,92 @@
 											<div class="form-group">
 												<label for="rehab_kamar_mandi" class="control-label col-md-3 col-xs-12">Rehab Kamar Mandi : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_kamar_mandi"  class="form-control" value="<?php echo set_value('rehab_kamar_mandi'); ?>">
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_kamar_mandi" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_kamar_mandi" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_kamar_mandi', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="rehab_pintu" class="control-label col-md-3 col-xs-12">Rehab Pintu : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_pintu"  class="form-control" value="<?php echo set_value('rehab_pintu'); ?>">
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_pintu" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_pintu" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_pintu', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="rehab_jendela" class="control-label col-md-3 col-xs-12">Rehab Jendela : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_jendela"  class="form-control" value="<?php echo set_value('rehab_jendela'); ?>">
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_jendela" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_jendela" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_jendela', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="rehab_kolom_dan_balok" class="control-label col-md-3 col-xs-12">Rehab Kolom dan Balok : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_kolom_dan_balok"  class="form-control" value="<?php echo set_value('rehab_kolom_dan_balok'); ?>">
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_kolom_dan_balok" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_kolom_dan_balok" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_kolom_dan_balok', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="rehab_dapur" class="control-label col-md-3 col-xs-12">Rehab dapur : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="rehab_dapur"  class="form-control" value="<?php echo set_value('rehab_dapur'); ?>">
+													
+													<div class="radio radio-inline radio-primary">
+											           <input name="rehab_dapur" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="rehab_dapur" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('rehab_dapur', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="sumber_penerangan" class="control-label col-md-3 col-xs-12">Sumber Penerangan : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="sumber_penerangan"  class="form-control" value="<?php echo set_value('sumber_penerangan'); ?>">
+													
+													<div class="radio radio-inline radio-primary">
+											           <input name="sumber_penerangan" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="sumber_penerangan" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('sumber_penerangan', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="sumber_air_minum" class="control-label col-md-3 col-xs-12">Sumber Air Minum : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="sumber_air_minum"  class="form-control" value="<?php echo set_value('sumber_air_minum'); ?>">
+													
+													<div class="radio radio-inline radio-primary">
+											           <input name="sumber_air_minum" type="radio" value="Iya"> <label> Iya</label>
+											       	</div>
+											       	<div class="radio radio-inline radio-primary">
+											           <input name="sumber_air_minum" type="radio" value="Tidak" > <label > Tidak</label>
+											       	</div>
 													<p class="help-block"><?php echo form_error('sumber_air_minum', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
 
+											</div>
 											
 										</div>
 

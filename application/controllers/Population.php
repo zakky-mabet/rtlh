@@ -16,9 +16,11 @@ class Population extends Rtlh
 
 	public $page = 20;
 
-	public $desa;
+	public $kabupaten;
 
-	public $gender;
+	public $kecamatan;
+
+	public $kelurahan;
 
 	public $query;
 
@@ -36,9 +38,11 @@ class Population extends Rtlh
 
 		$this->page = $this->input->get('page');
 
-		$this->desa = $this->input->get('village');
+		$this->kabupaten = $this->input->get('kabupaten');
 
-		$this->gender = $this->input->get('gender');
+		$this->kecamatan = $this->input->get('kecamatan');
+
+		$this->kelurahan = $this->input->get('kelurahan');
 
 		$this->query = $this->input->get('query');
 
@@ -54,7 +58,7 @@ class Population extends Rtlh
 
 		$config = $this->template->pagination_list();
 
-		$config['base_url'] = site_url("population?per_page={$this->per_page}&query={$this->query}&village={$this->desa}&gender={$this->gender}");
+		$config['base_url'] = site_url("population?per_page={$this->per_page}&query={$this->query}&kelurahan={$this->kelurahan}&kabupaten={$this->kabupaten}&kecamatan={$this->kecamatan}");
 
 		$config['per_page'] = $this->per_page;
 		$config['total_rows'] = $this->population->get_all(null, null, 'num');
@@ -66,7 +70,8 @@ class Population extends Rtlh
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 			'population' => $this->population->get_all($this->per_page, $this->page),
-			'num_population' => $config['total_rows']
+			'num_population' => $config['total_rows'],
+			'provinsi' => $this->population->get_provinsi(),
 		);
 
 		$this->template->view('rtlh/population/data-population', $this->data);
@@ -274,6 +279,14 @@ class Population extends Rtlh
 		echo $this->population->kelurahan($id);
 		}
 	}
+
+	public function updateverifikasi($param = 0)
+	{
+		$this->population->statusverifikasi($param);
+
+		redirect('population');
+	}
+
 
  }
 

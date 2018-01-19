@@ -167,13 +167,7 @@
 											       
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="pekerjaan" class="control-label col-md-3 col-xs-12">Pekerjaan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-8">
-													<input type="text" name="pekerjaan" class="form-control" value="<?php echo $penduduk->pekerjaan ?>" disabled>
-													
-												</div>
-											</div>
+										
 											<div class="form-group">
 												<label for="gol_darah" class="control-label col-md-3 col-xs-12">Golongan Darah : <strong class="text-blue">*</strong></label>
 												<div class="col-md-3">
@@ -236,20 +230,7 @@
 													
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="jml_keluarga" class="control-label col-md-3 col-xs-12">Jumlah KK dlm Keluarga : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="number" name="jml_keluarga" class="form-control" value="<?php echo $penduduk->jml_keluarga; ?>" disabled>
-													
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="penghasilan" class="control-label col-md-3 col-xs-12">Penghasilan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="penghasilan" class="form-control" value="<?php echo $penduduk->penghasilan; ?>" disabled>
-													
-												</div>
-											</div>
+											
 
 					                        
 				                    	</div>
@@ -306,10 +287,13 @@
 											<div class="form-group">
 												<label for="sumber_anggaran" class="control-label col-md-3 col-xs-12">Sumber Anggaran : <strong class="text-red">*</strong></label>
 												<div class="col-md-6">
-													<select name="sumber_anggaran" class="form-control select2">
-														<option value="APBD" <?php if($dana_bantuan->sumber_anggaran=='APBD') echo "selected"; ?>>APBD
+													<select name="sumber_anggaran" class="form-control select2" style="width: 100%">
+														<option value="APBN" <?php if($dana_bantuan->sumber_anggaran=='APBN') echo "selected"; ?>>APBN
+														<option value="DAK" <?php if($dana_bantuan->sumber_anggaran=='DAK') echo "selected"; ?>>DAK														
 														<option value="APBD1" <?php if($dana_bantuan->sumber_anggaran=='APBD1') echo "selected"; ?>>APBD 1
+														<option value="APBD 2" <?php if($dana_bantuan->sumber_anggaran=='APBD 2') echo "selected"; ?>>APBD 2
 														<option value="CSR" <?php if($dana_bantuan->sumber_anggaran=='CSR') echo "selected"; ?>>CSR
+														<option value="DABA" <?php if($dana_bantuan->sumber_anggaran=='DABA') echo "selected"; ?>>DABA
 														<option value="Lainnya" <?php if($dana_bantuan->sumber_anggaran=='Lainnya') echo "selected"; ?>>Lainnya
 													</select>
 													<p class="help-block"><?php echo form_error('sumber_anggaran', '<small class="text-red">', '</small>'); ?></p>

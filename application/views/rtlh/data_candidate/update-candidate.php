@@ -39,9 +39,17 @@
 				                    </li>
 
 				                    <li role="presentation" class="disabled">
-				                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Data Fasilitas Rumah">
+				                        <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Data Fasilitas Rumah">
 				                            <span class="round-tab">
-				                                <i class="glyphicon glyphicon-th "></i>
+				                                <i class="glyphicon glyphicon-th"></i>
+				                            </span>
+				                        </a>
+				                    </li>
+
+				                    <li role="presentation" class="disabled">
+				                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Data Kriteria">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-indent-right "></i>
 				                            </span>
 				                        </a>
 				                    </li>
@@ -81,7 +89,7 @@
 											<div class="form-group">
 												<label for="name" class="control-label col-md-3 col-xs-12">Nama : <strong class="text-red">*</strong></label>
 												<div class="col-md-8">
-													<input id="inputError"type="text" class="form-control" value="<?php echo $data_candidate->nama_lengkap; ?>" disabled>
+													<input id="inputError" type="text" class="form-control" value="<?php echo $data_candidate->nama_lengkap; ?>" disabled>
 													<input id="inputError" name="nama_lengkap" type="hidden" class="form-control" value="<?php echo $data_candidate->nama_lengkap; ?>" >
 												</div>
 											</div>
@@ -167,13 +175,7 @@
 											       
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="pekerjaan" class="control-label col-md-3 col-xs-12">Pekerjaan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-8">
-													<input type="text" name="pekerjaan" class="form-control" value="<?php echo $data_candidate->pekerjaan ?>" disabled>
-													
-												</div>
-											</div>
+										
 											<div class="form-group">
 												<label for="gol_darah" class="control-label col-md-3 col-xs-12">Golongan Darah : <strong class="text-blue">*</strong></label>
 												<div class="col-md-3">
@@ -236,22 +238,7 @@
 													
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="jml_keluarga" class="control-label col-md-3 col-xs-12">Jumlah KK dlm Keluarga : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="number" name="jml_keluarga" class="form-control" value="<?php echo $data_candidate->jml_keluarga; ?>" disabled>
-													
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="penghasilan" class="control-label col-md-3 col-xs-12">Penghasilan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="penghasilan" class="form-control" value="<?php echo $data_candidate->penghasilan; ?>" disabled>
-													
-												</div>
-											</div>
-
-					                        
+																                        
 				                    	</div>
 
 				                        
@@ -310,13 +297,7 @@
 													<p class="help-block"><?php echo form_error('luas', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="status_kepemilikan_tanah" class="control-label col-md-3 col-xs-12">Status Kepemilikan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="status_kepemilikan_tanah"  class="form-control" value="<?php echo $tanah->status_kepemilikan_tanah ?>">
-													<p class="help-block"><?php echo form_error('status_kepemilikan_tanah', '<small class="text-blue">', '</small>'); ?></p>
-												</div>
-											</div>
+											
 
 											<div class="form-group">
 												<label for="latitude" class="control-label col-md-3 col-xs-12">	Latitude : <strong class="text-blue">*</strong></label>
@@ -402,13 +383,7 @@
 													<p class="help-block"><?php echo form_error('kolom_balok', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="kondisi_atap" class="control-label col-md-3 col-xs-12">Kondisi Atap : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="kondisi_atap"  class="form-control" value="<?php echo $rumah->kondisi_atap ?>">
-													<p class="help-block"><?php echo form_error('kondisi_atap', '<small class="text-blue">', '</small>'); ?></p>
-												</div>
-											</div>
+											
 											<div class="form-group">
 												<label for="foto" class="control-label col-md-3 col-xs-12">Foto Rumah : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
@@ -437,7 +412,7 @@
 										</div>
 				                    </div>
 
-				                    <div class="tab-pane" role="tabpanel" id="complete">
+				                    <div class="tab-pane" role="tabpanel" id="step4">
 				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-th"></i> Data Fasilitas Rumah</h3>
 				                        <hr>
 
@@ -463,13 +438,7 @@
 													<p class="help-block"><?php echo form_error('kamar_mandi', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="sumber_air_minum" class="control-label col-md-3 col-xs-12">Sumber Air Minum : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="sumber_air_minum"  class="form-control" value="<?php echo $fasilitas_rumah->sumber_air_minum ?>"> 
-													<p class="help-block"><?php echo form_error('sumber_air_minum', '<small class="text-blue">', '</small>'); ?></p>
-												</div>
-											</div>
+									
 											<div class="form-group">
 												<label for="jarak_sumber_air_ke_wc" class="control-label col-md-3 col-xs-12">Jarak Sumber Air Ke WC : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
@@ -477,14 +446,48 @@
 													<p class="help-block"><?php echo form_error('jarak_sumber_air_ke_wc', '<small class="text-blue">', '</small>'); ?></p>
 												</div>
 											</div>
-											<div class="form-group">
-												<label for="sumber_utama_penerangan" class="control-label col-md-3 col-xs-12">Sumber Utama Penerangan : <strong class="text-blue">*</strong></label>
-												<div class="col-md-6">
-													<input type="text" name="sumber_utama_penerangan"  class="form-control" value="<?php echo $fasilitas_rumah->sumber_utama_penerangan ?>"> 
-													<p class="help-block"><?php echo form_error('sumber_utama_penerangan', '<small class="text-blue">', '</small>'); ?></p>
-												</div>
+															                        	
+										</div>
+
+										<div class="box-footer with-border">
+											<div class="col-md-4 col-xs-5">
+												<button type="button" class="btn btn-app pull-right prev-step">
+													<i class="fa fa-arrow-left"></i> Sebelumnya
+												</button>
 											</div>
-				                        	
+											<div class="col-md-6 col-xs-6">
+												<button type="button" class="btn btn-app pull-right next-step">
+													<i class="fa fa-arrow-right"></i> Selanjutnya
+												</button>
+											</div>
+										</div>
+										<div class="box-footer with-border">
+												<small><strong class="text-red">*</strong>	Field wajib diisi!</small> <br>
+												<small><strong class="text-blue">*</strong>	Field Optional</small>
+										</div>
+				                    </div>
+
+				                    <div class="tab-pane" role="tabpanel" id="complete">
+				                        <h3 style="margin-top: -28px; color: #5BBFDD;"><i class="glyphicon glyphicon-indent-right"></i> Data Kriteria</h3>
+				                        <hr>
+
+				                        <div class="box-body with-border">
+				                         	<?php foreach ($this->candidate->get_all_kriteria() as $key => $value): ?>										
+											<div class="form-group">
+												<label class="control-label col-md-3 col-xs-12"><?php echo $value->nama ?> : <strong class="text-red">*</strong></label>
+												<div class="col-md-8">
+														<select name="<?php echo $value->id ?>" class="form-control select2 " style="width: 100%;">
+															<option value="">-- PILIH --</option> 
+															<?php foreach ($this->candidate->get_all_sub_kriteria($value->id) as $key => $sub): ?>	
+															<option value="<?php echo $sub->id ?>" <?php if($nilai_kriteria->penghasilan==$sub->id) echo "selected"; ?> <?php if($nilai_kriteria->pekerjaan==$sub->id) echo "selected"; ?> <?php if($nilai_kriteria->kondisi_dinding==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->kondisi_atap==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->kondisi_lantai==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->luas_lantai==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->kepemilikan_lahan==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->jumlah_anggota_keluarga==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->jumlah_tanggungan==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->sumber_penerangan==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->sumber_air==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->kepemilikan_mck==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->kemampuan_berobat==$sub->id) echo "selected"; ?><?php if($nilai_kriteria->kemampuan_beli_pakaian==$sub->id) echo "selected"; ?>><?php echo $sub->nama ?></option> 
+															<?php endforeach ?>
+														</select>
+												</div>
+												<p class="help-block"><?php echo form_error($value->id, '<small class="text-red">', '</small>'); ?></p>
+											</div> 
+
+											<?php endforeach ?>
+
 										</div>
 
 										<div class="box-footer with-border">

@@ -18,7 +18,7 @@ echo form_open(current_url(), array('method' => 'get'));
 			<div class="box-body">
 				<div class="col-md-4">
 					Tampilkan 
-					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('population?per_page='); ?>' + this.value + '&query=<?php echo $this->input->get('query'); ?>&village=<?php echo $this->input->get('village'); ?>';">
+					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('population?per_page='); ?>' + this.value + '&query=<?php echo $this->input->get('query'); ?>&kelurahan=<?php echo $this->input->get('kelurahan'); ?>&kecamatan=<?php echo $this->input->get('kecamatan'); ?>&kabupaten=<?php echo $this->input->get('kabupaten'); ?>';">
 					<?php  
 					/**
 					 * Loop 10 to 100
@@ -42,14 +42,14 @@ echo form_open(current_url(), array('method' => 'get'));
 					<a href="<?php echo site_url('population/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
 				
 					<a href="<?php echo site_url("population/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url("population/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	
+					<!-- <a href="<?php echo site_url("population/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	 -->
 				
 					<!-- <a href="<?php echo site_url('population/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
 				
 				</div>
 			</div>
 			<div class="box-body">
-				<div class="col-md-2">
+				<!-- <div class="col-md-2">
 				    <div class="form-group">
 				        <label>Jenis Kelamin :</label>
 				        <select name="gender" class="form-control input-sm">
@@ -58,11 +58,40 @@ echo form_open(current_url(), array('method' => 'get'));
 				        	<option value="perempuan" <?php if($this->input->get('gender')=='perempuan') echo 'selected'; ?>>Perempuan</option>
 				        </select>	
 				    </div>
+				</div> -->
+				<div class="col-md-3">
+				    <div class="form-group">
+				        <label>Provinsi :</label>
+				        <select name="provinsi" id="provinsi" class="form-control  select2">
+				        	<option value="">-- PILIH --</option>
+						<?php foreach ($provinsi as $key => $value): ?>
+                        	<option value="<?php echo $value->id; ?> <?php if ($this->input->get('provinsi')): ?>                    		
+                        	<?php endif ?>"><?php echo $value->name; ?></option>
+                        <?php endforeach;?>	
+					
+				        </select>	
+				    </div>
+				</div>
+				<div class="col-md-3">
+				    <div class="form-group">
+				        <label>Kabupaten/ Kota :</label>
+				        <select name="kabupaten" id="kabupaten-kota" class="form-control  select2">
+							<option value="">-- PILIH --</option>
+						</select>	
+				    </div>
+				</div>
+				<div class="col-md-3">
+				    <div class="form-group">
+				        <label>Kecamatan :</label>
+				        <select name="kecamatan" id="kecamatan" class="form-control  select2">
+							<option value="">-- PILIH --</option>
+						</select>
+				    </div>
 				</div>
 				<div class="col-md-3">
 				    <div class="form-group">
 				        <label>Desa / Kelurahan :</label>
-				        <select name="village" class="form-control input-sm">
+				        <select name="kelurahan" id="kelurahan-desa" class="form-control  select2 ">
 				        	<option value="">-- PILIH --</option>
 					
 				        </select>	
@@ -110,10 +139,12 @@ echo form_open(site_url('population/bulk_action'));
 							<th class="text-center">Nama</th>
 							<th class="text-center">Jenis Kelamin</th>
 							<th class="text-center">Tempat, Tanggal Lahir</th>
+							<th class="text-center">Kabupaten / Kota</th>
+							<th class="text-center">Kecamatan</th>
 							<th class="text-center">Desa / Kelurahan</th>
 							<th width="200" class="text-center">Alamat</th>
-							<th class="text-center">Pekerjaan</th>
-							<th class="text-center" width="100">Status Perkawinan</th>
+	
+							<th class="text-center" width="100">Pengguna</th>
 							<th width="100"></th>
 						</tr>
 					</thead>
@@ -138,12 +169,15 @@ echo form_open(site_url('population/bulk_action'));
 							<td><?php echo ucwords($row->nama_lengkap); ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
+							<td class="text-center"><?php echo $this->population->get_nama_kabupaten($row->regency)->name;  ?></td>
+							<td class="text-center"><?php if (count($this->population->get_nama_kecamatan($row->district)) == 1){ echo $this->population->get_nama_kecamatan($row->district)->name;	} else echo '<small class="text-red">Belum di Entri</small>'; ?></td>
 							<td class="text-center"><?php echo $this->population->get_nama_desa($row->village)->name;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
-							<td><?php echo $row->pekerjaan; ?></td>
-							<td class="text-center"><?php echo ucfirst($row->status_kawin); ?></td>
+							<td class="text-center"><?php echo $this->population->pengguna($row->user)->nama; ?></td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
-							
+								
+								<a href="<?php echo site_url("population/updateverifikasi/{$row->ID}") ?>" class="icon-button <?php if ($row->status_data==1): ?> text-green <?php else: ?>text-orange<?php endif ?>" data-toggle="tooltip" data-placement="top" title="Status Data Penduduk <?php if ($row->status_data==1): ?> Terverifikasi<?php else: ?>Belum Terverifikasi<?php endif ?>"><i class="fa <?php if ($row->status_data==1): ?> fa-check<?php else: ?>fa-times<?php endif ?>"></i></a>
+
 								<a href="<?php echo site_url("population/update/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 						
 								<a class="icon-button text-red get-delete-population" data-id="<?php echo $row->ID; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
@@ -161,7 +195,7 @@ echo form_open(site_url('population/bulk_action'));
 		                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 		                    </div>
 						</th>
-						<th colspan="9">
+						<th colspan="10">
 							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
 							<a class="btn btn-xs btn-round btn-danger get-delete-population-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
 							<small class="pull-right"><?php echo count($population) . " dari " . $num_population . " data"; ?></small>
@@ -214,3 +248,54 @@ echo form_close();
         </div>
     </div>
 </div>
+
+
+<script>
+	$(function(){
+
+		$.ajaxSetup({
+		type:"POST",
+		url: "<?php echo base_url('index.php/population/ambil_data') ?>",
+		cache: false,
+		});
+
+		$("#provinsi").change(function(){
+
+		var value=$(this).val();
+		if(value>0){
+		$.ajax({
+		data:{modul:'kabupaten',id:value},
+		success: function(respond){
+		$("#kabupaten-kota").html(respond);
+		}
+		})
+		}
+
+		});
+
+
+		$("#kabupaten-kota").change(function(){
+		var value=$(this).val();
+		if(value>0){
+		$.ajax({
+		data:{modul:'kecamatan',id:value},
+		success: function(respond){
+		$("#kecamatan").html(respond);
+		}
+		})
+		}
+		})
+
+		$("#kecamatan").change(function(){
+		var value=$(this).val();
+		if(value>0){
+		$.ajax({
+		data:{modul:'kelurahan',id:value},
+		success: function(respond){
+		$("#kelurahan-desa").html(respond);
+		}
+		})
+		} 
+		})
+	})
+</script>

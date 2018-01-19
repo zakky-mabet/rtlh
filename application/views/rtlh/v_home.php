@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
         <div class="info-box bg-red">
             <span class="info-box-icon"><i class="fa fa-users"></i></span>
             <div class="info-box-content">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <div class="col-md-6">
         <div class="box box-solid">
@@ -55,7 +55,7 @@
     <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Peta Lokasi RLTH</h3>
+              <h3 class="box-title">Peta Lokasi RTLH</h3>
             </div>
               <div class="box-body">
                  <div id="map"></div>
@@ -109,10 +109,10 @@ Highcharts.chart('chart-bar', {
     chart: {
         type: 'column'
     },
-     colors: ['#FF2825','#30B725','#FF4300', '#C8C100'],
+     colors: ['#FF2825','#30B725','#EFB803', '#C8C100'],
 
     title: {
-        text: 'Grafik Calon Penerima dan Penerima Bantuan'
+        text: 'Grafik Penerima Bantuan Tahun <?php echo date('Y')-1 ?>'
     },
     xAxis: {
         categories: [' Bangka', ' Bangka Barat', ' Bangka Selatan', ' Bangka Tengah', 'Belitung ', ' Belitung Timur', ' Pangkalpinang'],
@@ -129,24 +129,46 @@ Highcharts.chart('chart-bar', {
         enabled: false
     },
     series: [{
-        name: 'Calon Penerima',
-        data: [<?php echo $this->muniversal->count_calon_penerima(1901) ?>, 
-              <?php echo $this->muniversal->count_calon_penerima(1903) ?>, 
-              <?php echo $this->muniversal->count_calon_penerima(1905) ?>, 
-              <?php echo $this->muniversal->count_calon_penerima(1904) ?>, 
-              <?php echo $this->muniversal->count_calon_penerima(1902) ?>, 
-              <?php echo $this->muniversal->count_calon_penerima(1906) ?>, 
-              <?php echo $this->muniversal->count_calon_penerima(1971) ?>]
-    }, {
-        name: 'Penerima Bantuan',
-        data: [<?php echo $this->muniversal->coun_penerima_bantuan(1901) ?>, 
-              <?php echo $this->muniversal->coun_penerima_bantuan(1903) ?>, 
-              <?php echo $this->muniversal->coun_penerima_bantuan(1905) ?>, 
-              <?php echo $this->muniversal->coun_penerima_bantuan(1904) ?>, 
-              <?php echo $this->muniversal->coun_penerima_bantuan(1902) ?>, 
-              <?php echo $this->muniversal->coun_penerima_bantuan(1906) ?>, 
-              <?php echo $this->muniversal->coun_penerima_bantuan(1971) ?>]
-    }, ]
+        name: 'Belum Terealisasi',
+        data: [<?php echo $this->muniversal->count_penerima(1901,'Belum Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1903,'Belum Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1905,'Belum Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1904,'Belum Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1902,'Belum Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1906,'Belum Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1971,'Belum Terealisasi') ?>]
+        },
+        {
+        name: 'Terealisasi',
+        data: [<?php echo $this->muniversal->count_penerima(1901,'Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1903,'Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1905,'Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1904,'Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1902,'Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1906,'Terealisasi') ?>, 
+              <?php echo $this->muniversal->count_penerima(1971,'Terealisasi') ?>]
+        },
+        {
+        name: 'Sedang dilaksanakan',
+        data: [<?php echo $this->muniversal->count_penerima(1901,'Sedang dilaksanakan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1903,'Sedang dilaksanakan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1905,'Sedang dilaksanakan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1904,'Sedang dilaksanakan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1902,'Sedang dilaksanakan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1906,'Sedang dilaksanakan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1971,'Sedang dilaksanakan') ?>]
+        },
+        {
+        name: 'Dibatalkan',
+        data: [<?php echo $this->muniversal->count_penerima(1901,'Dibatalkan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1903,'Dibatalkan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1905,'Dibatalkan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1904,'Dibatalkan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1902,'Dibatalkan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1906,'Dibatalkan') ?>, 
+              <?php echo $this->muniversal->count_penerima(1971,'Dibatalkan') ?>]
+        }, 
+     ]
 });
 
   /* Dana Chart */
@@ -159,7 +181,7 @@ Highcharts.chart('chart-dana', {
         type: 'column'
     },
     title: {
-        text: 'Grafik Per Sumber Dana'
+        text: 'Grafik Per Sumber Anggaran Tahun <?php echo date('Y')-1 ?>'
     },
     subtitle: {
         text: ''
@@ -199,10 +221,14 @@ Highcharts.chart('chart-dana', {
     series: [{
         name: 'Sumber Dana',
         data: [
-            ['APBD',<?php echo $this->muniversal->dana_by('APBD') ?>],
-            ['APBD1', <?php echo $this->muniversal->dana_by('APBD1') ?>],
-            ['CSR', <?php echo $this->muniversal->dana_by('CSR') ?>],
-            ['Lainnya', <?php echo $this->muniversal->dana_by('Lainnya') ?>],
+            ['APBN',<?php if (!$this->muniversal->dana_by('APBN')) { echo 0; } else { echo  $this->muniversal->dana_by('APBN'); } ?>],
+            ['DAK',<?php if (!$this->muniversal->dana_by('DAK')) { echo 0; } else { echo  $this->muniversal->dana_by('DAK'); } ?>],
+            ['APBD 1',<?php if (!$this->muniversal->dana_by('APBD1')) { echo 0; } else { echo  $this->muniversal->dana_by('APBD1'); } ?>],
+            ['APBD 2',<?php if (!$this->muniversal->dana_by('APBD2')) { echo 0; } else { echo  $this->muniversal->dana_by('APBD2'); } ?>],
+            ['CSR',<?php if (!$this->muniversal->dana_by('CSR')) { echo 0; } else { echo  $this->muniversal->dana_by('CSR'); } ?>],
+            ['DABA',<?php if (!$this->muniversal->dana_by('DABA')) { echo 0; } else { echo  $this->muniversal->dana_by('DABA'); } ?>],
+            ['Lainnya',<?php if (!$this->muniversal->dana_by('Lainnya')) { echo 0; } else { echo  $this->muniversal->dana_by('Lainnya'); } ?>],
+
         ],
         dataLabels: {
             enabled: false,

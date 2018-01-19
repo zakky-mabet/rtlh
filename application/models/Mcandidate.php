@@ -57,7 +57,6 @@ class Mcandidate extends Rtlh_model
 		{
 			$tanah = array(
 				'nik' =>  $this->input->post('nik'),
-				'status_kepemilikan_tanah' =>  $this->input->post('status_kepemilikan_tanah'),
 				'no_sertifikat' =>  $this->input->post('no_sertifikat'),
 				'panjang' =>  $this->input->post('panjang'),
 				'lebar' =>  $this->input->post('lebar'),
@@ -103,7 +102,6 @@ class Mcandidate extends Rtlh_model
 				'jml_penghuni' =>  $this->input->post('jml_penghuni'),
 				'pondasi' =>  $this->input->post('pondasi'),
 				'kolom_balok' =>  $this->input->post('kolom_balok'),
-				'kondisi_atap' =>  $this->input->post('kondisi_atap'),
 				'foto' => $foto['file_name'],
 				'deskripsi' => '<img src="'.base_url('assets/rtlh/img/'.$foto['file_name']).'" alt="'.$this->input->post('nama_lengkap').'" width="110" style="float:left;"><div style="float:left; margin-left:10px;" ><p><b>Rumah '.$this->input->post('nama_lengkap').'</b></p><p> Status Calon Penerima</p><p><a href="'.base_url('data_candidate/update/'.$this->input->post('nik')).'">Detail..</a></p></div>'
 
@@ -126,17 +124,48 @@ class Mcandidate extends Rtlh_model
 				'jendela_lubang_cahaya' =>  $this->input->post('jendela_lubang_cahaya'),
 				'fentilasi' =>  $this->input->post('fentilasi'),
 				'kamar_mandi' =>  $this->input->post('kamar_mandi'),
-				'sumber_air_minum' =>  $this->input->post('sumber_air_minum'),
 				'jarak_sumber_air_ke_wc' =>  $this->input->post('jarak_sumber_air_ke_wc'),
-				'sumber_utama_penerangan' =>  $this->input->post('sumber_utama_penerangan'),
 			);
 
 			$this->db->insert('fasilitas_rumah', $fasilitas_rumah);
 		}
 
+		// Kriteria
+		$check_nik_on_nilai_kriteria = $this->db->get_where(
+			'nilai_kriteria', 
+			array('nik' => $this->input->post('nik'))
+		)->num_rows(); 
+
+		if($check_nik_on_nilai_kriteria == FALSE)
+		{
+			
+			$total = $this->get_nilai($this->input->post('1'))->nilai + $this->get_nilai($this->input->post('2'))->nilai +$this->get_nilai($this->input->post('3'))->nilai +$this->get_nilai($this->input->post('4'))->nilai +$this->get_nilai($this->input->post('5'))->nilai +$this->get_nilai($this->input->post('6'))->nilai +$this->get_nilai($this->input->post('7'))->nilai +$this->get_nilai($this->input->post('8'))->nilai +$this->get_nilai($this->input->post('9'))->nilai +$this->get_nilai($this->input->post('10'))->nilai +$this->get_nilai($this->input->post('11'))->nilai +$this->get_nilai($this->input->post('12'))->nilai +$this->get_nilai($this->input->post('13'))->nilai +$this->get_nilai($this->input->post('14'))->nilai ;
+
+			$nilai_kriteria = array(
+				'nik' =>  $this->input->post('nik'),
+				'penghasilan' =>  $this->input->post('1'),
+				'pekerjaan' =>  $this->input->post('2'),
+				'kondisi_dinding' =>  $this->input->post('3'),
+				'kondisi_atap' =>  $this->input->post('4'),
+				'kondisi_lantai' =>  $this->input->post('5'),
+				'luas_lantai' =>  $this->input->post('6'),
+				'kepemilikan_lahan' =>  $this->input->post('7'),
+				'jumlah_anggota_keluarga' =>  $this->input->post('8'),
+				'jumlah_tanggungan' =>  $this->input->post('9'),
+				'sumber_penerangan' =>  $this->input->post('10'),
+				'sumber_air' =>  $this->input->post('11'),
+				'kepemilikan_mck' =>  $this->input->post('12'),
+				'kemampuan_berobat' =>  $this->input->post('13'),
+				'kemampuan_beli_pakaian' =>  $this->input->post('14'),
+				'total' => $total,
+			);
+
+			$this->db->insert('nilai_kriteria', $nilai_kriteria);
+		}
 
 		$status = array(
-				'status_rtlh' => 'Calon Penerima' 
+				'status_rtlh' => 'Calon Penerima',
+				'status_realisasi' => 'Belum Terealisasi',
 		);
 
 		$this->db->update('penduduk', $status, array('nik' => $this->input->post('nik')));
@@ -153,8 +182,21 @@ class Mcandidate extends Rtlh_model
 				array('type' => 'warning','icon' => 'times')
 			);
 		}
-
 	}
 
+	public function get_all_kriteria()
+	{
+		return $this->db->get('kriteria')->result();
+	}
+
+	public function get_all_sub_kriteria($param)
+	{
+		return $this->db->get_where('sub_kriteria', array('id_kriteria' => $param))->result();
+	}
+
+	public function get_nilai($param)
+	{
+		return $this->db->get_where('sub_kriteria', array('id' => $param))->row();
+	}
 }
 

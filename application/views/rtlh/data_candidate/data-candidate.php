@@ -38,9 +38,9 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="pull-right">
-				
-					<a href="<?php echo site_url("data_candidate/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak Mode Portrait</a>
-					<a href="<?php echo site_url("data_candidate/print_out_landscape?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak Mode Landscape</a>
+				<!-- 
+					<a href="<?php echo site_url("data_candidate/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("data_candidate/print_out_landscape?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak Mode Landscape</a> -->
 					<!-- <a href="<?php echo site_url("data_candidate/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a> -->	
 				
 					<!-- <a href="<?php echo site_url('data_candidate/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
@@ -58,15 +58,7 @@ echo form_open(current_url(), array('method' => 'get'));
 				        </select>	
 				    </div>
 				</div>
-				<!-- <div class="col-md-3">
-				    <div class="form-group">
-				        <label>Desa / Kelurahan :</label>
-				        <select name="village" class="form-control input-sm">
-				        	<option value="">-- PILIH --</option>
-					
-				        </select>	
-				    </div>
-				</div> -->
+
 				<div class="col-md-3">
 				    <div class="form-group">
 				        <label>Kata Kunci :</label>
@@ -103,7 +95,6 @@ echo form_open(site_url('data_candidate/bulk_action'));
 			                    <div class="checkbox checkbox-inline">
 			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
 			                    </div>
-					
 							</th>
 							<th class="text-center">NIK</th>
 							<th class="text-center">Nama</th>
@@ -111,9 +102,8 @@ echo form_open(site_url('data_candidate/bulk_action'));
 							<th class="text-center">Tempat, Tanggal Lahir</th>
 							<th class="text-center">Desa / Kelurahan</th>
 							<th width="200" class="text-center">Alamat</th>
-							<th class="text-center">Pekerjaan</th>
+							<th class="text-center">Skor</th>
 							<th class="text-center" width="100">Status RTLH</th>
-
 							<th width="100"></th>
 						</tr>
 					</thead>
@@ -140,10 +130,12 @@ echo form_open(site_url('data_candidate/bulk_action'));
 							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
 							<td class="text-center"><?php echo $this->data_candidate->get_nama_desa($row->village)->name;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
-							<td><?php echo $row->pekerjaan; ?></td>
+							<td class="text-center"><b class="<?php if ($row->total > 34): ?> text-red<?php endif ?>"><?php echo $row->total ?></b></td>
 							<td class="text-center"><?php echo ucfirst($row->status_rtlh); ?> </td>
 
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
+
+								<a href="<?php echo site_url("penerima/entri/{$row->nik}") ?>" class="icon-button text-success" data-toggle="tooltip" data-placement="top" title="Entri Sebagai Penerima Bantuan"><i class="fa  fa-location-arrow"></i></a>
 							
 								<a href="<?php echo site_url("data_candidate/update/{$row->nik}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 

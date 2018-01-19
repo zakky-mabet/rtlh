@@ -22,6 +22,16 @@ table.mini-font tfoot td {
    vertical-align: middle;
 }
 
+table.mini-tab thead th,
+table.mini-tab tbody td,
+table.mini-tab tbody th,
+table.mini-tab tbody td span,
+table.mini-tab tbody td strong,
+table.mini-tab tfoot td {  
+   font-size: 9pt;
+   vertical-align: middle;
+}
+
 /*  ADMIN LTE */
     .content-wrapper { background: #F4F5F7 }
     * { font-family: 'Arial', sans-serif; font-size: 13px; }
