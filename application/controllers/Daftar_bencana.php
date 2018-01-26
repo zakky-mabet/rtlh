@@ -21,7 +21,7 @@ class Daftar_bencana extends Rtlh {
 
 		$this->load->model('mdaftar_bencana','daftar_bencana');
 
-		$this->per_page = (!$this->input->get('per_page')) ? 10: $this->input->get('per_page');
+		$this->per_page = (!$this->input->get('per_page')) ? 20 : $this->input->get('per_page');
 
 		$this->page = $this->input->get('page');
 
@@ -103,6 +103,14 @@ class Daftar_bencana extends Rtlh {
 
 	public function update_jenis($param = 0)
 	{
+		if(!$param){
+			show_404();
+		}
+
+		if (!$this->daftar_bencana->get_jenis_bencana($param)) {
+			show_404();
+		}
+
 		$this->page_title->push('Rumah Korban Bencana Alam', 'Sunting Data Jenis Bencana');
 
 		$this->form_validation->set_rules('nama', 'Nama Jenis Bencana', 'trim|required');
@@ -133,6 +141,115 @@ class Daftar_bencana extends Rtlh {
 		$this->daftar_bencana->delete_jenis($param);
 
 		redirect('daftar_bencana/jenis_bencana');
+	}
+
+	public function create()
+	{
+		$this->page_title->push('Rumah Korban Bencana Alam', 'Tambah Data Bencana');
+
+		$this->form_validation->set_rules('nama', 'Nama Bencana', 'trim|required');
+		$this->form_validation->set_rules('id_jenis_bencana', 'Jenis Bencana', 'trim|required');
+		$this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
+		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
+		$this->form_validation->set_rules('status_bencana', 'Status Bencana', 'trim|required');
+		$this->form_validation->set_rules('luas', 'Luas Bencana', 'trim|required');
+		$this->form_validation->set_rules('jumlah', 'Jumlah Korban', 'trim|required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			$this->daftar_bencana->create();
+
+			redirect(current_url());
+		}
+
+		$this->data = array(
+			'title' => "Tambah Data Bencana", 
+			'page_title' => $this->page_title->show(),
+		);
+
+		$this->template->view('rtlh/daftar_bencana/create_bencana', $this->data);
 	}	
 
+	public function update($param = 0)
+	{
+
+		if(!$param){
+			show_404();
+		}
+		if (!$this->daftar_bencana->get_bencana($param)) {
+			show_404();
+		}
+		
+		$this->page_title->push('Rumah Korban Bencana Alam', 'Sunting Data Bencana');
+
+		$this->form_validation->set_rules('nama', 'Nama Bencana', 'trim|required');
+		$this->form_validation->set_rules('id_jenis_bencana', 'Jenis Bencana', 'trim|required');
+		$this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
+		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
+		$this->form_validation->set_rules('status_bencana', 'Status Bencana', 'trim|required');
+		$this->form_validation->set_rules('luas', 'Luas Bencana', 'trim|required');
+		$this->form_validation->set_rules('jumlah', 'Jumlah Korban', 'trim|required');
+
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			$this->daftar_bencana->update($param);
+
+			redirect(current_url());
+		}
+
+		$this->data = array(
+
+			'title' => "Sunting Data Bencana",
+
+			'page_title' => $this->page_title->show(),
+
+			'get' => $this->daftar_bencana->get_bencana($param)
+		);
+
+		$this->template->view('rtlh/daftar_bencana/update_bencana', $this->data);
+	}
+
+	public function foto_bencana($param = 0)
+	{	
+		if (!$param) {
+			show_404();
+		}
+
+		$sql = $this->db->get_where('daftar_bencana', array('id_bencana' => $param))->num_rows();
+
+		if ($sql == 0) {
+			show_404();
+		}
+	
+		$this->page_title->push('Rumah Korban Bencana Alam', 'Foto-foto Bencana');
+
+		$this->form_validation->set_rules('nama_foto', 'Nama Foto', 'trim|required');
+
+
+		if($this->form_validation->run() == TRUE)
+		{
+			$this->daftar_bencana->upload_foto_bencana($param);
+
+			redirect(site_url('daftar_bencana/foto_bencana/'.$param));
+
+		}
+
+		$this->data = array(
+			'title' => "Foto Rumah Calon Penerima", 
+			'breadcrumb' => $this->breadcrumbs->show(),
+			'page_title' => $this->page_title->show(),
+			'param' => $param,
+		);
+
+		$this->template->view('rtlh/daftar_bencana/foto_bencana', $this->data);
+	}
+
+
+	public function delete_foto_bencana($param = 0)
+	{
+		$this->daftar_bencana->delete_foto_bencana($param);
+
+		redirect('daftar_bencana/foto_bencana/'.$param);
+	}
 }

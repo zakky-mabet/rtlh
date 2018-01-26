@@ -57,9 +57,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo site_url('#') ?>"><i class="fa fa-angle-double-right"></i> Entri </a>
           </li>
           <li class="<?php echo active_link_controller('data_rkba') ?>">
-            <a href="<?php echo site_url('#') ?>"><i class="fa fa-angle-double-right"></i> Data RKBA</a>
+            <a href="<?php echo site_url('data_rkba') ?>"><i class="fa fa-angle-double-right"></i> Data RKBA</a>
           </li>
-          <li class="<?php echo active_link_controller('index','daftar_bencana') ?>">
+          <li class="<?php echo active_link_method('index') ?>">
             <a href="<?php echo site_url('daftar_bencana') ?>"><i class="fa fa-angle-double-right"></i> Daftar Bencana</a>
           </li>
           <li class="<?php echo active_link_method('jenis_bencana'); ?>">

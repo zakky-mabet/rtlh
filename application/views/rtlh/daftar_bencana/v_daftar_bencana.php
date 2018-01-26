@@ -13,8 +13,9 @@
  *
  * @return string
  **/
-echo form_open(current_url(), array('method' => 'get'));
+echo form_open(current_url(), array('method' => 'get','accept-charset' =>'utf-8' ));
 ?>
+
 			<div class="box-body">
 				<div class="col-md-4">
 					Tampilkan 
@@ -26,7 +27,7 @@ echo form_open(current_url(), array('method' => 'get'));
 					 * 
 					 * @var 10
 					 **/
-					$start = 5; 
+					$start = 20; 
 					while($start <= 100) :
 						$selected = ($start == $this->input->get('per_page')) ? 'selected' : '';
 						echo "<option value='{$start}' " . $selected . ">{$start}</option>";
@@ -52,16 +53,19 @@ echo form_open(current_url(), array('method' => 'get'));
 				        <input type="text" name="query" class="form-control input-sm" value="<?php echo $this->input->get('query') ?>" placeholder=" Nama Bencana">
 				    </div>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 				    <div class="form-group">
 				        <label>Jenis :</label>
-				        <select name="jenis" class="form-control input-sm">
+				        <select name="jenis" class="form-control input-sm select2">
 				        	<option value="">-- PILIH --</option>
-				        	<option value="Banjir" <?php if($this->input->get('jenis')=='Banjir') echo 'selected'; ?>>Banjir</option>
-				        	<option value="Longsor" <?php if($this->input->get('jenis')=='Longsor') echo 'selected'; ?>>Longsor</option>
+				        	<?php foreach ($this->daftar_bencana->all_jenis_bencana() as $value): ?>
+				        		<option value="<?php echo $value->id ?>" <?php if($this->input->get('jenis')==$value->id) echo 'selected'; ?>><?php echo ucwords($value->nama) ?></option>
+				        	<?php endforeach ?>
+				        	
 				        </select>	
 				    </div>
 				</div>
+				
 				<div class="col-md-3">
 				    <div class="form-group">
                     <button type="submit" class="btn btn-warning hvr-shadow top"><i class="fa fa-filter"></i> Filter</button>
@@ -114,7 +118,9 @@ echo form_open(site_url('daftar_bencana/bulk_action'));
 							<td class="text-center"><?php echo ++$number ?></td>
 							<td><?php echo ucwords($row->nama); ?></td>
 							<td class="text-center" style="font-size: 12px;">
-								<?php echo ucwords($row->jenis); ?>
+								<?php  if ($row->id_jenis_bencana!=0) {
+								echo ucwords($this->daftar_bencana->get_jenis_bencana($row->id_jenis_bencana)->nama );	
+								} else { echo "<span class='text-blue'>Jenis bencana belum di entri.</span>";} ?>
 							</td>
 							<td><?php echo ucwords($row->tahun); ?></td>
 							<td><?php echo ucwords($row->lokasi); ?></td>
@@ -123,7 +129,7 @@ echo form_open(site_url('daftar_bencana/bulk_action'));
 															
 								<a href="<?php echo site_url("daftar_bencana/update/{$row->id_bencana}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 
-								<a href="<?php echo site_url("daftar_bencana/foto/{$row->id_bencana}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto-foto Bencana"><i class="fa fa-camera"></i></a>
+								<a href="<?php echo site_url("daftar_bencana/foto_bencana/{$row->id_bencana}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto-foto Bencana"><i class="fa fa-camera"></i></a>
 						
 								<a class="icon-button text-red get-delete-daftar-bencana" data-id="<?php echo $row->id_bencana; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 							</td>

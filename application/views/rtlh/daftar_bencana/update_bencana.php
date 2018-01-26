@@ -15,7 +15,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				<div class="form-group">
 					<label for="nama" class="control-label col-md-3 col-xs-12">Nama  Bencana : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="text" name="nama" class="form-control" value="<?php echo set_value('nama'); ?>">
+						<input type="text" name="nama" class="form-control" value="<?php echo $get->nama; ?>">
 						<p class="help-block"><?php echo form_error('nama', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
@@ -26,8 +26,9 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<select name="id_jenis_bencana" class="form-control">
 							<option value="">-- PILIH --</option>
 							<?php foreach ($this->daftar_bencana->all_jenis_bencana() as $key => $value): ?>
-								<option value="<?php echo $value->id ?>" <?php if($this->input->get('id_jenis_bencana')==$value->id) echo 'selected'; ?>><?php echo ucwords($value->nama)  ?></option>
+								<option value="<?php echo $value->id ?>" <?php if($get->id_jenis_bencana==$value->id) echo 'selected'; ?>><?php echo ucwords($value->nama)  ?></option>
 							<?php endforeach ?>
+							
 						</select>
 						<p class="help-block"><?php echo form_error('id_jenis_bencana', '<small class="text-red">', '</small>'); ?></p>
 					</div>
@@ -40,7 +41,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<option value="">-- PILIH --</option>
 							<?php 
 							for ($i = date("Y")-3; $i <= date("Y")+5; $i++) { ?>
-								<option value="<?php echo $i ?>" <?php if($this->input->get('tahun')==$i ) echo 'selected'; ?>><?php echo $i ?></option>
+								<option value="<?php echo $i ?>" <?php if($get->tahun==$i ) echo 'selected'; ?>><?php echo $i ?></option>
 							<?php } ?>
 						</select>
 						<p class="help-block"><?php echo form_error('tahun', '<small class="text-red">', '</small>'); ?></p>
@@ -50,7 +51,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				<div class="form-group">
 					<label for="lokasi" class="control-label col-md-3 col-xs-12">Lokasi Bencana : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<textarea name="lokasi" cols="30" class="form-control" rows="5"><?php echo set_value('lokasi'); ?></textarea>
+						<textarea name="lokasi" cols="30" class="form-control" rows="5"><?php echo $get->lokasi; ?></textarea>
 						<p class="help-block"><?php echo form_error('lokasi', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
@@ -60,10 +61,10 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="col-md-8">
 						<select name="status_bencana" class="form-control">
 							<option value="">-- PILIH --</option>
-							<option value="Provinsi" <?php if($this->input->get('status_bencana')=='Provinsi') echo 'selected'; ?>>Provinsi</option>
-				        	<option value="Kabupaten" <?php if($this->input->get('status_bencana')=='Kabupaten') echo 'selected'; ?>>Kabupaten/Kota</option>
-				        	<option value="Kecamatan" <?php if($this->input->get('status_bencana')=='Kecamatan') echo 'selected'; ?>>Kecamatan</option>
-				        	<option value="Kelurahan" <?php if($this->input->get('status_bencana')=='Kelurahan') echo 'selected'; ?>>Kelurahan/Desa</option>
+							<option value="Provinsi" <?php if($get->status_bencana=='Provinsi') echo 'selected'; ?>>Provinsi</option>
+				        	<option value="Kabupaten" <?php if($get->status_bencana=='Kabupaten') echo 'selected'; ?>>Kabupaten/Kota</option>
+				        	<option value="Kecamatan" <?php if($get->status_bencana=='Kecamatan') echo 'selected'; ?>>Kecamatan</option>
+				        	<option value="Kelurahan" <?php if($get->status_bencana=='Kelurahan') echo 'selected'; ?>>Kelurahan/Desa</option>
 						</select>
 						<p class="help-block"><?php echo form_error('status_bencana', '<small class="text-red">', '</small>'); ?></p>
 					</div>
@@ -72,7 +73,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				<div class="form-group">
 					<label for="luas" class="control-label col-md-3 col-xs-12">Luas  Bencana : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="text" name="luas" class="form-control" value="<?php echo set_value('luas'); ?>">
+						<input type="text" name="luas" class="form-control" value="<?php echo $get->luas ?>">
 						<p class="help-block"><?php echo form_error('luas', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
@@ -80,7 +81,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				<div class="form-group">
 					<label for="jumlah" class="control-label col-md-3 col-xs-12">Jumlah Korban : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
-						<input type="text" name="jumlah" class="form-control" value="<?php echo set_value('jumlah'); ?>">
+						<input type="text" name="jumlah" class="form-control" value="<?php echo $get->jumlah; ?>">
 						<p class="help-block"><?php echo form_error('jumlah', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>

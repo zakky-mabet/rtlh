@@ -35,6 +35,11 @@ jQuery(function($) {
 		$('a#btn-delete').attr('href', base_url + '/daftar_bencana/delete_jenis/' + $(this).data('id'));
 	});
 
+	$('.get-delete-foto-bencana').click( function() {
+		$('#modal-delete-foto-bencana').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/daftar_bencana/delete_foto_bencana/' + $(this).data('id'));
+	});
+
 	$('.get-delete-sub-kriteria-multiple').click( function() {
 		if( $('input[type=checkbox]').is(':checked') != '' ) 
 		{
