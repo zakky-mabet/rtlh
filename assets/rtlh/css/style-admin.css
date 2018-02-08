@@ -9,8 +9,10 @@ a {
 
 table.mini-font { 
   vertical-align:center;
-  display: table-cell;
+ /* display: table-cell;*/
    font-size: 9pt;
+   width: 100%;
+ 
 }
 table.mini-font thead th,
 table.mini-font tbody td,
@@ -20,6 +22,8 @@ table.mini-font tbody td strong,
 table.mini-font tfoot td {  
    font-size: 9pt;
    vertical-align: middle;
+
+
 }
 
 table.mini-tab thead th,
@@ -30,6 +34,7 @@ table.mini-tab tbody td strong,
 table.mini-tab tfoot td {  
    font-size: 9pt;
    vertical-align: middle;
+
 }
 
 /*  ADMIN LTE */
@@ -38,7 +43,7 @@ table.mini-tab tfoot td {
     li > a > i.ion { font-size: 18px; }
     a.link { color:blue; }
     a.link:hover { color:#00C0EF; } 
-    .mini-font { font-size:0.9em; }
+    .mini-font { font-size:0.9em;  }
     a.active { font-weight: bold; }
     a { cursor: pointer; }
     div.checkbox, label.checkbox { padding-top:0px; padding-bottom: 0px; }

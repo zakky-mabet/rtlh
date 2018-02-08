@@ -30,8 +30,6 @@ class Mdata_candidate extends Rtlh_model
 
 		$this->db->where('status_rtlh', 'Calon Penerima');
 
-
-
 		if($type == 'result')
 		{
 			$this->db->from('penduduk');
@@ -51,11 +49,6 @@ class Mdata_candidate extends Rtlh_model
 		} else {
 			return $this->db->get('penduduk')->num_rows();
 		}
-	}
-
-	public function sum($param = 0)
-	{
-		
 	}
 
 	public function get($param = 0)
@@ -93,6 +86,7 @@ class Mdata_candidate extends Rtlh_model
 			    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; 
 			    $config['max_size'] = '40480';
 			    $config['file_name'] = $nmfile; 
+			    $config['encrypt_name'] = TRUE; 
 		     	$this->upload->initialize($config);
 		     	if ($this->upload->do_upload('foto'))
 				{ 
@@ -253,48 +247,57 @@ class Mdata_candidate extends Rtlh_model
 	function get_provinsi() 
 	{
         $hasil=$this->db->query("SELECT * FROM provinces WHERE id=19");
+
         return $hasil->result();
     }
  
     function kabupaten($provId){
 
-	$kabupaten="<option value='0'>-- PILIH --</option>";
+		$kabupaten="<option value='0'>-- PILIH --</option>";
 
-	$this->db->order_by('name','ASC');
-	$kab= $this->db->get_where('regencies',array('province_id'=>$provId));
+		$this->db->order_by('name','ASC');
 
-	foreach ($kab->result_array() as $data ){
-	$kabupaten.= "<option value='$data[id]'>$data[name]</option>";
-	}
+		$kab= $this->db->get_where('regencies',array('province_id'=>$provId));
 
-	return $kabupaten;
+		foreach ($kab->result_array() as $data ){
+
+			$kabupaten.= "<option value='$data[id]'>$data[name]</option>";
+		}
+
+		return $kabupaten;
 
 	}
 
 	function kecamatan($kabId){
-	$kecamatan="<option value='0'>-- PILIH --</option>";
 
-	$this->db->order_by('name','ASC');
-	$kec= $this->db->get_where('districts',array('regency_id'=>$kabId));
+		$kecamatan="<option value='0'>-- PILIH --</option>";
 
-	foreach ($kec->result_array() as $data ){
-	$kecamatan.= "<option value='$data[id]'>$data[name]</option>";
-	}
+		$this->db->order_by('name','ASC');
 
-	return $kecamatan;
+		$kec= $this->db->get_where('districts',array('regency_id'=>$kabId));
+
+		foreach ($kec->result_array() as $data ){
+
+			$kecamatan.= "<option value='$data[id]'>$data[name]</option>";
+		}
+
+		return $kecamatan;
 	}
 
 	function kelurahan($kecId){
-	$kelurahan="<option value='0'>-- PILIH --</option>";
 
-	$this->db->order_by('name','ASC');
-	$kel= $this->db->get_where('villages',array('district_id'=>$kecId));
+		$kelurahan="<option value='0'>-- PILIH --</option>";
 
-	foreach ($kel->result_array() as $data ){
-	$kelurahan.= "<option value='$data[id]'>$data[name]</option>";
-	}
+		$this->db->order_by('name','ASC');
 
-	return $kelurahan;
+		$kel= $this->db->get_where('villages',array('district_id'=>$kecId));
+
+		foreach ($kel->result_array() as $data ){
+
+			$kelurahan.= "<option value='$data[id]'>$data[name]</option>";
+		}
+
+		return $kelurahan;
 	}
 
 	public function get_nama_desa($id = 0)
@@ -316,18 +319,22 @@ class Mdata_candidate extends Rtlh_model
 	{
 		return $this->db->get_where('tanah', array('nik' => $param))->row();
 	}
+
 	public function get_rumah($param = 0)
 	{
 		return $this->db->get_where('rumah', array('nik' => $param))->row();
 	}
+
 	public function get_foto($param = 0)
 	{
 		return $this->db->get_where('foto_rumah', array('id_foto_rumah' => $param))->row();
 	}
+
 	public function get_fasilitas_rumah($param = 0)
 	{
 		return $this->db->get_where('fasilitas_rumah', array('nik' => $param))->row();
 	}
+	
 	public function get_nilai_kriteria($param = 0)
 	{
 		return $this->db->get_where('nilai_kriteria', array('nik' => $param))->row();
@@ -349,7 +356,8 @@ class Mdata_candidate extends Rtlh_model
 			    $config['upload_path'] = './assets/rtlh/img/rumah';
 			    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; 
 			    $config['max_size'] = '40480';
-			    $config['file_name'] = $nmfile; 
+			    $config['file_name'] = $nmfile;
+			    $config['encrypt_name'] = TRUE;  
 		     	$this->upload->initialize($config);
 		     	if ($this->upload->do_upload('foto'))
 				{ 

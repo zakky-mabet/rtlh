@@ -24,6 +24,11 @@ class Mcandidate extends Rtlh_model
 		return $this->db->get_where('penduduk', array('nik' => $param))->row();
 	}
 
+	public function get_count($param = 0)
+	{
+		return $this->db->get_where('penduduk', array('nik' => $param))->num_rows();
+	}
+
 	public function get_nama_desa($id = 0)
 	{
 		return $this->db->get_where('villages', array('id' => $id) )->row();
@@ -87,7 +92,8 @@ class Mcandidate extends Rtlh_model
 			    $config['upload_path'] = './assets/rtlh/img/';
 			    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; 
 			    $config['max_size'] = '40480';
-			    $config['file_name'] = $nmfile; 
+			    $config['file_name'] = $nmfile;
+			    $config['encrypt_name'] = TRUE;  
 		     	$this->upload->initialize($config);
 		     	if ($this->upload->do_upload('foto'))
 				{ 

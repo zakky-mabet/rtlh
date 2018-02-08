@@ -35,7 +35,8 @@ class Maccount extends Rtlh_model
 		$get = $this->get_account($this->ADMIN);
 
 		$config['upload_path'] = './assets/public/image/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|PNG|GIF';
+		$config['encrypt_name'] = TRUE; 
 		
 		$this->upload->initialize($config);
 		
@@ -48,6 +49,8 @@ class Maccount extends Rtlh_model
 			);
 
 			$gambar = $get->photo;
+
+			
 			
 		} else {
 

@@ -18,7 +18,7 @@ echo form_open(current_url(), array('method' => 'get'));
 			<div class="box-body">
 				<div class="col-md-4">
 					Tampilkan 
-					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('data_penerima?per_page='); ?>' + this.value + '&query=<?php echo $this->input->get('query'); ?>&village=<?php echo $this->input->get('village'); ?>';">
+					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('data_rkba?per_page='); ?>' + this.value + '&query=<?php echo $this->input->get('query'); ?>&village=<?php echo $this->input->get('village'); ?>';">
 					<?php  
 					/**
 					 * Loop 10 to 100
@@ -39,10 +39,10 @@ echo form_open(current_url(), array('method' => 'get'));
 				</div>
 				<div class="pull-right">
 				
-					<!-- <a href="<?php echo site_url("data_penerima/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url("data_penerima/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	 -->
-				
-					<!-- <a href="<?php echo site_url('data_penerima/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
+					<!-- <a href="<?php echo site_url("data_rkba/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("data_rkba/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	 -->
+																					
+					<!-- <a href="<?php echo site_url('data_rkba/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
 				
 				</div>
 			</div>
@@ -75,7 +75,7 @@ echo form_open(current_url(), array('method' => 'get'));
 				<div class="col-md-3">
 				    <div class="form-group">
                     <button type="submit" class="btn btn-warning hvr-shadow top"><i class="fa fa-filter"></i> Filter</button>
-                    <a href="<?php echo site_url('data_penerima') ?>" class="btn btn-warning hvr-shadow top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
+                    <a href="<?php echo site_url('data_rkba') ?>" class="btn btn-warning hvr-shadow top" style="margin-left: 10px;"><i class="fa fa-times"></i> Reset</a>
 				    </div>
 				</div>
 			</div>
@@ -92,34 +92,29 @@ echo form_close();
  *
  * @return string
  **/
-echo form_open(site_url('data_penerima/bulk_action'));
+echo form_open(site_url('data_rkba/bulk_action'));
 ?>
-				<table class="table table-hover table-bordered mini-font" style="margin-top: 10px;">
+				<table class="table table-hover table-bordered mini-font" style="margin-top: 10px;" >
 					<thead class="bg-silver">
 						<tr>
-							<th width="40">
-							
-			                   NO
-					
-							</th>
+							<th width="40">NO</th>
 							<th class="text-center">NIK</th>
-							<th class="text-center">Nama</th>
-							<th class="text-center">Jenis Kelamin</th>
-							<th class="text-center">Tempat, Tanggal Lahir</th>
+							<th class="text-center">Nama Lengkap</th>
 							<th class="text-center">Desa / Kelurahan</th>
-							<th width="200" class="text-center">Alamat</th>
-							<th class="text-center" width="100">Status Realisasi</th>
+							<th class="text-center">Alamat</th>
+							<th class="text-center">Korban Bencana</th>
+							<th class="text-center">sumber Anggaran</th>
+							<th class="text-center">Jumlah Bantuan</th>
+							<th class="text-center">User </th>
 							<th width="130"></th>
 						</tr>
 					</thead>
 					<tbody>
 				<?php  
-				/*
-				* Loop data penduduk
-				*/
+
 				$number = ( ! $this->page ) ? 0 : $this->page;
 
-				foreach($data_candidate as $row) :
+				foreach($data_rkba as $row) :
 				?>
 						<tr>
 							<td class="text-center">
@@ -129,22 +124,19 @@ echo form_open(site_url('data_penerima/bulk_action'));
 							</td>
 							<td class="text-center"><?php echo $row->nik; ?></td>
 							<td><?php echo ucwords($row->nama_lengkap); ?></td>
-							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
-							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
 							<td class="text-center"><?php echo $this->data_penerima->get_nama_desa($row->village)->name;  ?></td>
-							<td><?php echo $row->alamat; ?></td>
-							<td class="text-center"><?php echo ucfirst($row->status_realisasi); ?></td>
+							<td><?php echo ucwords($row->alamat); ?></td>
+							<td><?php echo ucwords($this->data_rkba->get_daftar_bencana($row->id_daftar_bencana)->nama); ?> </td>
+							<td><?php echo ucwords($row->sumber_anggaran); ?> </td>
+							<td width="110">Rp. <?php echo number_format($row->jumlah_bantuan,'0'); ?> </td>
+							<td width="110"><?php 	echo $this->muniversal->get_account_by_login($row->user)->nama ?> </td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
-							
-								<a href="#" class="icon-button text-red get-status" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title="Sunting Status Realisasi"><i class="fa fa-eye"></i></a>
-
-								<a href="#" class="icon-button text-yellow get-dibatal" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title=" <?php if($row->ket_status_realisasi == NULL){ echo "Dibatalkan Realisasi ini "; } else { echo $row->ket_status_realisasi; } ?>"><i class="fa fa-eye-slash"></i></a>
-
-								<a href="<?php echo site_url("data_penerima/update/{$row->nik}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-
-								<a href="<?php echo site_url("data_candidate/foto/{$row->nik}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
 						
-								<a class="icon-button text-red get-delete-penerima" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+								<a href="<?php echo site_url("data_rkba/update/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+
+								<a href="<?php echo site_url("data_rkba/foto/{$row->id}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
+						
+								<a class="icon-button text-red get-delete-rkba" data-id="<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 				
 							</td>
 						</tr>
@@ -157,7 +149,7 @@ echo form_open(site_url('data_penerima/bulk_action'));
 				
 						<th colspan="10">
 							
-							<small class="pull-right"><?php echo count($data_candidate) . " dari " . $num_data_candidate . " data"; ?></small>
+							<small class="pull-right"><?php echo count($data_rkba) . " dari " . $num_data_rkba . " data"; ?></small>
 						</th>
 					
 					</tfoot>
@@ -259,15 +251,3 @@ echo form_close();
         </div>
     </div>
 </div>
-
- 	<script>
-        $('.get-status').click( function() {
-        $('form#form-update').attr('action',base_url+'/data_penerima/update_status/' + $(this).data('id'));
-        $('#modal-status').modal('show');
-    	});
-
-    	 $('.get-dibatal').click( function() {
-        $('form#form-update-dibatal').attr('action',base_url+'/data_penerima/update_batal/' + $(this).data('id'));
-        $('#modal-dibatal').modal('show');
-    	});
-    </script>

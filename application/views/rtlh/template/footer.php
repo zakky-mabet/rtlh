@@ -39,12 +39,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       foreach($this->load->get_js_files() as $file) :  
     ?>
          <script src="<?php echo $file; ?>?v=<?php echo date('YmdHis'); ?>"></script>
-         <script>
-          $('.get-delete-foto').click( function() {
-        $('#modal-delete-foto').modal('show');
-        $('a#btn-delete').attr('href', base_url + '/data_candidate/delete_foto/' + $(this).data('id')+'/?nik='+ $(this).data('nik') );
-    });
-         </script>
    <?php 
       endforeach; 
     endif; 

@@ -38,12 +38,7 @@ echo form_open(current_url(), array('method' => 'get'));
 					per halaman
 				</div>
 				<div class="pull-right">
-				<!-- 
-					<a href="<?php echo site_url("data_candidate/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url("data_candidate/print_out_landscape?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak Mode Landscape</a> -->
-					<!-- <a href="<?php echo site_url("data_candidate/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a> -->	
 				
-					<!-- <a href="<?php echo site_url('data_candidate/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
 				
 				</div>
 			</div>
@@ -85,23 +80,18 @@ echo form_close();
  *
  * @return string
  **/
-echo form_open(site_url('data_candidate/bulk_action'));
+echo form_open(site_url('#'));
 ?>
 				<table class="table table-hover table-bordered  mini-font" style="margin-top: 10px;">
 					<thead class="bg-silver">
 						<tr>
-							<th width="40">
-							
-			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
-			                    </div>
-							</th>
+							<th width="40">NO	</th>
 							<th class="text-center">NIK</th>
 							<th class="text-center">Nama</th>
 							<th class="text-center">Jenis Kelamin</th>
 							<th class="text-center">Tempat, Tanggal Lahir</th>
 							<th class="text-center">Desa / Kelurahan</th>
-							<th width="200" class="text-center">Alamat</th>
+							<th  class="text-center">Alamat</th>
 							<th class="text-center">Skor</th>
 							<th class="text-center" width="100">Status RTLH</th>
 							<th width="100"></th>
@@ -117,17 +107,11 @@ echo form_open(site_url('data_candidate/bulk_action'));
 				foreach($data_candidate as $row) :
 				?>
 						<tr>
-							<td>
-							
-			                    <div class="checkbox checkbox-inline">
-			                        <input id="checkbox1" type="checkbox" name="calon[]" value="<?php echo $row->nik; ?>"> <label for="checkbox1"></label>
-			                    </div>
-						
-							</td>
-							<td class="text-center"><?php echo $row->nik; ?></td>
+							<td><?php echo ++$number ?></td>
+							<td class="text-left"><?php echo $row->nik; ?></td>
 							<td><?php echo ucwords($row->nama_lengkap); ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
-							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
+							<td ><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
 							<td class="text-center"><?php echo $this->data_candidate->get_nama_desa($row->village)->name;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td class="text-center"><b class="<?php if ($row->total > 34): ?> text-red<?php endif ?>"><?php echo $row->total ?></b></td>
@@ -150,38 +134,14 @@ echo form_open(site_url('data_candidate/bulk_action'));
 				?>
 					</tbody>
 					<tfoot>
-					
-						<th>
-		                    <div class="checkbox checkbox-inline">
-		                        <input id="checkbox1" type="checkbox"> <label for="checkbox1"></label>
-		                    </div>
-						</th>
-						<th colspan="9">
-							<label style="font-size: 11px; margin-right: 10px;">Yang terpilih :</label>
-							<a class="btn btn-xs btn-round btn-danger get-delete-calon-multiple"><i class="fa fa-trash-o"></i> Hapus</a>
+	
+						<th colspan="10">
 							<small class="pull-right"><?php echo count($data_candidate) . " dari " . $num_data_candidate . " data"; ?></small>
 						</th>
 					
 					</tfoot>
 				</table>
 
-				
-
-				<div class="modal animated fadeIn modal-danger" id="modal-delete-calon-multiple" tabindex="-1" data-backdrop="static" data-keyboard="false">
-				    <div class="modal-dialog modal-sm">
-				        <div class="modal-content">
-				           	<div class="modal-header">
-				                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				                <h4 class="modal-title"><i class="fa fa-question-circle"></i> Hapus!</h4>
-				                <span>Hapus data yang terpilih dari Calon Penerima?</span>
-				           	</div>
-				           	<div class="modal-footer">
-				                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
-				                <button type="submit" name="action" value="delete" id="btn-delete" class="btn btn-outline"> Hapus </button>
-				           	</div>
-				        </div>
-				    </div>
-				</div>
 <?php  
 // End Form Multiple Action
 echo form_close();

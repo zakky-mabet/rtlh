@@ -232,11 +232,10 @@ class Daftar_bencana extends Rtlh {
 			$this->daftar_bencana->upload_foto_bencana($param);
 
 			redirect(site_url('daftar_bencana/foto_bencana/'.$param));
-
 		}
 
 		$this->data = array(
-			'title' => "Foto Rumah Calon Penerima", 
+			'title' => "Foto Bencana-bencana", 
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 			'param' => $param,
@@ -250,6 +249,6 @@ class Daftar_bencana extends Rtlh {
 	{
 		$this->daftar_bencana->delete_foto_bencana($param);
 
-		redirect('daftar_bencana/foto_bencana/'.$param);
+		redirect(site_url('daftar_bencana/foto_bencana/'.$this->daftar_bencana->get_foto_bencana($param)->id_daftar_bencana));
 	}
 }

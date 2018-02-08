@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <i class="fa fa-child"></i> <span> Penerima Bantuan RTLH</span>
         </a>
       </li>
-      <li class="treeview <?php echo active_link_multiple(array('daftar_bencana')); ?>">
+      <li class="treeview <?php echo active_link_multiple(array('daftar_bencana','data_rkba')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> RKBA</span>
           <span class="pull-right-container">
@@ -53,13 +53,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo active_link_controller('rkba') ?>">
-            <a href="<?php echo site_url('#') ?>"><i class="fa fa-angle-double-right"></i> Entri </a>
+          <li class="<?php echo active_link_method('search') ?>">
+            <a href="<?php echo site_url('data_rkba/search') ?>"><i class="fa fa-angle-double-right"></i> Entri </a>
           </li>
-          <li class="<?php echo active_link_controller('data_rkba') ?>">
+          <li class="<?php echo active_link_method('index','data_rkba') ?>">
             <a href="<?php echo site_url('data_rkba') ?>"><i class="fa fa-angle-double-right"></i> Data RKBA</a>
           </li>
-          <li class="<?php echo active_link_method('index') ?>">
+          <li class="<?php echo active_link_method('index','daftar_bencana') ?>">
             <a href="<?php echo site_url('daftar_bencana') ?>"><i class="fa fa-angle-double-right"></i> Daftar Bencana</a>
           </li>
           <li class="<?php echo active_link_method('jenis_bencana'); ?>">
@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>
         </ul>
       </li>
-      <li  class="treeview <?php echo active_link_multiple(array('#')); ?>">
+      <li  class="treeview belum <?php echo active_link_multiple(array('rtpp')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> RTPP</span>
           <span class="pull-right-container">
@@ -75,10 +75,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </span>
         </a>
         <ul class="treeview-menu">
-          <li></li>
+          <li class="<?php echo active_link_method('search'); ?>">
+            <a href="<?php echo site_url('rtpp/search') ?>"><i class="fa fa-angle-double-right"></i> Entri</a>
+          </li>
+          <li class="<?php echo active_link_method('index'); ?>">
+            <a href="<?php echo site_url('rtpp') ?>"><i class="fa fa-angle-double-right"></i> Data RTPP</a>
+          </li>
+           <li class="<?php echo active_link_method('proyek'); ?>">
+            <a href="<?php echo site_url('rtpp/proyek') ?>"><i class="fa fa-angle-double-right"></i> Data Proyek</a>
+          </li>
         </ul>
       </li>
-      <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
+      <li class="treeview <?php echo active_link_multiple(array('psu')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> PSU</span>
           <span class="pull-right-container">
@@ -86,21 +94,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </span>
         </a>
         <ul class="treeview-menu">
-          <li></li>
+          <li class="<?php echo active_link_method('index'); ?>">
+            <a href="<?php echo site_url('psu') ?>"><i class="fa fa-angle-double-right"></i> Data PSU</a>
+          </li>
+          <li class="<?php echo active_link_method('daftar_pelaksana'); ?>">
+            <a href="<?php echo site_url('psu/daftar_pelaksana') ?>"><i class="fa fa-angle-double-right"></i> Daftar Pelaksana</a>
+          </li>
+          <li class="<?php echo active_link_method('master_jenis'); ?>">
+            <a href="<?php echo site_url('psu/master_jenis') ?>"><i class="fa fa-angle-double-right"></i> Master Jenis</a>
+          </li>
         </ul>
       </li>
-      <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
-        <a href="#">
-          <i class="fa fa-circle-o"></i> <span> DAK</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left spull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li></li>
-        </ul>
-      </li>
-      <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
+
+      <li class="treeview <?php echo active_link_multiple(array('dekonsentrasi')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> Dekonsentrasi</span>
           <span class="pull-right-container">
@@ -108,9 +114,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </span>
         </a>
         <ul class="treeview-menu">
-          <li></li>
+          <li class="<?php echo active_link_method('index'); ?>">
+            <a href="<?php echo site_url('dekonsentrasi') ?>"><i class="fa fa-angle-double-right"></i> Data Dekonsentrasi</a>
+          </li>
+          <li class="<?php echo active_link_method('jenis'); ?>">
+            <a href="<?php echo site_url('dekonsentrasi/jenis') ?>"><i class="fa fa-angle-double-right"></i> Jenis Kegiatan Dekonsentrasi</a>
+          </li>
         </ul>
       </li>
+
       <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> FLPP</span>

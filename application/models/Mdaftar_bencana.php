@@ -231,6 +231,7 @@ class Mdaftar_bencana extends Rtlh_model
 			    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; 
 			    $config['max_size'] = '40480';
 			    $config['file_name'] = $nmfile; 
+			    $config['encrypt_name'] = TRUE; 
 		     	$this->upload->initialize($config);
 		     	if ($this->upload->do_upload('foto'))
 				{ 

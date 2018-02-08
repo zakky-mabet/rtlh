@@ -133,32 +133,7 @@ class Mdata_penerima extends Rtlh_model
 		}
 	}
 
-	// public function delete_multiple()
-	// {
-	// 	if(is_array($this->input->post('calon')))
-	// 	{
-	// 		foreach($this->input->post('calon') as $param)
-
-
-	// 			$this->db->delete('tanah', array('nik' => $param));
-	// 			$this->db->delete('rumah', array('nik' => $param));
-	// 			$this->db->delete('fasilitas_rumah', array('nik' => $param));
-	// 			$update = array(
-	// 				'status_rtlh' => 'Tidak diketahui',
-	// 			);
-	// 			$this->db->update('penduduk', $update, array('nik' => $param));
-
-	// 		$this->template->alert(
-	// 			' Data berhasil dihapus Sebagai Calon Penerima.', 
-	// 			array('type' => 'success','icon' => 'check')
-	// 		);
-	// 	} else {
-	// 		$this->template->alert(
-	// 			' Tidak ada data yang dipilih.', 
-	// 			array('type' => 'warning','icon' => 'times')
-	// 		);
-	// 	}
-	// }
+	
 
 	/**
 	 * Check Ketersediaan NIK

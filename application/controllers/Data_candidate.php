@@ -240,17 +240,21 @@ class Data_candidate extends Rtlh
 	function ambil_data(){
 
 		$modul=$this->input->post('modul');
+
 		$id=$this->input->post('id');
 
 		if($modul=="kabupaten"){
-		echo $this->data_candidate->kabupaten($id);
+
+			echo $this->data_candidate->kabupaten($id);
 		}
 		else if($modul=="kecamatan"){
-		echo $this->data_candidate->kecamatan($id);
+
+			echo $this->data_candidate->kecamatan($id);
 
 		}
 		else if($modul=="kelurahan"){
-		echo $this->data_candidate->kelurahan($id);
+
+			echo $this->data_candidate->kelurahan($id);
 		}
 	}
 

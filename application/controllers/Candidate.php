@@ -37,7 +37,7 @@ class Candidate extends RTlh
 			show_404();
 		}
 
-		if (count($this->candidate->get($param)) == 0) {
+		if ($this->candidate->get_count($param) == 0) {
 			show_404();
 		}
 

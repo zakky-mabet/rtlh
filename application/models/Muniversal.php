@@ -57,5 +57,20 @@ class Muniversal extends Rtlh_model
 		return $this->db->get()->row()->total;
  	}
 
+ 	public function get_kabupaten($param = 0)
+ 	{
+ 		return $this->db->get_where('regencies',array('id' => $param))->row();
+ 	}
+
+ 	public function get_all_kabupaten($param = 0)
+ 	{
+ 		return $this->db->get_where('regencies',array('province_id' => $param))->result();
+ 	}
+
+ 	public function get_sumber_anggaran()
+ 	{
+ 		return $this->db->get('sumber_anggaran')->result();
+ 	}
+
 }
 

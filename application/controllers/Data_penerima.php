@@ -122,25 +122,7 @@ class Data_penerima extends Rtlh
 		redirect('data_penerima');
 	}
 
-	// public function bulk_action()
-	// {
-		
-	// 	switch ($this->input->post('action')) 
-	// 	{
-	// 		case 'delete':
-	// 			$this->data_candidate->delete_multiple();
-	// 			break;
-			
-	// 		default:
-	// 			$this->template->alert(
-	// 				' Tidak ada data yang dipilih.', 
-	// 				array('type' => 'warning','icon' => 'warning')
-	// 			);
-	// 			break;
-	// 	}
-
-	// 	redirect('data_candidate');
-	// }
+	
 
 	public function import()
 	{
@@ -185,22 +167,23 @@ class Data_penerima extends Rtlh
 		}
 	}
 
-
-
 	function ambil_data(){
 
 		$modul=$this->input->post('modul');
+
 		$id=$this->input->post('id');
 
 		if($modul=="kabupaten"){
-		echo $this->data_candidate->kabupaten($id);
+
+			echo $this->data_candidate->kabupaten($id);
 		}
 		else if($modul=="kecamatan"){
-		echo $this->data_candidate->kecamatan($id);
+			echo $this->data_candidate->kecamatan($id);
 
 		}
 		else if($modul=="kelurahan"){
-		echo $this->data_candidate->kelurahan($id);
+
+			echo $this->data_candidate->kelurahan($id);
 		}
 	}
 

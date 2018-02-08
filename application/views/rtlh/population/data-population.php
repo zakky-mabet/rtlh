@@ -170,7 +170,7 @@ echo form_open(site_url('population/bulk_action'));
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
 							<td class="text-center"><?php echo $this->population->get_nama_kabupaten($row->regency)->name;  ?></td>
-							<td class="text-center"><?php if (count($this->population->get_nama_kecamatan($row->district)) == 1){ echo $this->population->get_nama_kecamatan($row->district)->name;	} else echo '<small class="text-red">Belum di Entri</small>'; ?></td>
+							<td class="text-center"><?php echo $this->population->get_nama_kecamatan($row->district)->name;	 ?></td>
 							<td class="text-center"><?php echo $this->population->get_nama_desa($row->village)->name;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td class="text-center"><?php echo $this->population->pengguna($row->user)->nama; ?></td>

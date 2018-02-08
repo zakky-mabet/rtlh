@@ -2,9 +2,7 @@
 * @author Teitra Mega <office@teitramega.co.id>
 * @package Jquery, Bootstraps JS,
 */
-
 jQuery(function($) {
-
 	$('.get-delete-population').click( function() {
 		$('#modal-delete-population').modal('show');
 		$('a#btn-delete').attr('href', base_url + '/population/delete/' + $(this).data('id'));
@@ -38,6 +36,61 @@ jQuery(function($) {
 	$('.get-delete-foto-bencana').click( function() {
 		$('#modal-delete-foto-bencana').modal('show');
 		$('a#btn-delete').attr('href', base_url + '/daftar_bencana/delete_foto_bencana/' + $(this).data('id'));
+	});
+
+	 $('.get-delete-foto').click( function() {
+          $('#modal-delete-foto').modal('show');
+          $('a#btn-delete').attr('href', base_url + '/data_candidate/delete_foto/' + $(this).data('id')+'/?nik='+ $(this).data('nik') );
+    });
+
+	$('.get-delete-foto-rkba').click( function() {
+          $('#modal-delete-foto').modal('show');
+          $('a#btn-delete').attr('href', base_url + '/data_rkba/delete_foto/' + $(this).data('id')+'/?back='+ $(this).data('back') );
+    });
+
+	 $('.get-delete-foto-psu').click( function() {
+		$('#modal-delete-foto-psu').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/psu/delete_foto_psu/' + $(this).data('id')+'/?back='+ $(this).data('back') );
+	});
+
+	$('.get-delete-pelaksana-psu').click( function() {
+		$('#modal-delete-pelaksana-psu').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/psu/delete_pelaksana_psu/' + $(this).data('id'));
+	});
+
+	$('.get-delete-jenis-psu').click( function() {
+		$('#modal-delete-jenis-psu').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/psu/delete_jenis_psu/' + $(this).data('id'));
+	});
+
+	$('.get-delete-foto-dekonsentrasi').click( function() {
+          $('#modal-delete-foto-dekonsentrasi').modal('show');
+          $('a#btn-delete').attr('href', base_url + '/dekonsentrasi/delete_foto/' + $(this).data('id')+'/?back='+ $(this).data('back') );
+    });
+
+    $('.get-delete-dekonsentrasi').click( function() {
+		$('#modal-delete-dekonsentrasi').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/dekonsentrasi/delete_dekonsentrasi/' + $(this).data('id'));
+	});
+
+	$('.get-delete-jenis-dekonsentrasi').click( function() {
+		$('#modal-delete-jenis-dekonsentrasi').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/dekonsentrasi/delete_jenis_dekonsentrasi/' + $(this).data('id'));
+	});
+
+	$('.get-delete-foto-rtpp').click( function() {
+		$('#modal-delete-foto-rtpp').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/rtpp/delete_foto/' + $(this).data('id')+'/?back='+ $(this).data('back') );
+	});
+
+	$('.get-delete-rtpp').click( function() {
+		$('#modal-delete-rtpp').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/rtpp/delete/' + $(this).data('id'));
+	});
+
+	$('.get-delete-proyek-rtpp').click( function() {
+		$('#modal-delete-proyek-rtpp').modal('show');
+		$('a#btn-delete').attr('href', base_url + '/rtpp/delete_proyek/' + $(this).data('id'));
 	});
 
 	$('.get-delete-sub-kriteria-multiple').click( function() {
