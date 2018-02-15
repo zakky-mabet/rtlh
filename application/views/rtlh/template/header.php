@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/datepicker/datepicker3.min.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/summernote/summernote.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/form-wizard.css"); ?>">
+  <link rel="stylesheet" href="<?php echo base_url("assets/rtlh/css/gallery.css"); ?>">
   <link rel="stylesheet" href="<?php echo base_url("assets/public/plugins/autocomplete/tautocomplete.css?v=".md5(date('YmdHis'))); ?>">
   <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/public/image/favicon-title.png') ?>"/>
 
@@ -51,9 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/exporting.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/data.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/heightchart/modules/drilldown.js"); ?>"></script>
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
   <script src="<?php echo base_url("assets/public/plugins/autocomplete/tautocomplete.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/plugins/select2/select2.full.min.js"); ?>"></script>
   <script src="<?php echo base_url("assets/public/app/form-wizard.js"); ?>"></script>
+  <script src="<?php echo base_url("assets/rtlh/js/gallery.js"); ?>"></script>
   <script type="text/javascript"> 
       var base_url   = '<?php echo site_url(); ?>';
       var base_path  = '<?php echo base_url('assets/public'); ?>';
@@ -85,6 +88,18 @@ $(document).ready(function(){
     .valign-middle {
       vertical-align: middle;
     }
+
+    *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+}
+
+
   </style>
   
 </head>

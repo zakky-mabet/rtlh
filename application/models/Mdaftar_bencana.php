@@ -25,6 +25,19 @@ class Mdaftar_bencana extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('daftar_bencana', $limit, $offset)->result();
+		}
+		elseif ($type == 'export') {
+
+			$this->db->select('daftar_bencana.nama AS nama_bencana, jenis_bencana.nama AS nama_jenis, daftar_bencana.tahun, daftar_bencana.lokasi, daftar_bencana.status_bencana, daftar_bencana.luas, daftar_bencana.jumlah');
+
+			$this->db->from('daftar_bencana');
+
+			$this->db->join('jenis_bencana', 'daftar_bencana.id_jenis_bencana = jenis_bencana.id', 'LEFT');
+
+			$this->db->limit($limit, $offset);
+
+			return $this->db->get();
+
 		} else {
 			return $this->db->get('daftar_bencana')->num_rows();
 		}
@@ -32,16 +45,19 @@ class Mdaftar_bencana extends Rtlh_model
 
 	public function get_all_jenis_bencana($limit = 10, $offset = 0, $type = 'result')
 	{
-		
 		if($this->input->get('query') != '')
 			$this->db->like('nama', $this->input->get('query'));
 
 		if($type == 'result')
 		{
 			return $this->db->get('jenis_bencana', $limit, $offset)->result();
-		} else {
+
+		} 
+		 else {
 			return $this->db->get('jenis_bencana')->num_rows();
 		}
+
+
 	}
 
 	public function create_jenis()

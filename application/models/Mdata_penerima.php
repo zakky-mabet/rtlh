@@ -237,6 +237,11 @@ class Mdata_penerima extends Rtlh_model
 		return $this->db->get_where('penduduk', array('nik' => $param))->row();
 	}
 
+	public function num_rows_penduduk($param = 0)
+	{
+		return $this->db->get_where('penduduk', array('nik' => $param))->num_rows();
+	}
+
 	public function update_status($param = 0)
 	{
 		$update = array(

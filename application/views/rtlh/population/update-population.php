@@ -174,10 +174,10 @@ echo form_hidden('ID', $population->ID);
 					<label for="provinsi" class="control-label col-md-3 col-xs-12">Provinsi : <strong class="text-blue">*</strong></label>
 					<div class="col-md-6">
 						<select name="provinsi" id="provinsi" class="form-control select2">
-							<option value="0">-- PILIH --</option>
+							<option value="">-- PILIH --</option>
 							<?php foreach ($provinsi as $key => $value): ?>
 
-                                <option value="<?php echo $value->id; ?>" <?php if($population->province==$value->id) echo "selected"; ?>><?php echo $value->name; ?></option>
+                                <option value="<?php echo $value->id; ?>" <?php if($population->province==$value->id) echo "selected"; ?>><?php echo $value->name_provinces; ?></option>
                             <?php endforeach;?>
 					
 						</select>
@@ -188,8 +188,8 @@ echo form_hidden('ID', $population->ID);
 					<label for="kabupaten" class="control-label col-md-3 col-xs-12">Kabupaten/kota : <strong class="text-blue">*</strong></label>
 					<div class="col-md-6">
 						<select name="kabupaten" id="kabupaten-kota" class="form-control select2">
-							<option value="0">-- PILIH --</option>
-							<option value="<?php echo $population->regency; ?>" <?php if($population->regency==$population->regency) echo "selected"; ?>><?php echo $this->population->get_nama_kabupaten($population->regency)->name; ?></option>
+							<option value="">-- PILIH --</option>
+							<option value="<?php echo $population->regency; ?>" <?php if($population->regency==$population->regency) echo "selected"; ?>><?php echo $this->population->get_nama_kabupaten($population->regency)->name_regencies; ?></option>
 						</select>
 						<p class="help-block"><?php echo form_error('kabupaten', '<small class="text-blue">', '</small>'); ?></p>
 					</div>
@@ -199,7 +199,7 @@ echo form_hidden('ID', $population->ID);
 					<div class="col-md-6">
 						<select name="kecamatan" id="kecamatan" class="form-control select2">
 							<option value="0">-- PILIH --</option>
-							<option value="<?php echo $population->district; ?>" <?php if($population->district==$population->district) echo "selected"; ?>><?php echo $this->population->get_nama_kecamatan($population->district)->name; ?></option>
+							<option value="<?php echo $population->district; ?>" <?php if($population->district==$population->district) echo "selected"; ?>><?php echo $this->population->get_nama_kecamatan($population->district)->name_districts; ?></option>
 						</select>
 						<p class="help-block"><?php echo form_error('kecamatan', '<small class="text-blue">', '</small>'); ?></p>
 					</div>
@@ -209,7 +209,7 @@ echo form_hidden('ID', $population->ID);
 					<div class="col-md-6">
 						<select name="kelurahan" id="kelurahan-desa" class="form-control select2">
 							<option value="0">-- PILIH --</option>
-							<option value="<?php echo $population->village; ?>" <?php if($population->village==$population->village) echo "selected"; ?>><?php echo $this->population->get_nama_desa($population->village)->name; ?></option>
+							<option value="<?php echo $population->village; ?>" <?php if($population->village==$population->village) echo "selected"; ?>><?php echo $this->population->get_nama_desa($population->village)->name_villages; ?></option>
 						</select>
 						<p class="help-block"><?php echo form_error('kelurahan', '<small class="text-blue">', '</small>'); ?></p>
 					</div>

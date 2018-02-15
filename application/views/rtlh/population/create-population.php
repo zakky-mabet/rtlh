@@ -19,7 +19,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email" class="control-label col-md-3 col-xs-12">No. KK : <strong class="text-blue">*</strong></label>
+					<label for="email" class="control-label col-md-3 col-xs-12">No. KK : <strong class="text-red">*</strong></label>
 					<div class="col-md-4">
 						<input type="number" name="kk" class="form-control" value="<?php echo set_value('kk'); ?>">
 						<p class="help-block"><?php echo form_error('kk', '<small class="text-red">', '</small>'); ?></p>
@@ -33,7 +33,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="status_kk" class="control-label col-md-3">Status KK : <strong class="text-blue">*</strong></label>
+					<label for="status_kk" class="control-label col-md-3">Status KK : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 				       	<div class="radio radio-inline radio-primary">
 				           <input name="status_kk" type="radio" value="kepala keluarga" <?php if(set_value('status_kk')=='kepala keluarga') echo "checked"; ?>> <label for="status_kk"> Kepala Keluarga</label>
@@ -55,21 +55,21 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				</div>
 				
 				<div class="form-group">
-					<label for="tmp_lahir" class="control-label col-md-3 col-xs-12">Tempat, Tanggal Lahir : <strong class="text-blue">*</strong></label>
+					<label for="tmp_lahir" class="control-label col-md-3 col-xs-12">Tempat, Tanggal Lahir : <strong class="text-red">*</strong></label>
 					<div class="col-md-4">
 						<input type="text" name="tmp_lahir" class="form-control" value="<?php echo set_value('tmp_lahir'); ?>">
-						<p class="help-block"><?php echo form_error('tmp_lahir', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('tmp_lahir', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 					<div class="col-md-4">
 					  	<div class="input-group">
 					    	<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 					    	<input type="text" class="form-control" name="birts" id="datepicker" value="<?php echo set_value('birts'); ?>" placeholder="Ex : 1980-12-31">
 					  	</div>
-						<p class="help-block"><?php echo form_error('birts', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('birts', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="gender" class="control-label col-md-3">Jenis Kelamin : <strong class="text-blue">*</strong></label>
+					<label for="gender" class="control-label col-md-3">Jenis Kelamin : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 				       	<div class="radio radio-inline radio-primary">
 				           <input name="gender" type="radio" value="LAKI-LAKI" <?php if(set_value('gender')=='LAKI-LAKI') echo "checked"; ?>> <label for="gender"> Laki-laki</label>
@@ -77,11 +77,11 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				       	<div class="radio radio-inline radio-primary">
 				           <input name="gender" type="radio" value="PEREMPUAN" <?php if(set_value('gender')=='PEREMPUAN') echo "checked"; ?>> <label for="gender"> Perempuan</label>
 				       	</div>
-				       	<p class="help-block"><?php echo form_error('gender', '<small class="text-blue">', '</small>'); ?></p>
+				       	<p class="help-block"><?php echo form_error('gender', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="agama" class="control-label col-md-3 col-xs-12">Agama : <strong class="text-blue">*</strong></label>
+					<label for="agama" class="control-label col-md-3 col-xs-12">Agama : <strong class="text-red">*</strong></label>
 					<div class="col-md-4">
 						<select name="agama" class="form-control select2">
 							<option value="">-- PILIH --</option>
@@ -93,11 +93,11 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<option value="khonghucu" <?php if(set_value('agama')=='khonghucu') echo "selected"; ?>>Khonghucu</option>
 							<option value="aliran kepercayaan" <?php if(set_value('agama')=='aliran kepercayaan') echo "selected"; ?>>Lainnya</option>
 						</select>
-						<p class="help-block"><?php echo form_error('agama', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('agama', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="control-label col-md-3">Status Perkawinan : <strong class="text-blue">*</strong></label>
+					<label for="name" class="control-label col-md-3">Status Perkawinan : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 				       	<div class="radio radio-inline radio-primary">
 				           <input name="status_kawin" type="radio" value="belum kawin" <?php if(set_value('status_kawin')=='belum kawin') echo "checked"; ?>> <label> Belum Kawin</label>
@@ -111,11 +111,11 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				       	<div class="radio radio-inline radio-primary">
 				           <input name="status_kawin" type="radio" value="cerai mati" <?php if(set_value('status_kawin')=='cerai mati') echo "checked"; ?>> <label> Cerai Mati</label>
 				       	</div>
-				       	<p class="help-block"><?php echo form_error('status_kawin', '<small class="text-blue">', '</small>'); ?></p>
+				       	<p class="help-block"><?php echo form_error('status_kawin', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="control-label col-md-3">Kewarganegaraaan : <strong class="text-blue">*</strong></label>
+					<label for="name" class="control-label col-md-3">Kewarganegaraaan : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 				       	<div class="radio radio-primary">
 				           <input name="kewarganegaraan" type="radio" value="wni" <?php if(set_value('kewarganegaraan')=='wni') echo "checked"; ?>> <label for="kewarganegaraan"> WNI (Warga Negara Indonesia)</label>
@@ -123,12 +123,12 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				       	<div class="radio radio-primary">
 				           <input name="kewarganegaraan" type="radio" value="wna" <?php if(set_value('kewarganegaraan')=='wna') echo "checked"; ?>> <label for="kewarganegaraan"> WNA (Warga Negara Asing)</label>
 				       	</div>
-				       	<p class="help-block"><?php echo form_error('kewarganegaraan', '<small class="text-blue">', '</small>'); ?></p>
+				       	<p class="help-block"><?php echo form_error('kewarganegaraan', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label for="gol_darah" class="control-label col-md-3 col-xs-12">Golongan Darah : <strong class="text-blue">*</strong></label>
+					<label for="gol_darah" class="control-label col-md-3 col-xs-12">Golongan Darah : <strong class="text-red">*</strong></label>
 					<div class="col-md-3">
 						<select name="gol_darah" class="form-control select2">
 							<option value="">-- PILIH --</option>
@@ -146,81 +146,81 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 							<option value="O-" <?php if(set_value('gol_darah')=='O-') echo "selected"; ?>>O-</option>
 							<option value="tidak tahu"<?php if(set_value('gol_darah')=='TIDAK TAHU') echo "selected"; ?>>TIDAK TAHU</option>
 						</select>
-						<p class="help-block"><?php echo form_error('gol_darah', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('gol_darah', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="alamat" class="control-label col-md-3">Alamat : <strong class="text-blue">*</strong></label>
+					<label for="alamat" class="control-label col-md-3">Alamat : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<textarea name="alamat" rows="3" class="form-control"><?php echo set_value('alamat'); ?></textarea>
-						<p class="help-block"><?php echo form_error('alamat', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('alamat', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="control-label col-md-3">RT / RW : <strong class="text-blue">*</strong></label>
+					<label for="name" class="control-label col-md-3">RT / RW : <strong class="text-red">*</strong></label>
 					<div class="col-md-2">
 						<input type="number" name="rt" class="form-control" value="<?php echo set_value('rt'); ?>">
-						<p class="help-block"><?php echo form_error('rt', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('rt', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 					<div class="col-md-2">
 						<input type="number" name="rw" class="form-control" value="<?php echo set_value('rw'); ?>">
-						<p class="help-block"><?php echo form_error('rw', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('rw', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="provinsi" class="control-label col-md-3 col-xs-12">Provinsi : <strong class="text-blue">*</strong></label>
+					<label for="provinsi" class="control-label col-md-3 col-xs-12">Provinsi : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 						<select name="provinsi" id="provinsi" class="form-control select2">
-							<option value="0">-- PILIH --</option>
+							<option value="">-- PILIH --</option>
 
 							<?php foreach ($provinsi as $key => $value): ?>
 
-                                <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                                <option value="<?php echo $value->id; ?>"><?php echo $value->name_provinces; ?></option>
                             <?php endforeach;?>
 					
 						</select>
-						<p class="help-block"><?php echo form_error('provinsi', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('provinsi', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="kabupaten" class="control-label col-md-3 col-xs-12">Kabupaten/kota : <strong class="text-blue">*</strong></label>
+					<label for="kabupaten" class="control-label col-md-3 col-xs-12">Kabupaten/kota : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 						<select name="kabupaten" id="kabupaten-kota" class="form-control select2">
-							<option value="0">-- PILIH --</option>
+							<option value="">-- PILIH --</option>
 						</select>
-						<p class="help-block"><?php echo form_error('kabupaten', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('kabupaten', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="kecamatan" class="control-label col-md-3 col-xs-12">Kecamatan : <strong class="text-blue">*</strong></label>
+					<label for="kecamatan" class="control-label col-md-3 col-xs-12">Kecamatan : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 						<select name="kecamatan" id="kecamatan" class="form-control select2">
-							<option value="0">-- PILIH --</option>
+							<option value="">-- PILIH --</option>
 						</select>
-						<p class="help-block"><?php echo form_error('kecamatan', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('kecamatan', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="kelurahan" class="control-label col-md-3 col-xs-12">Kelurahan/Desa : <strong class="text-blue">*</strong></label>
+					<label for="kelurahan" class="control-label col-md-3 col-xs-12">Kelurahan/Desa : <strong class="text-red">*</strong></label>
 					<div class="col-md-6">
 						<select name="kelurahan" id="kelurahan-desa" class="form-control select2">
-							<option value="0">-- PILIH --</option>
+							<option value="">-- PILIH --</option>
 						</select>
-						<p class="help-block"><?php echo form_error('kelurahan', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('kelurahan', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="telepon" class="control-label col-md-3 col-xs-12">Telepon : <strong class="text-blue">*</strong></label>
 					<div class="col-md-6">
 						<input type="text" name="telepon" class="form-control" value="<?php echo set_value('telepon'); ?>">
-						<p class="help-block"><?php echo form_error('telepon', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('telepon', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="telepon" class="control-label col-md-3 col-xs-12">Kode Pos : <strong class="text-blue">*</strong></label>
 					<div class="col-md-6">
 						<input type="number" name="kd_pos" class="form-control" value="<?php echo set_value('kd_pos'); ?>">
-						<p class="help-block"><?php echo form_error('kd_pos', '<small class="text-blue">', '</small>'); ?></p>
+						<p class="help-block"><?php echo form_error('kd_pos', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
 	

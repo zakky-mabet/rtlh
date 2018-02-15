@@ -22,6 +22,11 @@ class Mpenerima extends Rtlh_model
 		return $this->db->get_where('penduduk', array('nik' => $param))->row();
 	}
 
+	public function num_rows_penduduk($param = 0)
+	{
+		return $this->db->get_where('penduduk', array('nik' => $param))->num_rows();
+	}
+
 	public function get_nama_desa($id = 0)
 	{
 		return $this->db->get_where('villages', array('id' => $id) )->row();

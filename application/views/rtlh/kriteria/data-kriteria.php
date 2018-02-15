@@ -26,7 +26,7 @@ echo form_open(current_url(), array('method' => 'get'));
 					 * 
 					 * @var 10
 					 **/
-					$start = 5; 
+					$start = 20; 
 					while($start <= 100) :
 						$selected = ($start == $this->input->get('per_page')) ? 'selected' : '';
 						echo "<option value='{$start}' " . $selected . ">{$start}</option>";
@@ -37,11 +37,11 @@ echo form_open(current_url(), array('method' => 'get'));
 					</select>
 					per halaman
 				</div>
-				<!-- <div class="pull-right">
-				
-					<a href="<?php echo site_url('kriteria/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-				
-				</div> -->
+				 <div class="pull-right">
+					<a href="<?php echo site_url("kriteria/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("kriteria/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+				</div> 
+
 			</div>
 			<div class="box-body">
 				

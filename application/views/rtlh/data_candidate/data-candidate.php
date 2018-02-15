@@ -112,7 +112,7 @@ echo form_open(site_url('#'));
 							<td><?php echo ucwords($row->nama_lengkap); ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td ><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
-							<td class="text-center"><?php echo $this->data_candidate->get_nama_desa($row->village)->name;  ?></td>
+							<td class="text-center"><?php echo $this->data_candidate->get_nama_desa($row->village)->name_villages;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td class="text-center"><b class="<?php if ($row->total > 34): ?> text-red<?php endif ?>"><?php echo $row->total ?></b></td>
 							<td class="text-center"><?php echo ucfirst($row->status_rtlh); ?> </td>

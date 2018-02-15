@@ -34,6 +34,20 @@ class Mpsu extends Rtlh_model
 
 			return $this->db->get()->result();
 
+		} elseif ($type == 'export') {
+			
+			$this->db->select('*');
+
+			$this->db->from('psu');
+
+			$this->db->join('pelaksana_psu', 'pelaksana_psu.id_pelaksana_psu = psu.id_pelaksana', 'LEFT');
+
+			$this->db->join('jenis_psu', 'jenis_psu.id = psu.id_jenis_psu', 'LEFT');
+
+			$this->db->join('regencies', 'psu.kabupaten = regencies.id', 'LEFT');
+
+			return $this->db->get();
+
 		} else {
 
 			$this->db->select('*');
@@ -233,7 +247,12 @@ class Mpsu extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('pelaksana_psu', $limit, $offset)->result();
-		} else {
+
+		} elseif ($type == 'export') {
+			
+			return $this->db->get('pelaksana_psu', $limit, $offset);
+
+		}  else {
 			return $this->db->get('pelaksana_psu')->num_rows();
 		}
 	}
@@ -314,11 +333,16 @@ class Mpsu extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('jenis_psu', $limit, $offset)->result();
+
+		} elseif ($type == 'export') {
+			
+			return $this->db->get('jenis_psu', $limit, $offset);
+
 		} else {
 			return $this->db->get('jenis_psu')->num_rows();
 		}
 	}
-
+	
 	public function create_master_jenis()
 	{
 		$data = array(

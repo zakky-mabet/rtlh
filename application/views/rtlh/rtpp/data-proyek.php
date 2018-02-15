@@ -38,8 +38,9 @@
 				</div>
 				<div class="pull-right">
 					
-					<a href="<?php echo site_url('rtpp/create_proyek') ?>" class="btn btn-success hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-					
+					<a href="<?php echo site_url('rtpp/create_proyek') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url("rtpp/print_out_proyek?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("rtpp/export_proyek?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				</div>
 			</div>
 			<div class="box-body">

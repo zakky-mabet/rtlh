@@ -18,7 +18,7 @@ echo form_open(current_url(), array('method' => 'get'));
 			<div class="box-body">
 				<div class="col-md-4">
 					Tampilkan 
-					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('population?per_page='); ?>' + this.value + '&query=<?php echo $this->input->get('query'); ?>&kelurahan=<?php echo $this->input->get('kelurahan'); ?>&kecamatan=<?php echo $this->input->get('kecamatan'); ?>&kabupaten=<?php echo $this->input->get('kabupaten'); ?>';">
+					<select name="per_page" class="form-control input-sm" style="width:60px; display: inline-block;" onchange="window.location = '<?php echo site_url('population?per_page='); ?>' + this.value + '&query=<?php echo $this->input->get('query'); ?>&kelurahan=<?php echo $this->input->get('kelurahan'); ?>&kecamatan=<?php echo $this->input->get('kecamatan'); ?>&kabupaten=<?php echo $this->input->get('kabupaten'); ?>&provinsi=<?php echo $this->input->get('provinsi'); ?>';">
 					<?php  
 					/**
 					 * Loop 10 to 100
@@ -42,31 +42,20 @@ echo form_open(current_url(), array('method' => 'get'));
 					<a href="<?php echo site_url('population/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
 				
 					<a href="<?php echo site_url("population/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<!-- <a href="<?php echo site_url("population/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	 -->
-				
-					<!-- <a href="<?php echo site_url('population/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
-				
+
+					<a href="<?php echo site_url("population/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+								
 				</div>
 			</div>
 			<div class="box-body">
-				<!-- <div class="col-md-2">
-				    <div class="form-group">
-				        <label>Jenis Kelamin :</label>
-				        <select name="gender" class="form-control input-sm">
-				        	<option value="">-- PILIH --</option>
-				        	<option value="laki-laki" <?php if($this->input->get('gender')=='laki-laki') echo 'selected'; ?>>Laki-laki</option>
-				        	<option value="perempuan" <?php if($this->input->get('gender')=='perempuan') echo 'selected'; ?>>Perempuan</option>
-				        </select>	
-				    </div>
-				</div> -->
+				
 				<div class="col-md-3">
 				    <div class="form-group">
 				        <label>Provinsi :</label>
 				        <select name="provinsi" id="provinsi" class="form-control  select2">
 				        	<option value="">-- PILIH --</option>
 						<?php foreach ($provinsi as $key => $value): ?>
-                        	<option value="<?php echo $value->id; ?> <?php if ($this->input->get('provinsi')): ?>                    		
-                        	<?php endif ?>"><?php echo $value->name; ?></option>
+                        	<option value="<?php echo $value->id; ?>" <?php if($this->input->get('provinsi')==$value->id) echo 'selected'; ?>><?php echo $value->name_provinces; ?></option>
                         <?php endforeach;?>	
 					
 				        </select>	
@@ -77,6 +66,11 @@ echo form_open(current_url(), array('method' => 'get'));
 				        <label>Kabupaten/ Kota :</label>
 				        <select name="kabupaten" id="kabupaten-kota" class="form-control  select2">
 							<option value="">-- PILIH --</option>
+							<?php if ($this->input->get('provinsi')== 19): ?>
+								<?php foreach ($this->population->get_kabupaten(19) as $key => $value): ?>
+		                        	<option value="<?php echo $value->id; ?>" <?php if($this->input->get('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name_regencies; ?></option>
+		                        <?php endforeach;?>	
+							<?php endif ?>
 						</select>	
 				    </div>
 				</div>
@@ -85,6 +79,11 @@ echo form_open(current_url(), array('method' => 'get'));
 				        <label>Kecamatan :</label>
 				        <select name="kecamatan" id="kecamatan" class="form-control  select2">
 							<option value="">-- PILIH --</option>
+							<?php if ($this->input->get('kabupaten')!=NULL): ?>
+								<?php foreach ($this->population->get_kecamatan($this->input->get('kabupaten')) as $key => $value): ?>
+		                        	<option value="<?php echo $value->id; ?>" <?php if($this->input->get('kecamatan')==$value->id) echo 'selected'; ?>><?php echo $value->name_districts; ?></option>
+		                        <?php endforeach;?>	
+							<?php endif ?>
 						</select>
 				    </div>
 				</div>
@@ -93,6 +92,12 @@ echo form_open(current_url(), array('method' => 'get'));
 				        <label>Desa / Kelurahan :</label>
 				        <select name="kelurahan" id="kelurahan-desa" class="form-control  select2 ">
 				        	<option value="">-- PILIH --</option>
+
+				        	<?php if ($this->input->get('kecamatan')!=NULL): ?>
+								<?php foreach ($this->population->get_kelurahan($this->input->get('kecamatan')) as $key => $value): ?>
+		                        	<option value="<?php echo $value->id; ?>" <?php if($this->input->get('kelurahan')==$value->id) echo 'selected'; ?>><?php echo $value->name_villages; ?></option>
+		                        <?php endforeach;?>	
+							<?php endif ?>
 					
 				        </select>	
 				    </div>
@@ -165,13 +170,13 @@ echo form_open(site_url('population/bulk_action'));
 			                    </div>
 						
 							</td>
-							<td class="text-center"><?php echo $row->nik; ?></td>
-							<td><?php echo ucwords($row->nama_lengkap); ?></td>
+							<td class="text-left"><?php echo highlight_phrase($row->nik, $this->input->get('query'),'<span style="color:red; font-weight: bold;">', '</span>'); ?></td>
+							<td><?php echo  highlight_phrase(ucwords($row->nama_lengkap), $this->input->get('query'),'<span style="color:red; font-weight: bold;">', '</span>'); ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
-							<td class="text-center"><?php echo $this->population->get_nama_kabupaten($row->regency)->name;  ?></td>
-							<td class="text-center"><?php echo $this->population->get_nama_kecamatan($row->district)->name;	 ?></td>
-							<td class="text-center"><?php echo $this->population->get_nama_desa($row->village)->name;  ?></td>
+							<td class="text-center"><?php echo $this->population->get_nama_kabupaten($row->regency)->name_regencies;  ?></td>
+							<td class="text-center"><?php echo $this->population->get_nama_kecamatan($row->district)->name_districts;	 ?></td>
+							<td class="text-center"><?php echo $this->population->get_nama_desa($row->village)->name_villages;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td class="text-center"><?php echo $this->population->pengguna($row->user)->nama; ?></td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
@@ -249,53 +254,45 @@ echo form_close();
     </div>
 </div>
 
-
 <script>
 	$(function(){
-
 		$.ajaxSetup({
 		type:"POST",
-		url: "<?php echo base_url('index.php/population/ambil_data') ?>",
-		cache: false,
-		});
-
-		$("#provinsi").change(function(){
-
-		var value=$(this).val();
-		if(value>0){
-		$.ajax({
-		data:{modul:'kabupaten',id:value},
-		success: function(respond){
-		$("#kabupaten-kota").html(respond);
-		}
-		})
-		}
-
-		});
-
-
-		$("#kabupaten-kota").change(function(){
-		var value=$(this).val();
-		if(value>0){
-		$.ajax({
-		data:{modul:'kecamatan',id:value},
-		success: function(respond){
-		$("#kecamatan").html(respond);
-		}
-		})
-		}
-		})
-
-		$("#kecamatan").change(function(){
-		var value=$(this).val();
-		if(value>0){
-		$.ajax({
-		data:{modul:'kelurahan',id:value},
-		success: function(respond){
-		$("#kelurahan-desa").html(respond);
-		}
-		})
-		} 
-		})
-	})
+url: "<?php echo base_url('index.php/population/ambil_data') ?>",
+cache: false,
+});
+$("#provinsi").change(function(){
+var value=$(this).val();
+if(value>0){
+$.ajax({
+data:{modul:'kabupaten',id:value},
+success: function(respond){
+$("#kabupaten-kota").html(respond);
+}
+})
+}
+});
+$("#kabupaten-kota").change(function(){
+var value=$(this).val();
+if(value>0){
+$.ajax({
+data:{modul:'kecamatan',id:value},
+success: function(respond){
+$("#kecamatan").html(respond);
+}
+})
+}
+})
+$("#kecamatan").change(function(){
+var value=$(this).val();
+if(value>0){
+$.ajax({
+data:{modul:'kelurahan',id:value},
+success: function(respond){
+$("#kelurahan-desa").html(respond);
+}
+})
+}
+})
+})
 </script>

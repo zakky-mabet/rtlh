@@ -107,8 +107,6 @@ class Sub_kriteria extends Rtlh {
 		$this->template->view('rtlh/sub_kriteria/update', $this->data);
 	}
 
-	
-
 	public function delete($param = 0)
 	{
 		$this->sub_kriteria->delete($param);
@@ -133,6 +131,40 @@ class Sub_kriteria extends Rtlh {
 		}
 
 		redirect('sub_kriteria');
+	}
+
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Sub Kriteria", 
+			'sub_kriteria' => $this->sub_kriteria->get_all($this->per_page, $this->page),
+			'num_sub_kriteria' => $this->sub_kriteria->get_all(null, null, 'num'),
+		);
+
+		$this->load->view('rtlh/sub_kriteria/print-sub-kriteria', $this->data);
+	}
+	
+	public function export()
+	{
+		$query = $this->sub_kriteria->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
+
+
+		$this->excel_generator->set_query($query);
+        $this->excel_generator->set_header(array(
+        		'Nama Sub Kriteria',
+        		'Kriteria',
+        		'Nilai',
+        	));
+        $this->excel_generator->set_column(
+        	array(
+        		'nama_sub_kriteria',
+        		'nama_kriteria',
+        		'nilai',
+        	));
+        $this->excel_generator->set_width(array(30, 33, 10));
+        
+        $this->excel_generator->exportTo2007('DATA SUB KRITERIA');
 	}	
 
+	
 }

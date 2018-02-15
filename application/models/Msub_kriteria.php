@@ -25,6 +25,19 @@ class Msub_kriteria extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('sub_kriteria', $limit, $offset)->result();
+
+		} elseif ($type == 'export') {
+
+			$this->db->select('sub_kriteria.nama AS nama_sub_kriteria, kriteria.nama AS nama_kriteria , sub_kriteria.nilai');
+
+			$this->db->from('sub_kriteria');
+
+			$this->db->join('kriteria', 'sub_kriteria.id_kriteria = kriteria.id', 'LEFT');
+
+			$this->db->limit($limit, $offset);
+
+			return $this->db->get();
+
 		} else {
 			return $this->db->get('sub_kriteria')->num_rows();
 		}

@@ -7,7 +7,7 @@ class Kriteria extends Rtlh {
 
 	public $per_page;
 
-	public $page = 5;
+	public $page = 20;
 
 	public $query;
 
@@ -17,7 +17,7 @@ class Kriteria extends Rtlh {
 
 		$this->load->model('mkriteria','kriteria');
 
-		$this->per_page = (!$this->input->get('per_page')) ? 5: $this->input->get('per_page');
+		$this->per_page = (!$this->input->get('per_page')) ? 20: $this->input->get('per_page');
 
 		$this->page = $this->input->get('page');
 
@@ -48,6 +48,34 @@ class Kriteria extends Rtlh {
 		$this->template->view('rtlh/kriteria/data-kriteria', $this->data);
 	}
 
-		
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Kriteria", 
+			'kriteria' => $this->kriteria->get_all($this->per_page, $this->page),
+			'num_kriteria' => $this->kriteria->get_all(null, null, 'num'),
+		);
+
+		$this->load->view('rtlh/kriteria/print-kriteria', $this->data);
+	}
+	
+	public function export()
+	{
+		$query = $this->kriteria->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
+
+		$this->excel_generator->set_query($query);
+        $this->excel_generator->set_header(array(
+        		'Nama Kriteria',
+        		'Keterangan',
+        	));
+        $this->excel_generator->set_column(
+        	array(
+        		'nama',
+        		'keterangan',
+        	));
+        $this->excel_generator->set_width(array(40, 23));
+        
+        $this->excel_generator->exportTo2007('DATA KRITERIA');
+	}
 
 }

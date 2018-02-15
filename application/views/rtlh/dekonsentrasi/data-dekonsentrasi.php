@@ -37,7 +37,9 @@
 					per halaman
 				</div>
 				<div class="pull-right">
-					<a href="<?php echo site_url('dekonsentrasi/create') ?>" class="btn btn-success hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url('dekonsentrasi/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url("dekonsentrasi/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("dekonsentrasi/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				</div>
 			</div>
 			<div class="box-body">

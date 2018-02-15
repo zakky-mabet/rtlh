@@ -12,11 +12,10 @@ class Statistik extends Rtlh {
 
 	public function index() 
 	{	
-		$this->page_title->push('Statistik', 'Penerima Bantuan Rtlh');
+		$this->page_title->push('Statistik', 'Penerima Bantuan RTLH');
 
 		$this->data = array(
-			'title' => "Statistik Penerima Bantuan Rtlh", 
-			'breadcrumbs' => $this->breadcrumbs->show(),
+			'title' => "Statistik Penerima Bantuan RTLH", 
 			'page_title' => $this->page_title->show(),
 		);
 
@@ -25,11 +24,10 @@ class Statistik extends Rtlh {
 
 	public function sumber_anggaran() 
 	{
-		$this->page_title->push('Statistik', 'Sumber Anggaran');
+		$this->page_title->push('Statistik', 'Sumber Anggaran RTLH');
 
 		$this->data = array(
-			'title' => "Statistik Sumber Dana Bantuan", 
-			'breadcrumbs' => $this->breadcrumbs->show(),
+			'title' => "Statistik Sumber Dana Bantuan RTLH", 
 			'page_title' => $this->page_title->show(),
 		);
 		$this->template->view('rtlh/statistik/sumber-dana', $this->data);
@@ -37,14 +35,69 @@ class Statistik extends Rtlh {
 
 	public function dana_per_kabupaten() 
 	{
-		$this->page_title->push('Statistik', 'Total Dana Per Kabupaten');
+		$this->page_title->push('Statistik', 'Total Dana Per Kabupaten RTLH');
 
 		$this->data = array(
-			'title' => "Statistik Total Dana Per Kabupaten", 
-			'breadcrumbs' => $this->breadcrumbs->show(),
+			'title' => "Statistik Total Dana Per Kabupaten RTLH", 
 			'page_title' => $this->page_title->show(),
 		);
 		$this->template->view('rtlh/statistik/dana-per-kabupaten', $this->data);
+	}
+
+
+	public function rkba() 
+	{
+		$this->page_title->push('Statistik', 'Rumah Korban Bencana Alam');
+
+		$this->data = array(
+			'title' => "Statistik Rumah Korban Bencana Alam", 
+			'page_title' => $this->page_title->show(),
+		);
+		$this->template->view('rtlh/statistik/rkba-stats', $this->data);
+	}
+
+	public function rkba_sumber_anggaran() 
+	{
+		$this->page_title->push('Statistik', 'Rumah Korban Bencana Alam');
+
+		$this->data = array(
+			'title' => "Statistik Rumah Korban Bencana Alam", 
+			'page_title' => $this->page_title->show(),
+		);
+		$this->template->view('rtlh/statistik/rkba-stats-sumber-anggaran', $this->data);
+	}
+
+	public function rtpp() 
+	{
+		$this->page_title->push('Statistik', 'Rumah Terkena Proyek Pemerintah');
+
+		$this->data = array(
+			'title' => "Statistik Rumah terkena Proyek Pemerintah", 
+			'page_title' => $this->page_title->show(),
+		);
+		$this->template->view('rtlh/statistik/rtpp-stats', $this->data);
+	}
+
+	public function rtpp_sumber_anggaran() 
+	{
+		$this->page_title->push('Statistik', 'Rumah Terkena Proyek Pemerintah');
+
+		$this->data = array(
+			'title' => "Statistik Rumah Terkena Proyek Pemerintah", 
+			'page_title' => $this->page_title->show(),
+		);
+		$this->template->view('rtlh/statistik/rtpp-stats-sumber-anggaran', $this->data);
+	}
+
+	public function psu() 
+	{
+		$this->page_title->push('Statistik', 'Prasarana Sarana dan Utilitas');
+
+		$this->data = array(
+			'title' => "Statistik Prasarana Sarana dan Utilitas", 
+			'page_title' => $this->page_title->show(),
+		);
+		$this->template->view('rtlh/statistik/psu-stats-sumber-anggaran', $this->data);
 	}
 
 }

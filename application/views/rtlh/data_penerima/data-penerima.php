@@ -131,7 +131,7 @@ echo form_open(site_url('data_penerima/bulk_action'));
 							<td><?php echo ucwords($row->nama_lengkap); ?></td>
 							<td class="text-center"><?php echo ucfirst($row->jns_kelamin) ?></td>
 							<td class="text-center"><?php echo ucwords($row->tmp_lahir).', '.date_id($row->tgl_lahir) ?></td>
-							<td class="text-center"><?php echo $this->data_penerima->get_nama_desa($row->village)->name;  ?></td>
+							<td class="text-center"><?php echo $this->data_penerima->get_nama_desa($row->village)->name_villages;  ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td class="text-center"><?php echo ucfirst($row->status_realisasi); ?></td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">

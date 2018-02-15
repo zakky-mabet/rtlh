@@ -195,25 +195,25 @@
 											<div class="form-group">
 												<label for="provinsi" class="control-label col-md-3 col-xs-12">Provinsi : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="provinsi" class="form-control" value="<?php echo $this->data_penerima->get_nama_provinsi($penduduk->province)->name; ?>" disabled>
+													<input type="text" name="provinsi" class="form-control" value="<?php echo $this->data_penerima->get_nama_provinsi($penduduk->province)->name_provinces; ?>" disabled>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="kabupaten" class="control-label col-md-3 col-xs-12">Kabupaten/kota : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="kabupaten" class="form-control" value="<?php echo $this->data_penerima->get_nama_kabupaten($penduduk->regency)->name; ?>" disabled>
+													<input type="text" name="kabupaten" class="form-control" value="<?php echo $this->data_penerima->get_nama_kabupaten($penduduk->regency)->name_regencies; ?>" disabled>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="kecamatan" class="control-label col-md-3 col-xs-12">Kecamatan : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="kecamatan" class="form-control" value="<?php echo $this->data_penerima->get_nama_kecamatan($penduduk->district)->name; ?>" disabled>
+													<input type="text" name="kecamatan" class="form-control" value="<?php echo $this->data_penerima->get_nama_kecamatan($penduduk->district)->name_districts; ?>" disabled>
 												</div>
 											</div>
 											<div class="form-group">
 												<label for="kelurahan" class="control-label col-md-3 col-xs-12">Kelurahan/Desa : <strong class="text-blue">*</strong></label>
 												<div class="col-md-6">
-													<input type="text" name="provinsi" class="form-control" value="<?php echo $this->data_penerima->get_nama_desa($penduduk->village)->name; ?>" disabled>
+													<input type="text" name="provinsi" class="form-control" value="<?php echo $this->data_penerima->get_nama_desa($penduduk->village)->name_villages; ?>" disabled>
 												</div>
 											</div>
 											<div class="form-group">

@@ -257,5 +257,75 @@ class Dekonsentrasi extends Rtlh
 		redirect(site_url('dekonsentrasi/jenis'));
 	}
 
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Dekonsentrasi", 
+			'dekonsentrasi' => $this->dekonsentrasi->get_all($this->per_page, $this->page),
+			'num_dekonsentrasi' => $this->dekonsentrasi->get_all(null, null, 'num'),
+		);
+
+		$this->load->view('rtlh/dekonsentrasi/print-dekonsentrasi', $this->data);
+	}
+	
+	public function export()
+	{
+		$query = $this->dekonsentrasi->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
+		
+		$this->excel_generator->set_query($query);
+
+        $this->excel_generator->set_header(array(
+        		'NAMA KEGIATAN',
+        		'JENIS KEGIATAN',
+        		'NILAI ANGGARAN',
+        		'TAHUN',
+        		'TANGGAL KEGIATAN',
+        	));
+
+        $this->excel_generator->set_column(
+        	array(
+        		'nama_kegiatan',
+        		'nama_jenis',
+        		'nilai_anggaran',
+        		'tahun',
+        		'tanggal_kegiatan',
+
+        	));
+        $this->excel_generator->set_width(array(34, 30, 25, 11, 20));
+        
+        $this->excel_generator->exportTo2007('DATA DEKONSENTRASI');	
+	}
+
+	public function print_out_jenis()
+	{
+		$this->data = array(
+			'title' => "Data Jenis Kegiatan Dekonsentrasi", 
+			'jenis_dekonsentrasi' => $this->dekonsentrasi->_get_all_jenis($this->per_page, $this->page),
+		);
+
+		$this->load->view('rtlh/dekonsentrasi/print-jenis-dekonsentrasi', $this->data);
+	}
+	
+	public function export_jenis()
+	{
+		$query = $this->dekonsentrasi->_get_all_jenis($this->input->get('per_page'), $this->input->get('page'), 'export' );
+		
+		$this->excel_generator->set_query($query);
+
+        $this->excel_generator->set_header(array(
+        		'NAMA JENIS',
+        		'KETERANGAN',
+        	));
+
+        $this->excel_generator->set_column(
+        	array(
+        		'nama_jenis',
+        		'keterangan',
+        	));
+        $this->excel_generator->set_width(array(34, 60));
+        
+        $this->excel_generator->exportTo2007('DATA JENIS KEGIATAN DEKONSENTRASI');	
+	}
+
 
 }

@@ -37,10 +37,9 @@
 					per halaman
 				</div>
 				<div class="pull-right">
-					
-
-					<a href="<?php echo site_url('psu/create') ?>" class="btn btn-success hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
-					
+					<a href="<?php echo site_url('psu/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url("psu/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("psu/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				</div>
 			</div>
 			<div class="box-body">
@@ -61,8 +60,8 @@
 						<select name="kabupaten" class="form-control input-sm">
 							<option value="">-- PILIH --</option>
 							<?php foreach ($this->psu->get_all_kabupaten(19) as $key => $value): ?>
-							<option value="<?php echo $value->id ?>" <?php if($this->input->get('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name ?></option>
-							<?php endforeach ?>							
+							<option value="<?php echo $value->id ?>" <?php if($this->input->get('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name_regencies ?></option>
+							<?php endforeach ?>
 						</select>
 					</div>
 				</div>
@@ -102,27 +101,24 @@
 					</thead>
 					<tbody>
 						<?php
-						/*
-						* Loop data
-						*/
-						$number = ( ! $this->page ) ? 0 : $this->page;
+	
+						$number = (!$this->page ) ? 0 : $this->page;
+
 						foreach($psu as $row) :
 						?>
 						<tr>
-							<td class="text-center">
-								<?php echo ++$number ?>
-							</td>
+							<td class="text-center"> <?php echo ++$number ?> </td>
 							<td><?php echo $row->nama_kegiatan; ?></td>
 							<td><?php echo $this->psu->get_jenis($row->id_jenis_psu)->nama_jenis; ?></td>
-							<td><?php echo  $this->psu->get_kabupaten($row->kabupaten)->name; ?></td>
-							<td class="text-center"><?php echo $this->psu->get_pelaksana($row->id_pelaksana)->nama_perusahaan; ?></td>
+							<td><?php echo  $this->psu->get_kabupaten($row->kabupaten)->name_regencies; ?></td>
+							<td class="text-left"><?php echo $this->psu->get_pelaksana($row->id_pelaksana)->nama_perusahaan; ?></td>
 							<td class="text-center"><?php echo ucwords($row->sumber_dana) ?></td>
-							<td class="text-center"><?php echo ucwords($row->nilai_kontrak) ?></td>
+							<td class="text-left">Rp. <?php echo number_format($row->nilai_kontrak,'0') ?></td>
 							<td><?php echo $row->alamat; ?></td>
 							<td class="text-center"><?php echo $this->account->get_account($row->user)->nama; ?> </td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 								<a href="<?php echo site_url("psu/update/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-								<a href="<?php echo site_url("psu/foto/{$row->id}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
+								<a href="<?php echo site_url("psu/foto/{$row->id}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto PSU"><i class="fa fa-camera"></i></a>
 								<a class="icon-button text-red get-delete-psu" data-id="<?php echo $row->id; ?>"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 							</td>
 						</tr>
@@ -132,11 +128,10 @@
 					</tbody>
 					<tfoot>
 					
-					<th colspan="9">
-						
-						<small class="pull-right"><?php echo count($psu) . " dari " . $num_psu . " data"; ?></small>
+					<th colspan="10">
+						<small class="pull-right"><?php echo count($psu)." dari " . $num_psu . " data"; ?></small>
 					</th>
-					
+
 					</tfoot>
 				</table>
 				
@@ -157,14 +152,12 @@
 				</div>
 				
 			</div>
-
 			<div class="box-footer text-center">
 				<?php echo $this->pagination->create_links(); ?>
 			</div>
 		</div>
 	</div>
 </div>
-
 <div class="modal animated fadeIn modal-danger" id="modal-delete-psu" tabindex="-1" data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">

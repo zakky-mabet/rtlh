@@ -122,8 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>
         </ul>
       </li>
-
-      <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
+<!--       <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> FLPP</span>
           <span class="pull-right-container">
@@ -144,8 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <ul class="treeview-menu">
           <li></li>
         </ul>
-      </li>
-      
+      </li> -->
       <li class="treeview <?php echo active_link_multiple(array('statistik','sumber_anggaran')); ?>">
         <a href="#">
           <i class="fa fa-bar-chart"></i> <span> Statistik</span>
@@ -163,8 +161,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="<?php echo active_link_method('dana_per_kabupaten','statistik'); ?>">
             <a href="<?php echo site_url('statistik/dana_per_kabupaten') ?>"><i class="fa fa-angle-double-right"></i> Total Dana Per Kabupaten</a>
           </li>
+          <li class="<?php echo active_link_method('rkba','statistik'); ?>">
+            <a href="<?php echo site_url('statistik/rkba') ?>"><i class="fa fa-angle-double-right"></i> Rumah Korban Bencana Alam</a>
+          </li>
+           <li class="<?php echo active_link_method('rtpp','statistik'); ?>">
+            <a href="<?php echo site_url('statistik/rtpp') ?>"><i class="fa fa-angle-double-right"></i> Rumah Terkena Proyek Pemerintah</a>
+          </li>
+           <li class="<?php echo active_link_method('psu','statistik'); ?>">
+            <a href="<?php echo site_url('statistik/psu') ?>"><i class="fa fa-angle-double-right"></i> Prasarana Sarana dan Utilitas</a>
+          </li>
         </ul>
       </li>
+   
       <li class="treeview <?php echo active_link_multiple(array('laporan','penerima_bantuan')); ?>">
         <a href="#">
           <i class="fa fa-file-text-o"></i> <span> Laporan</span>

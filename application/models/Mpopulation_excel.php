@@ -16,7 +16,7 @@ class Mpopulation_excel extends Rtlh_model
 
 		//ini_set('max_execution_time', 3000); 
 
-		$this->load->library(array('Excel/PHPExcel','upload','slug'));
+		$this->load->library(array('PHPExcel/PHPExcel','upload','slug'));
 	}
 
 	public function upload()
@@ -134,12 +134,12 @@ class Mpopulation_excel extends Rtlh_model
 
 		$worksheet = $objPHPExcel->createSheet(0);
 
-	    for ($cell='A'; $cell <= 'S'; $cell++)
+	    for ($cell='A'; $cell <= 'R'; $cell++)
 	    {
 	        $worksheet->getStyle($cell.'1')->getFont()->setBold(true);
 	    }
 
-	    $worksheet->getStyle('A1:S1')->applyFromArray(
+	    $worksheet->getStyle('A1:R1')->applyFromArray(
 	    	array(
 		        'alignment' => array(
 		            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
@@ -158,7 +158,7 @@ class Mpopulation_excel extends Rtlh_model
 	    );
 
 		// Header dokumen
-		 $worksheet->setCellValue('A1', 'NO.')
+		 $worksheet->setCellValue('A1', 'NO')
 		 		   ->setCellValue('B1', 'NIK')
 		 		   ->setCellValue('C1', 'NO. KK')
 		 		   ->setCellValue('D1', 'STATUS KK')
@@ -174,9 +174,8 @@ class Mpopulation_excel extends Rtlh_model
 		 		   ->setCellValue('N1', 'RT')
 		 		   ->setCellValue('O1', 'RW')
 		 		   ->setCellValue('P1', 'ALAMAT')
-		 		   ->setCellValue('Q1', 'PEKERJAAN')
-		 		   ->setCellValue('R1', 'TELEPON')
-		 		   ->setCellValue('S1', 'KODE POS');
+		 		   ->setCellValue('Q1', 'TELEPON')
+		 		   ->setCellValue('R1', 'KODE POS');
 
 		$this->db->join('villages', 'penduduk.village = villages.id', 'left');
 
@@ -201,9 +200,8 @@ class Mpopulation_excel extends Rtlh_model
 			 		   ->setCellValue('N'.$row_cell, $value->rt)
 			 		   ->setCellValue('O'.$row_cell, $value->rw)
 			 		   ->setCellValue('P'.$row_cell, $value->alamat)
-			 		   ->setCellValue('Q'.$row_cell, $value->pekerjaan)
-					   ->setCellValue('R'.$row_cell, $value->telepon)
-					   ->setCellValue('S'.$row_cell, $value->kd_pos);
+					   ->setCellValue('Q'.$row_cell, $value->telepon)
+					   ->setCellValue('R'.$row_cell, $value->kd_pos);
 
 			$row_cell++;
 		}

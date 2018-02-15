@@ -26,7 +26,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<select name="kabupaten" class="form-control select2" style="width: 100%">
 							<option value="">-- PILIH --</option>
 							<?php foreach ($this->psu->get_all_kabupaten(19) as $key => $value): ?>
-							<option value="<?php echo $value->id ?>" <?php if($get->kabupaten==$value->id) echo 'selected'; ?>><?php echo $value->name ?></option>
+							<option value="<?php echo $value->id ?>" <?php if($get->kabupaten==$value->id) echo 'selected'; ?>><?php echo $value->name_regencies ?></option>
 							<?php endforeach ?>
 						</select>
 						<p class="help-block"><?php echo form_error('kabupaten', '<small class="text-red">', '</small>'); ?></p>

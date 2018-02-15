@@ -21,12 +21,12 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				</div>
 				
 				<div class="form-group">
-					<label for="kabupaten" class="control-label col-md-3 col-xs-12">Kabupaten : <strong class="text-red">*</strong></label>
+					<label for="kabupaten" class="control-label col-md-3 col-xs-12">Kabupaten/Kota : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<select name="kabupaten" class="form-control select2" style="width: 100%">
 							<option value="">-- PILIH --</option>
 							<?php foreach ($this->psu->get_all_kabupaten(19) as $key => $value): ?>
-							<option value="<?php echo $value->id ?>" <?php if($this->input->post('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name ?></option>
+							<option value="<?php echo $value->id ?>" <?php if($this->input->post('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name_regencies ?></option>
 							<?php endforeach ?>
 						</select>
 						<p class="help-block"><?php echo form_error('kabupaten', '<small class="text-red">', '</small>'); ?></p>
@@ -84,7 +84,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<select name="id_pelaksana" class="form-control select2" style="width: 100%">
 							<option value="">-- PILIH --</option>
 							<?php foreach ($this->psu->get_all_pelaksana() as $key => $value): ?>
-							<option value="<?php echo $value->id ?>" <?php if($this->input->post('id_pelaksana')==$value->id) echo 'selected'; ?>><?php echo $value->nama_perusahaan ?></option>
+							<option value="<?php echo $value->id_pelaksana_psu ?>" <?php if($this->input->post('id_pelaksana')==$value->id_pelaksana_psu) echo 'selected'; ?>><?php echo $value->nama_perusahaan ?></option>
 							<?php endforeach ?>
 						</select>
 						<p class="help-block"><?php echo form_error('id_pelaksana', '<small class="text-red">', '</small>'); ?></p>

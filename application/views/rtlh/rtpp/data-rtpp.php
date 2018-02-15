@@ -37,7 +37,8 @@
 					per halaman
 				</div>
 				<div class="pull-right">
-					
+					<a href="<?php echo site_url("rtpp/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("rtpp/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				</div>
 			</div>
 			<div class="box-body">
@@ -48,7 +49,7 @@
 						<select name="kabupaten" class="form-control input-sm select2">
 								<option value="">-- PILIH --</option>
 							<?php foreach ($this->muniversal->get_all_kabupaten(19) as $key => $value): ?>
-								<option value="<?php echo $value->id ?>" <?php if($this->input->get('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name ?></option>
+								<option value="<?php echo $value->id ?>" <?php if($this->input->get('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name_regencies ?></option>
 							<?php endforeach ?>
 						</select>
 					</div>
@@ -141,7 +142,7 @@
 						<?php else : ?>
 						<?php
 						/*
-						* Loop data
+						* Loop
 						*/
 						$number = ( ! $this->page ) ? 0 : $this->page;
 						
@@ -153,7 +154,7 @@
 							</td>
 							<td><?php echo highlight_phrase($row->nik, $this->input->get('query'),'<span style="color:red; font-weight: bold;">', '</span>'); ?></td>
 							<td><?php echo highlight_phrase($row->nama_lengkap, $this->input->get('query'),'<span style="color:red; font-weight: bold;">', '</span>'); ?></td>
-							<td class="text-center" ><?php echo $this->muniversal->get_kabupaten($row->regency)->name; ?> </td>
+							<td class="text-center" ><?php echo $this->muniversal->get_kabupaten($row->regency)->name_regencies; ?> </td>
 							<td class="text-center"><?php echo highlight_phrase($row->sumber_anggaran, $this->input->get('sumber_anggaran'),'<span style="color:red; font-weight: bold;">', '</span>'); ?> </td>
 							<td>Rp. <?php echo number_format($row->jumlah_bantuan,'0'); ?> </td>
 							<td class="text-center"><?php echo highlight_phrase($row->tahun, $this->input->get('tahun'),'<span style="color:red; font-weight: bold;">', '</span>'); ?> </td>

@@ -40,6 +40,8 @@ echo form_open(current_url(), array('method' => 'get'));
 				<div class="pull-right">
 				
 					<a href="<?php echo site_url('sub_kriteria/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url("sub_kriteria/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("sub_kriteria/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				
 				</div>
 			</div>

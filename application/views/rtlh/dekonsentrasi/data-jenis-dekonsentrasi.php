@@ -37,7 +37,9 @@
 					per halaman
 				</div>
 				<div class="pull-right">
-					<a href="<?php echo site_url('dekonsentrasi/create_jenis') ?>" class="btn btn-success hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url('dekonsentrasi/create_jenis') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url("dekonsentrasi/print_out_jenis?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("dekonsentrasi/export_jenis?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				</div>
 			</div>
 			<div class="box-body">
@@ -74,12 +76,11 @@
 					<tbody>
 				
 						<?php
-						/*
-						* Loop data
-						*/
+
 						$number = ( ! $this->page ) ? 0 : $this->page;
 						
 						foreach($jenis_dekonsentrasi as $key => $row) :
+
 						?>
 
 						<tr>

@@ -188,7 +188,7 @@ class Rtpp extends Rtlh
 		}
 
 		$this->data = array(
-			'title' => "Foto Data Prasarana Sarana dan Utilitas", 
+			'title' => "Foto Rumah Terkena Proyek Pemerintah", 
 			'page_title' => $this->page_title->show(),
 			'param' => $param,
 		);
@@ -300,5 +300,86 @@ class Rtpp extends Rtlh
 
 		redirect(site_url('rtpp/proyek'));
 	}
+
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Rumah Terkena Proyek Pemerintah", 
+			'rtpp' => $this->rtpp->get_all($this->per_page, $this->page),
+			'num_rtpp' => $this->rtpp->get_all(null, null, 'num'),
+		);
+
+		$this->load->view('rtlh/rtpp/print_rtpp', $this->data);
+	}
+	
+	public function export()
+	{
+		$query = $this->rtpp->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
+		
+		$this->excel_generator->set_query($query);
+
+        $this->excel_generator->set_header(array(
+        		'NIK',
+        		'NAMA LENGKAP',
+        		'KABUPATEN/ KOTA',
+        		'SUMBER ANGGARAN',
+        		'JUMLAH BANTUAN',
+        		'TAHUN',
+        		'TERKENA PROYEK',
+        		'LOKASI RUMAH',
+        		'AKSI'
+        	));
+
+        $this->excel_generator->set_column(
+        	array(
+        		'nik',
+        		'nama_lengkap',
+        		'name_regencies',
+        		'sumber_anggaran',
+        		'jumlah_bantuan',
+        		'tahun',
+        		'nama_proyek',
+        		'lokasi_rumah',
+        		'aksi'
+        	));
+        $this->excel_generator->set_width(array(20, 25, 25, 20, 20, 12, 40, 50, 10));
+        
+        $this->excel_generator->exportTo2007('DATA RUMAH TERKENA PROYEK PEMERINTAH');	
+	}
+
+	public function print_out_proyek()
+	{
+		$this->data = array(
+			'title' => "Data Proyek", 
+			'rtpp' => $this->rtpp->get_all_daftar_proyek($this->per_page, $this->page),
+			'num_rtpp' => $this->rtpp->get_all_daftar_proyek(null, null, 'num'),
+		);
+		$this->load->view('rtlh/rtpp/print-proyek', $this->data);
+	}
+	
+	public function export_proyek()
+	{
+		$query = $this->rtpp->get_all_daftar_proyek($this->input->get('per_page'), $this->input->get('page'), 'export' );
+		
+		$this->excel_generator->set_query($query);
+
+        $this->excel_generator->set_header(array(
+        		'NAMA PROYEK',
+        		'TAHUN',
+        		'LOKASI PROYEK',
+        		'STATUS PROYEK',
+        	));
+
+        $this->excel_generator->set_column(
+        	array(
+        		'nama_proyek',
+        		'tahun',
+        		'lokasi_proyek',
+        		'status_proyek',
+        	));
+        $this->excel_generator->set_width(array(40,10,40, 15));
+        
+        $this->excel_generator->exportTo2007('DATA PROYEK RTPP');	
+	}	
 
 }

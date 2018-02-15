@@ -83,12 +83,15 @@ class Data_penerima extends Rtlh
 	}	
 
 	public function update($param = 0)
-
-	{	
+	{
+		if (!$param) {
+			show_404();
+		}
+		if ($this->data_penerima->num_rows_penduduk($param) == 0) {
+			show_404();
+		}	
 
 		$this->page_title->push('Penerima Bantuan RTLH', 'Sunting Penerima Bantuan RTLH');
-
-		$this->breadcrumbs->unshift(2, 'Data Penerima Bantuan RTLH', "data_penerima");
 
 		$this->data = array(
 			'title' => "Sunting Data Penerima Bantuan RTLH", 

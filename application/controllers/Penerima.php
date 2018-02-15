@@ -25,7 +25,7 @@ class Penerima extends RTlh
 			show_404();
 		}
 
-		if (count($this->penerima->get($param)) == 0) {
+		if ($this->penerima->num_rows_penduduk($param) == 0) {
 			show_404();
 		}
 		

@@ -10,21 +10,16 @@ class Mdata_rkba extends Rtlh_model
 	public function __construct()
 	{
 		parent::__construct();
-		
 	}
 
 	public function get_all($limit = 20, $offset = 0, $type = 'result')
 	{
-		if($this->input->get('village') != '')
-			$this->db->where('penduduk.village', $this->input->get('village'));
-
-		if($this->input->get('gender') != '')
-			$this->db->where('penduduk.jns_kelamin', $this->input->get('gender'));
+		if($this->input->get('kabupaten') != '')
+			$this->db->where('penduduk.regency', $this->input->get('kabupaten'));
 
 		if($this->input->get('query') != '')
 			$this->db->like('penduduk.nik', $this->input->get('query'))
 					 ->or_like('nama_lengkap', $this->input->get('query'));
-
 
 		if($type == 'result')
 		{
@@ -35,6 +30,24 @@ class Mdata_rkba extends Rtlh_model
 			$this->db->join('penduduk', 'penduduk.nik = data_bantuan_rkba.nik');
 
 			return $this->db->get()->result();
+
+		} elseif ($type == 'export') {
+
+			$this->db->from('data_bantuan_rkba');
+
+			$this->db->join('daftar_bencana', 'daftar_bencana.id_bencana = data_bantuan_rkba.id_daftar_bencana','LEFT');
+
+			$this->db->join('penduduk', 'penduduk.nik = data_bantuan_rkba.nik','LEFT');
+
+			$this->db->join('provinces', 'penduduk.province = provinces.id', 'LEFT');
+
+			$this->db->join('regencies', 'penduduk.regency = regencies.id', 'LEFT');
+
+			$this->db->join('districts', 'penduduk.district = districts.id', 'LEFT');
+
+			$this->db->join('villages', 'penduduk.village = villages.id', 'LEFT');
+
+			return $this->db->get();
 
 		} else {
 
@@ -75,7 +88,6 @@ class Mdata_rkba extends Rtlh_model
 
 		}
 	}
-
 
 	public function get_all_daftar_bencana($param = 0)
 	{

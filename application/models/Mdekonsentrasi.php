@@ -29,7 +29,19 @@ class Mdekonsentrasi extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('dekonsentrasi', $limit, $offset)->result();
+
+		} elseif ($type == 'export') {
+			
+			$this->db->from('dekonsentrasi');
+
+			$this->db->join('jenis_kegiatan_dekon', 'dekonsentrasi.id_jenis_kegiatan = jenis_kegiatan_dekon.id', 'left');
+
+			$this->db->limit($limit, $offset);	
+			
+			return $this->db->get();
+
 		} else {
+
 			return $this->db->get('dekonsentrasi')->num_rows();
 		}
 	}
@@ -230,7 +242,13 @@ class Mdekonsentrasi extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('jenis_kegiatan_dekon', $limit, $offset)->result();
-		} else {
+
+		} elseif ($type == 'export') {
+			
+			return $this->db->get('jenis_kegiatan_dekon', $limit, $offset);
+
+		}  else {
+
 			return $this->db->get('jenis_kegiatan_dekon')->num_rows();
 		}
 	}

@@ -39,33 +39,24 @@ echo form_open(current_url(), array('method' => 'get'));
 				</div>
 				<div class="pull-right">
 				
-					<!-- <a href="<?php echo site_url("data_rkba/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url("data_rkba/export?per_page={$this->per_page}&page={$this->page}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>	 -->
-																					
-					<!-- <a href="<?php echo site_url('data_rkba/import') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-upload"></i> Impor</a> -->
+					<a href="<?php echo site_url("data_rkba/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("data_rkba/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				
 				</div>
 			</div>
 			<div class="box-body">
-				<div class="col-md-2">
-				    <div class="form-group">
-				        <label>Jenis Kelamin :</label>
-				        <select name="gender" class="form-control input-sm">
-				        	<option value="">-- PILIH --</option>
-				        	<option value="laki-laki" <?php if($this->input->get('gender')=='laki-laki') echo 'selected'; ?>>Laki-laki</option>
-				        	<option value="perempuan" <?php if($this->input->get('gender')=='perempuan') echo 'selected'; ?>>Perempuan</option>
-				        </select>	
-				    </div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label>Kabupaten : </label>
+						<select name="kabupaten" class="form-control input-sm select2">
+								<option value="">-- PILIH --</option>
+							<?php foreach ($this->muniversal->get_all_kabupaten(19) as $key => $value): ?>
+								<option value="<?php echo $value->id ?>" <?php if($this->input->get('kabupaten')==$value->id) echo 'selected'; ?>><?php echo $value->name_regencies ?></option>
+							<?php endforeach ?>
+						</select>
+					</div>
 				</div>
-				<!-- <div class="col-md-3">
-				    <div class="form-group">
-				        <label>Desa / Kelurahan :</label>
-				        <select name="village" class="form-control input-sm">
-				        	<option value="">-- PILIH --</option>
-					
-				        </select>	
-				    </div>
-				</div> -->
+
 				<div class="col-md-3">
 				    <div class="form-group">
 				        <label>Kata Kunci :</label>
@@ -100,10 +91,12 @@ echo form_open(site_url('data_rkba/bulk_action'));
 							<th width="40">NO</th>
 							<th class="text-center">NIK</th>
 							<th class="text-center">Nama Lengkap</th>
+							<th class="text-center">Kabupaten</th>
 							<th class="text-center">Desa / Kelurahan</th>
 							<th class="text-center">Alamat</th>
+							<th class="text-center">Tahun</th>
 							<th class="text-center">Korban Bencana</th>
-							<th class="text-center">sumber Anggaran</th>
+							<th class="text-center">Sumber Anggaran</th>
 							<th class="text-center">Jumlah Bantuan</th>
 							<th class="text-center">User </th>
 							<th width="130"></th>
@@ -122,20 +115,22 @@ echo form_open(site_url('data_rkba/bulk_action'));
 			                   <?php echo ++$number ?>
 						
 							</td>
-							<td class="text-center"><?php echo $row->nik; ?></td>
-							<td><?php echo ucwords($row->nama_lengkap); ?></td>
-							<td class="text-center"><?php echo $this->data_penerima->get_nama_desa($row->village)->name;  ?></td>
+							<td class="text-left"><?php echo highlight_phrase($row->nik, $this->input->get('query'),'<span style="color:red; font-weight: bold;">', '</span>'); ?></td>
+							<td><?php echo highlight_phrase(ucwords($row->nama_lengkap), $this->input->get('query'),'<span style="color:red; font-weight: bold;">', '</span>'); ?></td>
+							<td class="text-left"><?php echo $this->data_penerima->get_nama_kabupaten($row->regency)->name_regencies;  ?></td>
+							<td class="text-center"><?php echo $this->data_penerima->get_nama_desa($row->village)->name_villages;  ?></td>
 							<td><?php echo ucwords($row->alamat); ?></td>
+							<td class="text-center"><?php echo ucwords($row->tahun); ?></td>
 							<td><?php echo ucwords($this->data_rkba->get_daftar_bencana($row->id_daftar_bencana)->nama); ?> </td>
 							<td><?php echo ucwords($row->sumber_anggaran); ?> </td>
-							<td width="110">Rp. <?php echo number_format($row->jumlah_bantuan,'0'); ?> </td>
-							<td width="110"><?php 	echo $this->muniversal->get_account_by_login($row->user)->nama ?> </td>
+							<td >Rp. <?php echo number_format($row->jumlah_bantuan,'0'); ?> </td>
+							<td ><?php 	echo $this->muniversal->get_account_by_login($row->user)->nama ?> </td>
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
-						
+
 								<a href="<?php echo site_url("data_rkba/update/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 
 								<a href="<?php echo site_url("data_rkba/foto/{$row->id}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
-						
+
 								<a class="icon-button text-red get-delete-rkba" data-id="<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 				
 							</td>
@@ -147,8 +142,7 @@ echo form_open(site_url('data_rkba/bulk_action'));
 					<tfoot>
 					
 				
-						<th colspan="10">
-							
+						<th colspan="12">
 							<small class="pull-right"><?php echo count($data_rkba) . " dari " . $num_data_rkba . " data"; ?></small>
 						</th>
 					
@@ -181,8 +175,6 @@ echo form_close();
 		</div>
 	</div>
 </div>
-
-
 
 <div class="modal animated fadeIn modal-danger" id="modal-delete-penerima" tabindex="-1" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-sm">

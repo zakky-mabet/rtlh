@@ -185,7 +185,6 @@ class Data_rkba extends Rtlh
 			$this->data_rkba->upload_foto_rkba($param);
 
 			redirect(site_url('data_rkba/foto/'.$param));
-
 		}
 
 		$this->data = array(
@@ -204,5 +203,60 @@ class Data_rkba extends Rtlh
 
 		redirect('data_rkba/foto/'.$this->input->get('back'));
 	}
+
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Rumah Korban Bencana ALam", 
+			'data_rkba' => $this->data_rkba->get_all($this->per_page, $this->page),
+			'num_data_rkba' => $this->data_rkba->get_all(null, null, 'num'),
+		);
+
+		$this->load->view('rtlh/data_rkba/print_rkba', $this->data);
+	}
+	
+	public function export()
+	{
+		$query = $this->data_rkba->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
+		
+		$this->excel_generator->set_query($query);
+        $this->excel_generator->set_header(array(
+        		'NIK',
+        		'NAMA LENGKAP',
+        		'KABUPATEN/ KOTA',
+        		'KECAMATAN',
+        		'KELURAHAN/ DESA',
+        		'ALAMAT',
+        		'KORBAN BENCANA',
+        		'JENIS KERUSAKAN',
+        		'JENIS KEGIATAN',
+        		'TAHUN',
+        		'JUMLAH BANTUAN',
+        		'SUMBER ANGGARAN',
+        		'LATITUDE',
+        		'LONGITUDE',
+        	));
+        $this->excel_generator->set_column(
+        	array(
+        		'nik',
+        		'nama_lengkap',
+        		'name_regencies',
+        		'name_districts',
+        		'name_villages',
+        		'alamat',
+        		'nama',
+        		'jenis_kerusakan',
+        		'jenis_kegiatan',
+        		'tahun',
+        		'jumlah_bantuan',
+        		'sumber_anggaran',
+        		'latitude',
+        		'longitude',
+        	));
+        $this->excel_generator->set_width(array(20, 25, 30, 20, 20, 60, 30, 20, 20, 10, 20, 20, 20 ,20));
+        
+        $this->excel_generator->exportTo2007('DATA RUMAH KORBAN BENCANA ALAM');
+		
+	}	
 	
  }

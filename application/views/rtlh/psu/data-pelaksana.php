@@ -37,12 +37,11 @@
 					per halaman
 				</div>
 				<div class="pull-right">
-					<!--
-					<a href="<?php echo site_url("psu/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
-					<a href="<?php echo site_url("psu/print_out_landscape?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak Mode Landscape</a> -->
-
-					<a href="<?php echo site_url('psu/create_pelaksana') ?>" class="btn btn-success hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
 					
+					<a href="<?php echo site_url('psu/create_pelaksana') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
+					<a href="<?php echo site_url("psu/print_out_pelaksana?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+					<a href="<?php echo site_url("psu/export_pelaksana?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
+
 				</div>
 			</div>
 			<div class="box-body">

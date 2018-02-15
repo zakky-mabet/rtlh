@@ -21,23 +21,45 @@ class Mpopulation extends Rtlh_model
 	}
 
 	public function get_all($limit = 20, $offset = 0, $type = 'result')
-	{
-		if($this->input->get('query') != '')
-			$this->db->like('nik', $this->input->get('query'))
-					 ->or_like('nama_lengkap', $this->input->get('query'));
+	{	
 
 		if($this->input->get('kabupaten') != '')
-			$this->db->where('regency', $this->input->get('kabupaten'));
+			$this->db->where('penduduk.regency', $this->input->get('kabupaten'));
 
 		if($this->input->get('kecamatan') != '')
-			$this->db->where('district', $this->input->get('kecamatan'));
+			$this->db->where('penduduk.district', $this->input->get('kecamatan'));
 
 		if($this->input->get('kelurahan') != '')
-			$this->db->where('village', $this->input->get('kelurahan'));		
+			$this->db->where('penduduk.village', $this->input->get('kelurahan'));
+
+		if($this->input->get('query') != '')
+			$this->db->like('penduduk.nik', $this->input->get('query'))
+					 ->or_like('penduduk.nama_lengkap', $this->input->get('query'));
+
+		$this->db->order_by('ID', 'desc');		
 
 		if($type == 'result')
 		{
 			return $this->db->get('penduduk', $limit, $offset)->result();
+
+		} elseif ($type == 'export') {
+
+			$this->db->select('*');
+
+			$this->db->from('penduduk');
+
+			$this->db->join('provinces', 'penduduk.province = provinces.id', 'LEFT');
+
+			$this->db->join('regencies', 'penduduk.regency = regencies.id', 'LEFT');
+
+			$this->db->join('districts', 'penduduk.district = districts.id', 'LEFT');
+
+			$this->db->join('villages', 'penduduk.village = villages.id', 'LEFT');
+
+			$this->db->limit($limit, $offset);
+
+			return $this->db->get();
+
 		} else {
 			return $this->db->get('penduduk')->num_rows();
 		}
@@ -190,48 +212,77 @@ class Mpopulation extends Rtlh_model
 	function get_provinsi() 
 	{
         $hasil=$this->db->query("SELECT * FROM provinces WHERE id=19");
+
+        return $hasil->result();
+    }
+
+    function get_kabupaten($param = 0) 
+	{
+        $hasil=$this->db->query("SELECT * FROM regencies WHERE province_id={$param}");
+
+        return $hasil->result();
+    }
+
+    function get_kecamatan($param = 0) 
+	{
+        $hasil=$this->db->query("SELECT * FROM districts WHERE regency_id={$param}");
+
+        return $hasil->result();
+    }
+
+    function get_kelurahan($param = 0) 
+	{
+        $hasil=$this->db->query("SELECT * FROM villages WHERE district_id={$param}");
+
         return $hasil->result();
     }
  
     function kabupaten($provId){
 
-	$kabupaten="<option value=''>-- PILIH --</option>";
+		$kabupaten="<option value=''>-- PILIH KABUPATEN --</option>";
 
-	$this->db->order_by('name','ASC');
-	$kab= $this->db->get_where('regencies',array('province_id'=>$provId));
+		$this->db->order_by('name_regencies','ASC');
 
-	foreach ($kab->result_array() as $data ){
-	$kabupaten.= "<option value='$data[id]'>$data[name]</option>";
-	}
+		$kab= $this->db->get_where('regencies',array('province_id'=>$provId));
 
-	return $kabupaten;
+		foreach ($kab->result_array() as $data ){
+			$kabupaten.= "<option value='$data[id]'>$data[name_regencies]</option>";
+		}
+
+		return $kabupaten;
 
 	}
 
 	function kecamatan($kabId){
-	$kecamatan="<option value=''>-- PILIH --</option>";
 
-	$this->db->order_by('name','ASC');
-	$kec= $this->db->get_where('districts',array('regency_id'=>$kabId));
+		$kecamatan="<option value=''>-- PILIH KECAMATAN --</option>";
 
-	foreach ($kec->result_array() as $data ){
-	$kecamatan.= "<option value='$data[id]'>$data[name]</option>";
-	}
+		$this->db->order_by('name_districts','ASC');
 
-	return $kecamatan;
+		$kec= $this->db->get_where('districts',array('regency_id'=>$kabId));
+
+		foreach ($kec->result_array() as $data ){
+
+			$kecamatan.= "<option value='$data[id]'>$data[name_districts]</option>";
+		}
+
+		return $kecamatan;
 	}
 
 	function kelurahan($kecId){
-	$kelurahan="<option value=''>-- PILIH --</option>";
 
-	$this->db->order_by('name','ASC');
-	$kel= $this->db->get_where('villages',array('district_id'=>$kecId));
+		$kelurahan="<option value=''>-- PILIH KELURAHAN/DESA --</option>";
 
-	foreach ($kel->result_array() as $data ){
-	$kelurahan.= "<option value='$data[id]'>$data[name]</option>";
-	}
+		$this->db->order_by('name_villages','ASC');
 
-	return $kelurahan;
+		$kel= $this->db->get_where('villages',array('district_id'=>$kecId));
+
+		foreach ($kel->result_array() as $data ){
+
+			$kelurahan.= "<option value='$data[id]'>$data[name_villages]</option>";
+		}
+
+		return $kelurahan;
 	}
 
 	public function get_nama_desa($id = 0)

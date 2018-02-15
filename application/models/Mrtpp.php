@@ -31,7 +31,6 @@ class Mrtpp extends Rtlh_model
 			$this->db->like('rtpp.nik', $this->input->get('query'))
 				->or_like('penduduk.nama_lengkap', $this->input->get('query'));
 
-
 		$this->db->order_by('id_rtpp', 'desc');
 		
 		if($type == 'result')
@@ -43,6 +42,27 @@ class Mrtpp extends Rtlh_model
 			$this->db->join('penduduk', 'penduduk.nik = rtpp.nik', 'LEFT');
 
 			return $this->db->get()->result();
+
+		} 
+		elseif ($type == 'export') {
+
+			$this->db->select('rtpp.nik, penduduk.nama_lengkap, rtpp.sumber_anggaran, rtpp.jumlah_bantuan, rtpp.tahun, rtpp.lokasi_rumah, rtpp.aksi, regencies.name_regencies, daftar_proyek_rtpp.nama_proyek ');
+			
+			$this->db->from('rtpp');
+
+			$this->db->join('penduduk', 'penduduk.nik = rtpp.nik', 'LEFT');
+
+			$this->db->join('daftar_proyek_rtpp', 'rtpp.id_rtpp =daftar_proyek_rtpp.id_proyek','LEFT');
+
+			$this->db->join('provinces', 'penduduk.province = provinces.id', 'LEFT');
+
+			$this->db->join('regencies', 'penduduk.regency = regencies.id', 'LEFT');
+
+			$this->db->join('districts', 'penduduk.district = districts.id', 'LEFT');
+
+			$this->db->join('villages', 'penduduk.village = villages.id', 'LEFT');
+
+			return $this->db->get();
 
 		} else {
 
@@ -278,7 +298,12 @@ class Mrtpp extends Rtlh_model
 		if($type == 'result')
 		{
 			return $this->db->get('daftar_proyek_rtpp', $limit, $offset)->result();
-		} else {
+
+		}	elseif ($type == 'export') {
+
+			return $this->db->get('daftar_proyek_rtpp', $limit, $offset);
+
+		} else 	{
 			return $this->db->get('daftar_proyek_rtpp')->num_rows();
 		}
 	}

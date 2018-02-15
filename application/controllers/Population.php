@@ -95,23 +95,28 @@ class Population extends Rtlh
 		$this->breadcrumbs->unshift(2, 'Data Penduduk', "population");
 
 		$this->form_validation->set_rules('nik', 'NIK', 'trim|callback_validate_nik|required');
-		//$this->form_validation->set_rules('kk', 'No. KK', 'trim|required');
-		// $this->form_validation->set_rules('status_kk', 'Status Hubungan KK', 'trim|required');
+		$this->form_validation->set_rules('kk', 'No. KK', 'trim|required');
+		$this->form_validation->set_rules('status_kk', 'Status Hubungan KK', 'trim|required');
 		$this->form_validation->set_rules('name', 'Nama', 'trim|required');
-		// $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'trim|required');
-		// $this->form_validation->set_rules('birts', 'Tanggal Lahir', 'trim|required');
-		// $this->form_validation->set_rules('gender', 'Jenis Kelamin', 'trim|required');
-		// $this->form_validation->set_rules('agama', 'Agama', 'trim|required');
-		// $this->form_validation->set_rules('status_kawin', 'Status Perkawinan', 'trim|required');
-		// $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraaan', 'trim|required');
-		// $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'trim|required');
-		// $this->form_validation->set_rules('gol_darah', 'Golongan Darah', 'trim|required');
-		// $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		// $this->form_validation->set_rules('rt', 'RT', 'trim|is_numeric|required');
-		// $this->form_validation->set_rules('rw', 'RW', 'trim|is_numeric|required');
-		// $this->form_validation->set_rules('desa', 'Desa / Kelurahan', 'trim|required');
-		// $this->form_validation->set_rules('telepon', 'Telepon', 'trim');
-		// $this->form_validation->set_rules('kd_pos', 'Kode Pos', 'trim');
+		$this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'trim|required');
+		$this->form_validation->set_rules('birts', 'Tanggal Lahir', 'trim|required');
+		$this->form_validation->set_rules('gender', 'Jenis Kelamin', 'trim|required');
+		$this->form_validation->set_rules('agama', 'Agama', 'trim|required');
+		$this->form_validation->set_rules('status_kawin', 'Status Perkawinan', 'trim|required');
+		$this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraaan', 'trim|required');
+
+		$this->form_validation->set_rules('gol_darah', 'Golongan Darah', 'trim|required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('rt', 'RT', 'trim|is_numeric|required');
+		$this->form_validation->set_rules('rw', 'RW', 'trim|is_numeric|required');
+
+		//$this->form_validation->set_rules('telepon', 'Telepon', 'trim|required');
+		$this->form_validation->set_rules('provinsi', 'Provinsi', 'trim|required');
+		$this->form_validation->set_rules('kabupaten', 'Kabupaten/ Kota ', 'trim|required');
+		$this->form_validation->set_rules('kecamatan', 'Kecamataan ', 'trim|required');
+		$this->form_validation->set_rules('kelurahan', 'Kelurahan/ Desa ', 'trim|required');
+		//$this->form_validation->set_rules('kd_pos', 'Kode Pos', 'trim|required');
+
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -136,24 +141,28 @@ class Population extends Rtlh
 
 		$this->breadcrumbs->unshift(2, 'Data Penduduk', "population");
 
-		//$this->form_validation->set_rules('nik', 'NIK', 'trim|callback_validate_nik|required');
-		//$this->form_validation->set_rules('kk', 'No. KK', 'trim|required');
-		//$this->form_validation->set_rules('status_kk', 'Status Hubungan KK', 'trim|required');
+		
+		$this->form_validation->set_rules('kk', 'No. KK', 'trim|required');
+		$this->form_validation->set_rules('status_kk', 'Status Hubungan KK', 'trim|required');
 		$this->form_validation->set_rules('name', 'Nama', 'trim|required');
-		// $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'trim|required');
-		// $this->form_validation->set_rules('birts', 'Tanggal Lahir', 'trim|required');
-		// $this->form_validation->set_rules('gender', 'Jenis Kelamin', 'trim|required');
-		// $this->form_validation->set_rules('agama', 'Agama', 'trim|required');
-		// $this->form_validation->set_rules('status_kawin', 'Status Perkawinan', 'trim|required');
-		// $this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraaan', 'trim|required');
-		// $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'trim|required');
-		// $this->form_validation->set_rules('gol_darah', 'Golongan Darah', 'trim|required');
-		// $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-		// $this->form_validation->set_rules('rt', 'RT', 'trim|is_numeric|required');
-		// $this->form_validation->set_rules('rw', 'RW', 'trim|is_numeric|required');
-		// $this->form_validation->set_rules('desa', 'Desa / Kelurahan', 'trim|required');
-		// $this->form_validation->set_rules('telepon', 'Telepon', 'trim');
-		// $this->form_validation->set_rules('kd_pos', 'Kode Pos', 'trim');
+		$this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'trim|required');
+		$this->form_validation->set_rules('birts', 'Tanggal Lahir', 'trim|required');
+		$this->form_validation->set_rules('gender', 'Jenis Kelamin', 'trim|required');
+		$this->form_validation->set_rules('agama', 'Agama', 'trim|required');
+		$this->form_validation->set_rules('status_kawin', 'Status Perkawinan', 'trim|required');
+		$this->form_validation->set_rules('kewarganegaraan', 'Kewarganegaraaan', 'trim|required');
+
+		$this->form_validation->set_rules('gol_darah', 'Golongan Darah', 'trim|required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('rt', 'RT', 'trim|is_numeric|required');
+		$this->form_validation->set_rules('rw', 'RW', 'trim|is_numeric|required');
+
+		//$this->form_validation->set_rules('telepon', 'Telepon', 'trim|required');
+		$this->form_validation->set_rules('provinsi', 'Provinsi', 'trim|required');
+		$this->form_validation->set_rules('kabupaten', 'Kabupaten/ Kota ', 'trim|required');
+		$this->form_validation->set_rules('kecamatan', 'Kecamataan ', 'trim|required');
+		$this->form_validation->set_rules('kelurahan', 'Kelurahan/ Desa ', 'trim|required');
+		//$this->form_validation->set_rules('kd_pos', 'Kode Pos', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -207,7 +216,6 @@ class Population extends Rtlh
 
 		$this->data = array(
 			'title' => "Impor Data Penduduk", 
-			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 		);
 
@@ -223,9 +231,57 @@ class Population extends Rtlh
 
 	public function export()
 	{
-		$this->population_excel->get($this->input->get('per_page'), $this->input->get('page'));
-	}
+		$query = $this->population->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
 
+		$this->excel_generator->set_query($query);
+        $this->excel_generator->set_header(array(
+        		'NIK',
+        		'No. KK',
+        		'Nama Lengkap',
+        		'Status KK',
+        		'Tempat Lahir',
+        		'Tanggal Lahir',
+        		'Jenis Kelamin',
+        		'Status Perkawinan',
+        		'Kewarganegaraaan',
+        		'Golongan Darah',
+        		'Alamat',
+        		'RT',
+        		'RW',
+        		'Provinsi',
+        		'Kabupaten/Kota',
+        		'Kecamataan',
+        		'Kelurahan/Desa',
+        		'Telepon',
+        		'Kode Pos'
+
+        	));
+        $this->excel_generator->set_column(
+        	array(
+        		'nik',
+        		'no_kk',
+        		'nama_lengkap',
+        		'status_kk',
+        		'tmp_lahir',
+        		'tgl_lahir',
+        		'jns_kelamin',
+        		'status_kawin',
+        		'kewarganegaraan',
+        		'gol_darah',
+        		'alamat',
+        		'rt',
+        		'rw',
+        		'name_provinces',
+        		'name_regencies',
+        		'name_districts',
+        		'name_villages',
+        		'telepon',
+        		'kd_pos'
+        	));
+        $this->excel_generator->set_width(array(20, 20, 20, 15, 15, 20, 20, 25, 20, 20, 50, 10, 10, 30, 30, 35, 30, 20, 11));
+        
+        $this->excel_generator->exportTo2007('DATA PENDUDUK');
+	}
 	/**
 	 * Check Ketersediaan NIK
 	 *
@@ -242,26 +298,6 @@ class Population extends Rtlh
 		}
 	}
 
-	// /**
-	//  * Get Data Penduduk 
-	//  *
-	//  * @param Integer (ID)
-	//  * @return string (JSON) 
-	//  **/
-	// public function getjson($param = 0)
-	// {
-	// 	$get = $this->db->get('penduduk', array('nik' => $param));
-
-	// 	$this->data = array(
-	// 		'id' => $get->ID,
-	// 		'nik' => $get->nik,
-	// 		'nama' => $get->nama_lengkap,
-	// 		'tmp_tgl_lahir' => $get->tmp_lahir.", ".date_id($get->tgl_lahir),
-	// 		'jns_kelamin' => strtoupper($get->jns_kelamin)
-	// 	);
-
-	// 	$this->output->set_content_type('application/json')->set_output(json_encode($this->data));
-	// }
 
 	function ambil_data(){
 

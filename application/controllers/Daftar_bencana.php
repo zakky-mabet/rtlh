@@ -28,6 +28,8 @@ class Daftar_bencana extends Rtlh {
 		$this->query = $this->input->get('query');
 
 		$this->jenis = $this->input->get('jenis');
+
+		$this->load->library(array('PHPExcel/PHPExcel'));
 	}
 
 	public function index() 
@@ -54,7 +56,7 @@ class Daftar_bencana extends Rtlh {
 		$this->template->view('rtlh/daftar_bencana/v_daftar_bencana', $this->data);
 	}
 
-	public function jenis_bencana() 
+	public function jenis_bencana($type = '') 
 	{
 		$this->page_title->push('Rumah Korban Bencana Alam', 'Data Jenis Bencana');
 
@@ -74,8 +76,23 @@ class Daftar_bencana extends Rtlh {
 			'daftar_bencana' => $this->daftar_bencana->get_all_jenis_bencana($this->per_page, $this->page),
 			'num_daftar_bencana' => $config['total_rows']
 		);
+		if($type == 'export')
+		{
+			
+		}else{
 
-		$this->template->view('rtlh/daftar_bencana/v_jenis_bencana', $this->data);
+			$this->template->view('rtlh/daftar_bencana/v_jenis_bencana', $this->data);
+		}
+	}
+
+	public function excel()
+	{
+		$query = $this->db->get('jenis_bencana');
+		$this->excel_generator->set_query($query);
+		$this->excel_generator->set_header(array('Nama Jenis', 'Keterangan'));
+		$this->excel_generator->set_column(array('nama', 'keterangan'));
+		$this->excel_generator->set_width(array(25, 15));
+		$this->excel_generator->exportTo2007('Laporan');
 	}
 
 	public function create_jenis()
@@ -251,4 +268,54 @@ class Daftar_bencana extends Rtlh {
 
 		redirect(site_url('daftar_bencana/foto_bencana/'.$this->daftar_bencana->get_foto_bencana($param)->id_daftar_bencana));
 	}
+
+	public function print_out()
+	{
+		$this->data = array(
+			'title' => "Data Daftar Bencana", 
+			'daftar_bencana' => $this->daftar_bencana->get_all($this->per_page, $this->page),
+			'num_daftar_bencana' => $this->daftar_bencana->get_all(null, null, 'num'),
+		);
+		$this->load->view('rtlh/daftar_bencana/print_daftar_bencana', $this->data);
+	}
+	
+	public function export()
+	{
+		$query = $this->daftar_bencana->get_all($this->input->get('per_page'), $this->input->get('page'), 'export' );
+		
+		$this->excel_generator->set_query($query);
+        $this->excel_generator->set_header(array(
+        		'NAMA BENCANA',
+        		'JENIS BENCANA',
+        		'TAHUN',
+        		'LOKASI',
+        		'STATUS BENCANA',
+        		'LUAS',
+        		'JUMLAH KORBAN',
+        	));
+        $this->excel_generator->set_column(
+        	array(
+        		'nama_bencana',
+        		'nama_jenis',
+        		'tahun',
+        		'lokasi',
+        		'status_bencana',
+        		'luas',
+        		'jumlah',
+        	));
+        $this->excel_generator->set_width(array(30, 25, 10, 70, 20,10,20));
+        
+        $this->excel_generator->exportTo2007('DATA DAFTAR BENCANA');
+		
+	}
+
+	public function print_out_jenis()
+	{
+		$this->data = array(
+			'title' => "Data Daftar Jenis Bencana", 
+			'daftar_bencana' => $this->daftar_bencana->get_all_jenis_bencana($this->per_page, $this->page),
+			'num_daftar_bencana' => $this->daftar_bencana->get_all_jenis_bencana(null, null, 'num'),
+		);
+		$this->load->view('rtlh/daftar_bencana/print_jenis_bencana', $this->data);
+	}	
 }
