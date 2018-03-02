@@ -14,7 +14,7 @@
 echo form_open(site_url("#"), array('class' => 'form-horizontal', 'id' => 'form-insert-requirement'));
 
 ?>
-			<div class="box-body" style="margin-top: 10px;">
+			<div class="box-body" style="margin-top: 10px;" > 
 				<div class="col-md-7" id="blok-cari-nik">
 					<div class="form-group" style="padding-top: 10px;">
 						<label for="nik" class="control-label col-md-3 col-xs-12">NIK / Nama : <strong class="text-red">*</strong></label>

@@ -275,22 +275,22 @@ class Dekonsentrasi extends Rtlh
 		$this->excel_generator->set_query($query);
 
         $this->excel_generator->set_header(array(
-        		'NAMA KEGIATAN',
-        		'JENIS KEGIATAN',
-        		'NILAI ANGGARAN',
-        		'TAHUN',
-        		'TANGGAL KEGIATAN',
-        	));
+        	'NAMA KEGIATAN',
+        	'JENIS KEGIATAN',
+        	'NILAI ANGGARAN',
+        	'TAHUN',
+        	'TANGGAL KEGIATAN',
+        ));
 
         $this->excel_generator->set_column(
-        	array(
-        		'nama_kegiatan',
-        		'nama_jenis',
-        		'nilai_anggaran',
-        		'tahun',
-        		'tanggal_kegiatan',
-
-        	));
+        array(
+        	'nama_kegiatan',
+        	'nama_jenis',
+        	'nilai_anggaran',
+        	'tahun',
+        	'tanggal_kegiatan',
+        ));
+        
         $this->excel_generator->set_width(array(34, 30, 25, 11, 20));
         
         $this->excel_generator->exportTo2007('DATA DEKONSENTRASI');	
