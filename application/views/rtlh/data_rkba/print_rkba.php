@@ -22,7 +22,7 @@ $this->load->view('rtlh/print/header');
                 <th class="text-center">Jenis Kerusakan</th>
                 <th class="text-center">Jenis Kegiatan</th>
                 <th class="text-center">Tahun</th>
-                <th class="text-center">Sumber Anggaran</th>
+                <th class="text-center">Sumber Dana</th>
                 <th class="text-center">Jumlah Bantuan</th>
                 <th class="text-center">Koordinat</th>
             </tr>

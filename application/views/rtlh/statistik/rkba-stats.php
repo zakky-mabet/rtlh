@@ -10,7 +10,7 @@
                         <a href="<?php echo site_url('statistik/rkba') ?>">Jumlah Rumah Per Kabupaten</a>
                     </li>
                     <li class="<?php echo active_link_method('rkba_sumber_anggaran','statistik'); ?>">
-                        <a href="<?php echo site_url('statistik/rkba_sumber_anggaran') ?>">Sumber Anggaran</a>
+                        <a href="<?php echo site_url('statistik/rkba_sumber_anggaran') ?>">Sumber Dana</a>
                     </li>
                 </ul>
             </div>

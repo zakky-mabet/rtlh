@@ -80,7 +80,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="sumber_anggaran" class="control-label col-md-3 col-xs-12">Sumber Anggaran : <strong class="text-red">*</strong></label>
+					<label for="sumber_anggaran" class="control-label col-md-3 col-xs-12">Sumber Dana : <strong class="text-red">*</strong></label>
 					<div class="col-md-9">
 						<select name="sumber_anggaran" class="form-control select2" style="width: 100%">
 							<option value="">-- PILIH --</option>

@@ -51,24 +51,14 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 			</div>
 
 			<div class="form-group">
-				<label for="nilai_kontrak" class="control-label col-md-3 col-xs-12">Nilai Kontrak: <strong class="text-red">*</strong></label>
+				<label for="nilai_kontrak" class="control-label col-md-3 col-xs-12">Nilai Anggaran : <strong class="text-red">*</strong></label>
 				<div class="col-md-8">
 					<input type="text" name="nilai_kontrak" class="form-control" value="<?php echo set_value('nilai_kontrak'); ?>">
 					<p class="help-block"><?php echo form_error('nilai_kontrak', '<small class="text-red">', '</small>'); ?></p>
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label for="tanggal_mulai" class="control-label col-md-3 col-xs-12">Tanggal : <strong class="text-red">*</strong></label>
-				<div class="col-md-4">
-					<input type="text" name="tanggal_mulai" placeholder="Tanggal Mulai" id="datepicker" class="form-control" value="<?php echo set_value('tanggal_mulai'); ?>">
-					<p class="help-block"><?php echo form_error('tanggal_mulai', '<small class="text-red">', '</small>'); ?></p>
-				</div>
-				<div class="col-md-4">
-					<input type="text" name="tanggal_selesai" placeholder="Tanggal Selesai"  id="datepicker1" class="form-control" value="<?php echo set_value('tanggal_selesai'); ?>">
-					<p class="help-block"><?php echo form_error('tanggal_selesai', '<small class="text-red">', '</small>'); ?></p>
-				</div>
-			</div>
+			
 
 				<div class="form-group">
 					<label for="alamat" class="control-label col-md-3 col-xs-12">Alamat : <strong class="text-red">*</strong></label>
@@ -92,7 +82,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 			</div>
 
 			<div class="form-group">
-					<label for="id_jenis_psu" class="control-label col-md-3 col-xs-12">Jenis : <strong class="text-red">*</strong></label>
+					<label for="id_jenis_psu" class="control-label col-md-3 col-xs-12">Jenis Pekerjaan : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<select name="id_jenis_psu" class="form-control select2" style="width: 100%">
 							<option value="">-- PILIH --</option>
@@ -103,6 +93,22 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<p class="help-block"><?php echo form_error('id_jenis_psu', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 			</div>
+
+			<div class="form-group">
+				<label for="item_pekerjaan" class="control-label col-md-3 col-xs-12">Item Pekerjaan : <strong class="text-red">*</strong></label>
+				<div class="col-md-8">
+					<input type="text" name="item_pekerjaan" class="form-control" value="<?php echo set_value('item_pekerjaan'); ?>">
+					<p class="help-block"><?php echo form_error('item_pekerjaan', '<small class="text-red">', '</small>'); ?></p>
+				</div>
+			</div>
+
+			<div class="form-group">
+					<label for="deskripsi" class="control-label col-md-3 col-xs-12">Deskripsi : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<textarea name="deskripsi" class="form-control"><?php echo set_value('deskripsi'); ?></textarea>
+						<p class="help-block"><?php echo form_error('deskripsi', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
 
 			<div class="box-footer with-border">
 				<div class="col-md-4 col-xs-5">

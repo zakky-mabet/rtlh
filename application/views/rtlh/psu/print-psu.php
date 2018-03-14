@@ -18,10 +18,10 @@ $this->load->view('rtlh/print/header');
                 <th class="text-center">Kabupaten</th>
                 <th class="text-center">Pelaksana</th>
                 <th class="text-center">Sumber Dana</th>
-                <th class="text-center">Nilai Kontrak</th>
+                <th class="text-center">Nilai Anggran</th>
                 <th class="text-center">Alamat</th>
-                <th class="text-center">Tanggal Mulai</th>
-                <th class="text-center">Tanggal Selesai</th>
+                <th class="text-center">Item Pekerjaan</th>
+                <th class="text-center">Deskripsi</th>
             </tr>
         </thead>
         <tbody>
@@ -43,8 +43,8 @@ $this->load->view('rtlh/print/header');
                 <td class="text-center"><?php echo ucwords($row->sumber_dana) ?></td>
                 <td class="text-center"><?php echo ucwords($row->nilai_kontrak) ?></td>
                 <td><?php echo $row->alamat; ?></td>
-                <td><?php echo date_id($row->tanggal_mulai); ?></td>
-                <td><?php echo date_id($row->tanggal_selesai); ?></td>
+                <td><?php echo ($row->item_pekerjaan); ?></td>
+                <td><?php echo ($row->deskripsi); ?></td>
             </tr>
             <?php
             endforeach;

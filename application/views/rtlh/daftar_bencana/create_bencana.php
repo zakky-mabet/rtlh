@@ -19,6 +19,22 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 						<p class="help-block"><?php echo form_error('nama', '<small class="text-red">', '</small>'); ?></p>
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label for="no_sk" class="control-label col-md-3 col-xs-12">Nomor SK : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<input type="text" name="no_sk" class="form-control" value="<?php echo set_value('no_sk'); ?>">
+						<p class="help-block"><?php echo form_error('no_sk', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="tanggal" class="control-label col-md-3 col-xs-12">Tanggal : <strong class="text-red">*</strong></label>
+					<div class="col-md-8">
+						<input type="text" name="tanggal" class="form-control" id="datepicker" value="<?php echo set_value('tanggal'); ?>">
+						<p class="help-block"><?php echo form_error('tanggal', '<small class="text-red">', '</small>'); ?></p>
+					</div>
+				</div>
 				
 				<div class="form-group">
 					<label for="id_jenis_bencana" class="control-label col-md-3 col-xs-12">Jenis Bencana : <strong class="text-red">*</strong></label>
@@ -60,6 +76,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					<div class="col-md-8">
 						<select name="status_bencana" class="form-control">
 							<option value="">-- PILIH --</option>
+							<option value="Nasional" <?php if($this->input->get('status_bencana')=='Nasional') echo 'selected'; ?>>Nasional</option>
 							<option value="Provinsi" <?php if($this->input->get('status_bencana')=='Provinsi') echo 'selected'; ?>>Provinsi</option>
 				        	<option value="Kabupaten" <?php if($this->input->get('status_bencana')=='Kabupaten') echo 'selected'; ?>>Kabupaten/Kota</option>
 				        	<option value="Kecamatan" <?php if($this->input->get('status_bencana')=='Kecamatan') echo 'selected'; ?>>Kecamatan</option>
@@ -78,7 +95,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 				</div>
 
 				<div class="form-group">
-					<label for="jumlah" class="control-label col-md-3 col-xs-12">Jumlah Korban : <strong class="text-red">*</strong></label>
+					<label for="jumlah" class="control-label col-md-3 col-xs-12">Jumlah Rumah : <strong class="text-red">*</strong></label>
 					<div class="col-md-8">
 						<input type="text" name="jumlah" class="form-control" value="<?php echo set_value('jumlah'); ?>">
 						<p class="help-block"><?php echo form_error('jumlah', '<small class="text-red">', '</small>'); ?></p>

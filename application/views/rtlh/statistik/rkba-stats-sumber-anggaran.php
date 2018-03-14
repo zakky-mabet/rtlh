@@ -10,7 +10,7 @@
                         <a href="<?php echo site_url('statistik/rkba') ?>">Jumlah Rumah Per Kabupaten</a>
                     </li>
                     <li class="<?php echo active_link_method('rkba_sumber_anggaran','statistik'); ?>">
-                        <a href="<?php echo site_url('statistik/rkba_sumber_anggaran') ?>">Sumber Anggaran</a>
+                        <a href="<?php echo site_url('statistik/rkba_sumber_anggaran') ?>">Sumber Dana</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +101,7 @@ var chart = new Highcharts.Chart({
     },
     colors: ['#000D8D','#299617', '#E936A7', '#FFAA1D', ' #FD3A4A', '#87FF2A','#2243B6'],
     title: {
-        text: 'Grafik Sumber Anggaran Rumah Korban Bencana Alam'
+        text: 'Grafik Sumber Dana Rumah Korban Bencana Alam'
     },
     subtitle: {
         text: '<p><?php if ($this->input->get('tahun') != '') { echo 'Tahun '.$this->input->get('tahun'); } ?> <?php if ($this->input->get('kabupaten') != '') 

@@ -104,7 +104,7 @@ class Data_rkba extends Rtlh
 		$this->form_validation->set_rules('latitude', 'Latitude', 'trim|required');
 		$this->form_validation->set_rules('longitude', 'Longitude', 'trim|required');
 		$this->form_validation->set_rules('jumlah_bantuan', 'Jumlah  Bantuan', 'trim|required|is_numeric');
-		$this->form_validation->set_rules('sumber_anggaran', 'Sumber Anggaran', 'trim|required');
+		$this->form_validation->set_rules('sumber_anggaran', 'Sumber Dana', 'trim|required');
 
 		if($this->form_validation->run() == TRUE)
 		{
@@ -145,7 +145,7 @@ class Data_rkba extends Rtlh
 		$this->form_validation->set_rules('latitude', 'Latitude', 'trim|required');
 		$this->form_validation->set_rules('longitude', 'Longitude', 'trim|required');
 		$this->form_validation->set_rules('jumlah_bantuan', 'Jumlah  Bantuan', 'trim|required|is_numeric');
-		$this->form_validation->set_rules('sumber_anggaran', 'Sumber Anggaran', 'trim|required');
+		$this->form_validation->set_rules('sumber_anggaran', 'Sumber Dana', 'trim|required');
 
 		if($this->form_validation->run() == TRUE)
 		{

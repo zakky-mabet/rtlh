@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>
         </ul>
       </li>
-      <li class="treeview <?php echo active_link_multiple(array('psu')); ?>">
+      <li class="treeview  <?php echo active_link_method('master_jenis'); ?> <?php echo active_link_method('index','psu'); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> PSU</span>
           <span class="pull-right-container">
@@ -97,11 +97,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="<?php echo active_link_method('index'); ?>">
             <a href="<?php echo site_url('psu') ?>"><i class="fa fa-angle-double-right"></i> Data PSU</a>
           </li>
-          <li class="<?php echo active_link_method('daftar_pelaksana'); ?>">
-            <a href="<?php echo site_url('psu/daftar_pelaksana') ?>"><i class="fa fa-angle-double-right"></i> Daftar Pelaksana</a>
-          </li>
+         
           <li class="<?php echo active_link_method('master_jenis'); ?>">
-            <a href="<?php echo site_url('psu/master_jenis') ?>"><i class="fa fa-angle-double-right"></i> Master Jenis</a>
+            <a href="<?php echo site_url('psu/master_jenis') ?>"><i class="fa fa-angle-double-right"></i> Master Jenis Pekerjaan</a>
           </li>
         </ul>
       </li>
@@ -190,7 +188,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
       </li>
       
-      <li class="treeview <?php echo active_link_multiple(array('population','kriteria','sub_kriteria')); ?>">
+      <li class="treeview <?php echo active_link_multiple(array('population','kriteria','sub_kriteria')); ?> <?php echo active_link_method('daftar_pelaksana','psu'); ?>">
         <a href="#">
           <i class="fa fa-database"></i> <span> Master Data</span>
           <span class="pull-right-container">
@@ -198,7 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo active_link_controller('population') ?>">
+          <li class="<?php echo active_link_controller('population','psu') ?>">
             <a href="<?php echo site_url('population') ?>"><i class="fa fa-angle-double-right"></i> Data Penduduk</a>
           </li>
           <li class="<?php echo active_link_controller('kriteria') ?>">
@@ -206,6 +204,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>
           <li class="<?php echo active_link_controller('sub_kriteria') ?>">
             <a href="<?php echo site_url('sub_kriteria') ?>"><i class="fa fa-angle-double-right"></i> Data Sub Kriteria</a>
+          </li>
+           <li class="<?php echo active_link_method('daftar_pelaksana','psu'); ?>">
+            <a href="<?php echo site_url('psu/daftar_pelaksana') ?>"><i class="fa fa-angle-double-right"></i> Daftar Pelaksana</a>
           </li>
         </ul>
       </li>

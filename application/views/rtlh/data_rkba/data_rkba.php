@@ -96,7 +96,7 @@ echo form_open(site_url('data_rkba/bulk_action'));
 							<th class="text-center">Alamat</th>
 							<th class="text-center">Tahun</th>
 							<th class="text-center">Korban Bencana</th>
-							<th class="text-center">Sumber Anggaran</th>
+							<th class="text-center">Sumber Dana</th>
 							<th class="text-center">Jumlah Bantuan</th>
 							<th class="text-center">User </th>
 							<th width="130"></th>

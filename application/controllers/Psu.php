@@ -76,9 +76,9 @@ class Psu extends Rtlh
 		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'trim|required');
 		$this->form_validation->set_rules('sumber_dana', 'Sumber Dana', 'trim|required');
-		$this->form_validation->set_rules('nilai_kontrak', 'Nilai Kontrak', 'trim|required');
-		$this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'trim|required');
-		$this->form_validation->set_rules('tanggal_selesai', 'Tanggal Selesai', 'trim|required');
+		$this->form_validation->set_rules('nilai_kontrak', 'Nilai Anggaran', 'trim|required');
+		$this->form_validation->set_rules('item_pekerjaan', 'Item Pekerjaan', 'trim|required');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi ', 'trim|required');
 		$this->form_validation->set_rules('id_pelaksana', 'Pelaksana', 'trim|required');
 		$this->form_validation->set_rules('id_jenis_psu', 'Jenis', 'trim|required');
 		
@@ -113,9 +113,9 @@ class Psu extends Rtlh
 		$this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('kabupaten', 'Kabupaten', 'trim|required');
 		$this->form_validation->set_rules('sumber_dana', 'Sumber Dana', 'trim|required');
-		$this->form_validation->set_rules('nilai_kontrak', 'Nilai Kontrak', 'trim|required');
-		$this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'trim|required');
-		$this->form_validation->set_rules('tanggal_selesai', 'Tanggal Selesai', 'trim|required');
+		$this->form_validation->set_rules('nilai_kontrak', 'Nilai Anggaran', 'trim|required');
+		$this->form_validation->set_rules('item_pekerjaan', 'Item Pekerjaan', 'trim|required');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi ', 'trim|required');
 		$this->form_validation->set_rules('id_pelaksana', 'Pelaksana', 'trim|required');
 		$this->form_validation->set_rules('id_jenis_psu', 'Jenis', 'trim|required');
 
@@ -173,7 +173,7 @@ class Psu extends Rtlh
 
 	public function daftar_pelaksana()
 	{
-		$this->page_title->push('Daftar Pelaksana PSU', 'Data Daftar Pelaksana PSU');
+		$this->page_title->push('Daftar Pelaksana ', 'Data Daftar Pelaksana');
 
 		$config = $this->template->pagination_list();
 
@@ -186,7 +186,7 @@ class Psu extends Rtlh
 		$this->pagination->initialize($config);
 
 		$this->data = array(
-			'title' => "Data Daftar Pelaksana PSU", 
+			'title' => "Data Daftar Pelaksana ", 
 			'breadcrumb' => $this->breadcrumbs->show(),
 			'page_title' => $this->page_title->show(),
 			'daftar_pelaksana' => $this->psu->get_all_pelaksana_psu($this->per_page, $this->page),
@@ -198,7 +198,7 @@ class Psu extends Rtlh
 
 	public function create_pelaksana()
 	{
-		$this->page_title->push('Daftar Pelaksana PSU', 'Tambah Data Pelaksana PSU');
+		$this->page_title->push('Daftar Pelaksana', 'Tambah Data Pelaksana');
 
 		$this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan', 'trim|required');
 		$this->form_validation->set_rules('alamat_kantor', 'Alamat Kantor', 'trim|required');
@@ -213,7 +213,7 @@ class Psu extends Rtlh
 		}
 
 		$this->data = array(
-			'title' => "Tambah Data Pelaksana PSU", 
+			'title' => "Tambah Data Pelaksana ", 
 			'page_title' => $this->page_title->show(),
 		);
 
@@ -236,7 +236,7 @@ class Psu extends Rtlh
 			show_404();
 		}
 
-		$this->page_title->push('Daftar Pelaksana PSU', 'Sunting Data Pelaksana PSU');
+		$this->page_title->push('Daftar Pelaksana', 'Sunting Data Pelaksana ');
 
 		$this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan', 'trim|required');
 		$this->form_validation->set_rules('alamat_kantor', 'Alamat Kantor', 'trim|required');
@@ -251,7 +251,7 @@ class Psu extends Rtlh
 		}
 
 		$this->data = array(
-			'title' => "Sunting Data Pelaksana PSU", 
+			'title' => "Sunting Data Pelaksana ", 
 			'page_title' => $this->page_title->show(),
 			'get' => $this->psu->get_pelaksana($param)
 		);

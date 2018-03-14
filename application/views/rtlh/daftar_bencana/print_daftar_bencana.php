@@ -14,12 +14,13 @@ $this->load->view('rtlh/print/header');
             <tr>
                 <th width="40">No</th>
                 <th class="text-center">Nama Bencana</th>
+                <th class="text-center">Nomor SK</th>
                 <th>Jenis Bencana</th>
                 <th>Tahun</th>
                 <th>Lokasi</th>
                 <th>Status Bencana</th>
                 <th>Luas</th>
-                <th>Jumlah Korban</th>
+                <th>Jumlah Rumah</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@ $this->load->view('rtlh/print/header');
             <tr>
                 <td class="text-center"><?php echo ++$number ?></td>
                 <td><?php echo ucwords($row->nama); ?></td>
+                <td> <?php echo $row->no_sk ?> </td>
                 <td class="text-left" style="font-size: 12px;">
                     <?php  if ($row->id_jenis_bencana!=0) {
                     echo ucwords($this->daftar_bencana->get_jenis_bencana($row->id_jenis_bencana)->nama );

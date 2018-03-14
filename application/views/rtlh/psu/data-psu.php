@@ -93,7 +93,7 @@
 							<th class="text-center">Kabupaten</th>
 							<th class="text-center">Pelaksana</th>
 							<th class="text-center">Sumber Dana</th>
-							<th class="text-center">Nilai Kontrak</th>
+							<th class="text-center">Nilai Anggaran</th>
 							<th class="text-center">Alamat</th>
 							<th class="text-center">User</th>
 							<th width="100"></th>

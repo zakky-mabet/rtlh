@@ -181,6 +181,8 @@ class Mdaftar_bencana extends Rtlh_model
 				'status_bencana' => $this->input->post('status_bencana'),
 				'luas' => $this->input->post('luas'),
 				'jumlah' => $this->input->post('jumlah'),
+				'no_sk' => $this->input->post('no_sk'),
+				'tanggal' => $this->input->post('tanggal'),
 			);
 
 			$this->db->insert('daftar_bencana', $data);
@@ -213,6 +215,8 @@ class Mdaftar_bencana extends Rtlh_model
 			'status_bencana' => $this->input->post('status_bencana'),
 			'luas' => $this->input->post('luas'),
 			'jumlah' => $this->input->post('jumlah'),
+			'no_sk' => $this->input->post('no_sk'),
+			'tanggal' => $this->input->post('tanggal'),
 		);
 
 		$this->db->update('daftar_bencana', $data, array('id_bencana' => $param));

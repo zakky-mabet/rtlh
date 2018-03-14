@@ -93,7 +93,7 @@
 							<th>Jenis Bencana</th>
 							<th>Tahun</th>
 							<th>Lokasi</th>
-							<th>Status</th>
+							<th>Status Bencana</th>
 							<th></th>
 						</tr>
 					</thead>
