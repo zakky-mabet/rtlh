@@ -126,8 +126,9 @@
 								
 								<a href="<?php echo site_url("daftar_bencana/update/{$row->id_bencana}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 								<a href="<?php echo site_url("daftar_bencana/foto_bencana/{$row->id_bencana}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto-foto Bencana"><i class="fa fa-camera"></i></a>
-								
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
 								<a class="icon-button text-red get-delete-daftar-bencana" data-id="<?php echo $row->id_bencana; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+								<?php endif ?>
 							</td>
 						</tr>
 						<?php

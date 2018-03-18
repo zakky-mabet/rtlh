@@ -87,13 +87,7 @@ echo form_open(current_url(), array('class' => 'form-horizontal'));
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="luas" class="control-label col-md-3 col-xs-12">Luas  Bencana : <strong class="text-red">*</strong></label>
-					<div class="col-md-8">
-						<input type="text" name="luas" class="form-control" value="<?php echo $get->luas ?>">
-						<p class="help-block"><?php echo form_error('luas', '<small class="text-red">', '</small>'); ?></p>
-					</div>
-				</div>
+			
 
 				<div class="form-group">
 					<label for="jumlah" class="control-label col-md-3 col-xs-12">Jumlah Korban : <strong class="text-red">*</strong></label>

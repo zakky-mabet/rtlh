@@ -92,7 +92,9 @@
 							<td class="text-center">
 								
 								<a href="<?php echo site_url("daftar_bencana/update_jenis/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
 								<a class="icon-button text-red get-delete-jenis-bencana" data-id="<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php endif ?>
 							</td>
 						</tr>
 						<?php

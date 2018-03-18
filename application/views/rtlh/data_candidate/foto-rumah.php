@@ -89,7 +89,13 @@
 										</figure>
 									</td>
 									<td style="vertical-align: middle;"><?php echo $value->nama ?></td>
-									<td class="text-center " style="vertical-align: middle;"><a class="icon-button text-red get-delete-foto" data-id="<?php echo $value->id_foto_rumah; ?>" data-nik="<?php echo $value->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a></td>
+									<td class="text-center " style="vertical-align: middle;">
+									<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
+
+										<a class="icon-button text-red get-delete-foto" data-id="<?php echo $value->id_foto_rumah; ?>" data-nik="<?php echo $value->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+
+									<?php endif ?>
+									</td>
 								</tr>
 							<?php endforeach ?>
 						<?php endif ?>
@@ -137,7 +143,11 @@
 										</figure>
 									</td>
 									<td style="vertical-align: middle;"><?php echo $value->nama ?></td>
-									<td class="text-center " style="vertical-align: middle;"><a class="icon-button text-red get-delete-foto" data-id="<?php echo $value->id_foto_rumah; ?>" data-nik="<?php echo $value->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a></td>
+									<td class="text-center " style="vertical-align: middle;">
+										<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
+										<a class="icon-button text-red get-delete-foto" data-id="<?php echo $value->id_foto_rumah; ?>" data-nik="<?php echo $value->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+									<?php endif ?>
+									</td>
 								</tr>
 							<?php endforeach ?>
 						<?php endif ?>

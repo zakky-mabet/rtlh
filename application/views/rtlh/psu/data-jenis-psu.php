@@ -90,8 +90,9 @@
 							<td><?php echo $row->keterangan; ?></td>						
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 								<a href="<?php echo site_url("psu/update_master_jenis/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-								
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
 								<a class="icon-button text-red get-delete-jenis-psu" data-id="<?php echo $row->id; ?>"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php endif ?>
 							</td>
 						</tr>
 						<?php

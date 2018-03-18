@@ -184,8 +184,11 @@ echo form_open(site_url('population/bulk_action'));
 								<a href="<?php echo site_url("population/updateverifikasi/{$row->ID}") ?>" class="icon-button <?php if ($row->status_data==1): ?> text-green <?php else: ?>text-orange<?php endif ?>" data-toggle="tooltip" data-placement="top" title="Status Data Penduduk <?php if ($row->status_data==1): ?> Terverifikasi<?php else: ?>Belum Terverifikasi<?php endif ?>"><i class="fa <?php if ($row->status_data==1): ?> fa-check<?php else: ?>fa-times<?php endif ?>"></i></a>
 
 								<a href="<?php echo site_url("population/update/{$row->ID}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-						
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
+
 								<a class="icon-button text-red get-delete-population" data-id="<?php echo $row->ID; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+
+							<?php endif ?>
 				
 							</td>
 						</tr>

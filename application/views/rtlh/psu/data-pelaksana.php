@@ -95,8 +95,9 @@
 							<td><?php echo $row->alamat_kantor; ?></td>							
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 								<a href="<?php echo site_url("psu/update_pelaksana/{$row->id_pelaksana_psu}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-								
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
 								<a class="icon-button text-red get-delete-pelaksana-psu" data-id="<?php echo $row->id_pelaksana_psu; ?>"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php endif ?>
 							</td>
 						</tr>
 						<?php

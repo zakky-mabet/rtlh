@@ -18,6 +18,17 @@ class Mjson_location extends Rtlh_model
 		
 	}
 
+	private function count_data (){
+		$this->db->select('*');
+
+		$this->db->from('penduduk');
+
+		$this->db->join('tanah', 'tanah.nik = penduduk.nik');
+
+		$this->db->join('rumah', 'rumah.nik = tanah.nik');
+
+		return $this->db->get()->num_rows();
+	}
 
 	public function all_location()
 	{
@@ -40,7 +51,12 @@ class Mjson_location extends Rtlh_model
 				
 			);
 		} 
-		return $data;
+		
+		if ($this->count_data() != 0) {
+			return $data;	
+		}
+		
+		
 	}
 
 

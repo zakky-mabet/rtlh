@@ -91,9 +91,9 @@ class Pengguna extends Rtlh {
 		$this->breadcrumbs->unshift(2, 'Data Pengguna Sistem', "pengguna");
 
 		$this->form_validation->set_rules('nama', 'Nama Lengkap', 'trim|required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|callback_validate_email|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
 		$this->form_validation->set_rules('no_telp', 'No Handphone', 'trim|required');
-		$this->form_validation->set_rules('username', 'Username', 'trim|callback_validate_username|required');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('level', 'Level', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE)
@@ -115,7 +115,7 @@ class Pengguna extends Rtlh {
 
 	public function validate_email()
 	{
-		if($this->pengguna->email_check($this->input->post('id')) == TRUE)
+		if($this->pengguna->email_check($this->input->post('ID')) == TRUE)
 		{
 			$this->form_validation->set_message('validate_email', 'Maaf Email ini telah digunakan.');
 			return false;
@@ -126,7 +126,7 @@ class Pengguna extends Rtlh {
 
 	public function validate_username()
 	{
-		if($this->pengguna->username_check($this->input->post('id')) == TRUE)
+		if($this->pengguna->username_check($this->input->post('ID')) == TRUE)
 		{
 			$this->form_validation->set_message('validate_username', 'Maaf Username ini telah digunakan.');
 			return false;

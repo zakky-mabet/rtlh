@@ -143,8 +143,11 @@ echo form_open(site_url('data_penerima/bulk_action'));
 								<a href="<?php echo site_url("data_penerima/update/{$row->nik}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 
 								<a href="<?php echo site_url("data_candidate/foto/{$row->nik}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
-						
-								<a class="icon-button text-red get-delete-penerima" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
+								
+									<a class="icon-button text-red get-delete-penerima" data-id="<?php echo $row->nik; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+
+								<?php endif ?>
 				
 							</td>
 						</tr>

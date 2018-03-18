@@ -288,7 +288,7 @@
 														<option value="APBN">APBN
 														<option value="DAK">DAK
 														<option value="APBD1">APBD 1
-														<option value="APBD2">APBD 2
+														<option value="APBD2">APBD 2 
 														<option value="CSR">CSR
 														<option value="DABA">DABA
 														<option value="Lainnya">Lainnya

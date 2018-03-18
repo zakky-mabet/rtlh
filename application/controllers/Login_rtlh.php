@@ -105,22 +105,22 @@ class Login_rtlh extends CI_Controller
 
             $qstring = $this->base64url_encode($token);  
 
-/*            $this->load->library('email');
+            $this->load->library('email');
             $config['charset'] = 'iso-8859-1';
             $config['wordwrap'] = TRUE;
             $config['mailtype'] = 'html';
 
             $this->email->initialize($config);
                    
-            $this->email->from('kiss@kecamatankoba.net', 'Tempayan');
+            $this->email->from('#', 'SIMPERA');
             $this->email->to($userInfo->email);
-            $this->email->subject('[TEMPAYAN] Permintaan Reset Password');
+            $this->email->subject('[SIMPERA] Permintaan Reset Password');
             $this->email->message( $this->template->theme_mail(array(
                 'nama' => $userInfo->name,
                 'link' => site_url() . '/login/reset_password/token/' . $qstring
             )) );
                    
-            $this->email->send(); */  
+            $this->email->send();   
 
             $this->template->alert(
                // 'Permintaan Reset Password telah dikirim ke E-Mail anda. segera reset password anda sebelum 1X24 jam dari sekarang', 

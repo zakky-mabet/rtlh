@@ -127,7 +127,7 @@ echo form_open(site_url('pengguna/bulk_action'));
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 							
 								<a href="<?php echo site_url("pengguna/update/{$row->id_user}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-						
+								
 								<a class="icon-button text-red get-delete-pengguna" data-id="<?php echo $row->id_user; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
 				
 							</td>

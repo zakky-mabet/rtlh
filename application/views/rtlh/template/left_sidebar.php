@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </li>
         </ul>
       </li>
-      <li  class="treeview belum <?php echo active_link_multiple(array('rtpp')); ?>">
+     <!--  <li  class="treeview belum <?php echo active_link_multiple(array('rtpp')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> RTPP</span>
           <span class="pull-right-container">
@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo site_url('rtpp/proyek') ?>"><i class="fa fa-angle-double-right"></i> Data Proyek</a>
           </li>
         </ul>
-      </li>
+      </li> -->
       <li class="treeview  <?php echo active_link_method('master_jenis'); ?> <?php echo active_link_method('index','psu'); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> PSU</span>
@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </ul>
       </li>
 
-      <li class="treeview <?php echo active_link_multiple(array('dekonsentrasi')); ?>">
+    <!--   <li class="treeview <?php echo active_link_multiple(array('dekonsentrasi')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> Dekonsentrasi</span>
           <span class="pull-right-container">
@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo site_url('dekonsentrasi/jenis') ?>"><i class="fa fa-angle-double-right"></i> Jenis Kegiatan Dekonsentrasi</a>
           </li>
         </ul>
-      </li>
+      </li> -->
 <!--       <li class="treeview <?php echo active_link_multiple(array('#')); ?>">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span> FLPP</span>
@@ -151,20 +151,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </a>
         <ul class="treeview-menu">
           <li class="<?php echo active_link_method('index','statistik') ?>">
-            <a href="<?php echo site_url('statistik') ?>"><i class="fa fa-angle-double-right"></i> Penerima Bantuan</a>
+            <a href="<?php echo site_url('statistik') ?>"><i class="fa fa-angle-double-right"></i> Penerima Bantuan RTLH</a>
           </li>
           <li class="<?php echo active_link_method('sumber_anggaran','statistik'); ?>">
-            <a href="<?php echo site_url('statistik/sumber_anggaran') ?>"><i class="fa fa-angle-double-right"></i> Sumber Anggaran</a>
+            <a href="<?php echo site_url('statistik/sumber_anggaran') ?>"><i class="fa fa-angle-double-right"></i> Sumber Anggaran RTLH</a>
           </li>
           <li class="<?php echo active_link_method('dana_per_kabupaten','statistik'); ?>">
-            <a href="<?php echo site_url('statistik/dana_per_kabupaten') ?>"><i class="fa fa-angle-double-right"></i> Total Dana Per Kabupaten</a>
+            <a href="<?php echo site_url('statistik/dana_per_kabupaten') ?>"><i class="fa fa-angle-double-right"></i> Total Dana Per Kabupaten RTLH</a>
           </li>
           <li class="<?php echo active_link_method('rkba','statistik'); ?>">
             <a href="<?php echo site_url('statistik/rkba') ?>"><i class="fa fa-angle-double-right"></i> Rumah Korban Bencana Alam</a>
           </li>
-           <li class="<?php echo active_link_method('rtpp','statistik'); ?>">
+           <!-- <li class="<?php echo active_link_method('rtpp','statistik'); ?>">
             <a href="<?php echo site_url('statistik/rtpp') ?>"><i class="fa fa-angle-double-right"></i> Rumah Terkena Proyek Pemerintah</a>
-          </li>
+          </li> -->
            <li class="<?php echo active_link_method('psu','statistik'); ?>">
             <a href="<?php echo site_url('statistik/psu') ?>"><i class="fa fa-angle-double-right"></i> Prasarana Sarana dan Utilitas</a>
           </li>
@@ -218,9 +218,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php echo active_link_controller('pengguna') ?>">
-            <a href="<?php echo site_url('pengguna') ?>"><i class="fa fa-angle-double-right"></i> Pengguna Sistem</a>
-          </li>
+
+          <?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
+            
+             <li class="<?php echo active_link_controller('pengguna') ?>">
+              <a href="<?php echo site_url('pengguna') ?>"><i class="fa fa-angle-double-right"></i> Pengguna Sistem</a>
+            </li>
+
+
+          <?php endif ?>
+         
           <li class="<?php echo active_link_controller('account') ?>">
             <a href="<?php echo site_url('account') ?>"><i class="fa fa-angle-double-right"></i> Akun</a>
           </li>

@@ -130,8 +130,9 @@ echo form_open(site_url('data_rkba/bulk_action'));
 								<a href="<?php echo site_url("data_rkba/update/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
 
 								<a href="<?php echo site_url("data_rkba/foto/{$row->id}") ?>" class="icon-button text-yellow" data-toggle="tooltip" data-placement="top" title="Foto Rumah"><i class="fa fa-camera"></i></a>
-
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
 								<a class="icon-button text-red get-delete-rkba" data-id="<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php endif ?>
 				
 							</td>
 						</tr>

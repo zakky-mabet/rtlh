@@ -179,7 +179,6 @@ class Mdaftar_bencana extends Rtlh_model
 				'tahun' => $this->input->post('tahun'),
 				'lokasi' => $this->input->post('lokasi'),
 				'status_bencana' => $this->input->post('status_bencana'),
-				'luas' => $this->input->post('luas'),
 				'jumlah' => $this->input->post('jumlah'),
 				'no_sk' => $this->input->post('no_sk'),
 				'tanggal' => $this->input->post('tanggal'),

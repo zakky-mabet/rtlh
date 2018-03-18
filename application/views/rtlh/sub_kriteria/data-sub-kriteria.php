@@ -41,6 +41,7 @@ echo form_open(current_url(), array('method' => 'get'));
 				
 					<a href="<?php echo site_url('sub_kriteria/create') ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-plus"></i> Tambah Baru</a>
 					<a href="<?php echo site_url("sub_kriteria/print_out?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm btn-print"><i class="fa fa-print"></i> Cetak</a>
+
 					<a href="<?php echo site_url("sub_kriteria/export?{$this->input->server('QUERY_STRING')}") ?>" class="btn btn-warning hvr-shadow btn-flat btn-sm"><i class="fa fa-download"></i> Ekspor</a>
 				
 				</div>
@@ -133,8 +134,9 @@ echo form_open(site_url('sub_kriteria/bulk_action'));
 							<td class="text-center" style="font-size: 12px;" id="tombol-filter">
 							
 								<a href="<?php echo site_url("sub_kriteria/update/{$row->id}") ?>" class="icon-button text-blue" data-toggle="tooltip" data-placement="top" title="Sunting"><i class="fa fa-pencil"></i></a>
-						
+						<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
 								<a class="icon-button text-red get-delete-sub-kriteria" data-id="<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php endif ?>
 				
 							</td>
 						</tr>

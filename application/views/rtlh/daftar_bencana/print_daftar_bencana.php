@@ -19,7 +19,7 @@ $this->load->view('rtlh/print/header');
                 <th>Tahun</th>
                 <th>Lokasi</th>
                 <th>Status Bencana</th>
-                <th>Luas</th>
+              
                 <th>Jumlah Rumah</th>
             </tr>
         </thead>
@@ -45,7 +45,7 @@ $this->load->view('rtlh/print/header');
                 <td><?php echo ucwords($row->tahun); ?></td>
                 <td><?php echo ucwords($row->lokasi); ?></td>
                 <td><?php echo ucwords($row->status_bencana); ?></td>
-                <td><?php echo ucwords($row->luas); ?> M<sup>2</sup></td>
+               
                 <td><?php echo ucwords($row->jumlah); ?></td>
                 
             </tr>

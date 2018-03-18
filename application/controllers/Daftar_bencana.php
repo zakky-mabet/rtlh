@@ -171,7 +171,6 @@ class Daftar_bencana extends Rtlh {
 		$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required');
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
 		$this->form_validation->set_rules('status_bencana', 'Status Bencana', 'trim|required');
-		$this->form_validation->set_rules('luas', 'Luas Bencana', 'trim|required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah Rumah', 'trim|required');
 
 		if ($this->form_validation->run() == TRUE)
@@ -206,7 +205,6 @@ class Daftar_bencana extends Rtlh {
 		$this->form_validation->set_rules('tahun', 'Tahun', 'trim|required');
 		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
 		$this->form_validation->set_rules('status_bencana', 'Status Bencana', 'trim|required');
-		$this->form_validation->set_rules('luas', 'Luas Bencana', 'trim|required');
 		$this->form_validation->set_rules('no_sk', 'Nomor SK', 'trim|required');
 		$this->form_validation->set_rules('tanggal', 'Tanggal', 'trim|required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah Rumah', 'trim|required');

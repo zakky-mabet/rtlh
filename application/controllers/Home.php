@@ -26,6 +26,36 @@ class Home extends Rtlh {
 		$this->template->view('rtlh/v_home', $this->data);
 	}
 
+	public function empty()
+	{
+		$tables = array(
+			'dekonsentrasi',
+			'foto_rtpp',
+			'aspek_bantuan',
+			'daftar_bencana',
+			'daftar_proyek_rtpp',
+			'dana_bantuan',
+			'data_bantuan_rkba',
+			'fasilitas_rumah',
+			'foto_bencana',
+			'foto_dekonsentrasi',
+			'foto_psu',
+			'foto_rkba',
+			'foto_rumah',
+			'jenis_kegiatan_dekon',
+			'pelaksana_psu',
+			'psu',
+			'realisasi_bantuan',
+			'rumah',
+			'tanah',
+			'nilai_kriteria'
+		);
 
+		foreach ($tables as $value) {
+			$this->db->empty_table($value);
+		}
+
+
+	}
 
 }

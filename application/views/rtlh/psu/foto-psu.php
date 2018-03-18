@@ -72,7 +72,11 @@
 								</figure>
 							</td>
 							<td style="vertical-align: middle;"><?php echo $value->nama ?></td>
-							<td class="text-center " style="vertical-align: middle;"><a class="icon-button text-red get-delete-foto-psu" data-id="<?php echo $value->id; ?>" data-back="<?php echo $value->id_data_psu; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a></td>
+							<td class="text-center " style="vertical-align: middle;">
+								<?php if ($this->muniversal->get_account_by_login($this->session->userdata('ID'))->level == 'Admin'): ?>
+								<a class="icon-button text-red get-delete-foto-psu" data-id="<?php echo $value->id; ?>" data-back="<?php echo $value->id_data_psu; ?>" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash-o"></i></a>
+							<?php endif ?>
+								</td>
 						</tr>
 						<?php endforeach ?>
 						<?php endif ?>

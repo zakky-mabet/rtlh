@@ -9,6 +9,7 @@
  * @var string
  **/
 echo form_open(current_url(), array('class' => 'form-horizontal'));
+echo form_hidden('ID', $get->id_user );
 ?>
 			<div class="box-body" style="margin-top: 10px;">
 			
